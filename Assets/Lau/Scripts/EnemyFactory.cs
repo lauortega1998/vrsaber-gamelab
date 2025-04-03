@@ -5,22 +5,37 @@ using System.Collections.Generic;
 public class EnemyFactory : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public List<EnemySpawner> spawners = new List<EnemySpawner>(); // List of spawners
+    public GameObject flyingSpectrePrefab;
 
+    [Header("Spawners")]
+    public List<EnemySpawner> spawners = new List<EnemySpawner>(); // Ground spawners
+    public List<EnemySpawner> spectreSpawners = new List<EnemySpawner>(); // Airborne spawners for spectres
+
+    [Header("Spawn Settings")]
     public float spawnInterval = 2f;
     public float enemySpeed = 5f;
 
     [Header("Difficulty Settings")]
-    public float difficultyIncreaseRate = 10f; // How often (in seconds) difficulty increases
-    public float spawnIntervalDecrease = 0.1f; // How much the spawn interval decreases
-    public float enemySpeedIncrease = 0.5f; // How much enemy speed increases
-    public float minSpawnInterval = 0.5f; // The lowest possible spawn interval
+    public float difficultyIncreaseRate = 10f;
+    public float spawnIntervalDecrease = 0.1f;
+    public float enemySpeedIncrease = 0.5f;
+    public float minSpawnInterval = 0.5f;
 
     private void Start()
     {
-        if (spawners == null || spawners.Count == 0)
+        if (spawners.Count == 0)
         {
-            Debug.LogError("EnemyFactory requires at least one assigned EnemySpawner!");
+            Debug.LogError("EnemyFactory requires at least one ground EnemySpawner!");
+        }
+
+        if (spectreSpawners.Count == 0)
+        {
+            Debug.LogWarning("No spectre-specific spawners assigned. Flying spectres will use ground spawners instead.");
+        }
+
+        if (enemyPrefab == null || flyingSpectrePrefab == null)
+        {
+            Debug.LogError("EnemyFactory is missing prefab references!");
             return;
         }
 
@@ -43,10 +58,7 @@ public class EnemyFactory : MonoBehaviour
         {
             yield return new WaitForSeconds(difficultyIncreaseRate);
 
-            // Reduce spawn interval but keep it above the minimum limit
             spawnInterval = Mathf.Max(spawnInterval - spawnIntervalDecrease, minSpawnInterval);
-
-            // Increase enemy speed
             enemySpeed += enemySpeedIncrease;
 
             Debug.Log($"Difficulty increased! New Spawn Interval: {spawnInterval}, Enemy Speed: {enemySpeed}");
@@ -55,16 +67,43 @@ public class EnemyFactory : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (spawners == null || spawners.Count == 0) return;
+        bool spawnFlying = Random.value < 0.5f;
 
-        // Choose a random spawner from the list
-        EnemySpawner selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+        EnemySpawner selectedSpawner = null;
+        Vector3 spawnPosition;
 
-        // Get random spawn position from the selected spawner
-        Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+        if (spawnFlying)
+        {
+            if (spectreSpawners.Count > 0)
+            {
+                selectedSpawner = spectreSpawners[Random.Range(0, spectreSpawners.Count)];
+            }
+            else
+            {
+                Debug.LogWarning("Spectre spawner list is empty. Falling back to ground spawners.");
+                selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+            }
 
-        // Instantiate the enemy
-        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        enemy.GetComponent<Enemy>().speed = enemySpeed;
+            spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+            GameObject newSpectre = Instantiate(flyingSpectrePrefab, spawnPosition, Quaternion.identity);
+
+            if (newSpectre.TryGetComponent<FlyingEnemyBehaviour>(out var spectre))
+            {
+                spectre.speed = enemySpeed;
+            }
+        }
+        else
+        {
+            if (spawners.Count == 0) return;
+            selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+            spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            if (newEnemy.TryGetComponent<Enemy>(out var enemy))
+            {
+                enemy.speed = enemySpeed;
+            }
+        }
     }
 }
