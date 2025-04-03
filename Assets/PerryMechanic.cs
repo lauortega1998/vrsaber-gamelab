@@ -26,10 +26,10 @@ public class ParryMechanic : MonoBehaviour
     {
         if (leftHand != null && rightHand != null) // Both objects are held
         {
-            if (XRinputs.GetDown(OVRInput.Button.One)) // Replace with your button
-            {
-                ActivateParry();
-            }
+            //if (XRinputs.GetDown(OVRInput.Button.One)) // Replace with your button
+            //{
+            //    ActivateParry();
+           // }
         }
     }
 

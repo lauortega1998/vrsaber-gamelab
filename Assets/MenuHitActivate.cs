@@ -1,32 +1,31 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class MenuHitActivate : MonoBehaviour
 {
-    [Header("Hit Effect")]
-    public GameObject hitEffectPrefab;
-
-    [Header("Death Model Swap")]
     public string normalModelName = "NormalModel";
     public string destroyedModelName = "DestroyedModel";
+    public GameObject timerPrefabUI;
+    public GameObject enemyFactory;
 
-    [Header("Death Effects")]
-    public float knockbackForce = 5f;
+
+    public float knockbackForce = 0f;
     public float enemyDestroyDelay = 2f;
-
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Die(Transform weaponHitPoint)
     {
+
         GameObject enemyRoot = transform.root.gameObject;
-        Debug.Log($"{enemyRoot.name} was killed!");
-        KillCounter.Instance.AddKill();
+        timerPrefabUI.SetActive(true);
 
 
         // Spawn hit effect at closest point
-        if (hitEffectPrefab != null && weaponHitPoint != null)
+        /*if (hitEffectPrefab != null && weaponHitPoint != null)
         {
             Vector3 hitPoint = GetComponent<Collider>().ClosestPoint(weaponHitPoint.position);
             GameObject effect = Instantiate(hitEffectPrefab, hitPoint, Quaternion.identity);
             Destroy(effect, 2f);
         }
+        */
 
         // Find enemy models
         Transform normalModel = enemyRoot.transform.Find(normalModelName);
@@ -34,6 +33,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (normalModel != null && destroyedModel != null)
         {
+            Debug.Log("Trying to find NormalModel and DestroyedModel...");
+            Debug.Log($"Found NormalModel: {normalModel != null}, DestroyedModel: {destroyedModel != null}");
             normalModel.gameObject.SetActive(false);
             destroyedModel.gameObject.SetActive(true);
 

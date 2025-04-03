@@ -20,10 +20,11 @@ public class WeaponVelocityDamage : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        float impactVelocity = rb.linearVelocity.magnitude;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            float impactVelocity = rb.linearVelocity.magnitude;
-            Debug.Log($"[WeaponVelocityDamage] Hit {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
+            Debug.Log($"[WeaponVelocityDamage] Hit Enemy {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
 
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
@@ -44,6 +45,17 @@ public class WeaponVelocityDamage : MonoBehaviour
                         enemyRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
                     }
                 }
+            }
+        }
+        else if (collision.gameObject.CompareTag("DestructibleUI"))
+        {
+            Debug.Log($"[WeaponVelocityDamage] Hit Column {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
+
+            var column = collision.gameObject.GetComponentInParent<MenuHitActivate>();
+            if (column != null && impactVelocity >= damageVelocityThreshold)
+            {
+                Debug.Log("[WeaponVelocityDamage] Breaking column to start the game.");
+                column.Die(transform);
             }
         }
     }
