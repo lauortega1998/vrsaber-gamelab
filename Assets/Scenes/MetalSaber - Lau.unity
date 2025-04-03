@@ -747,11 +747,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6616180692884293340, guid: 0979d314ec269b041905c6795276f580, type: 3}
+  flyingSpectrePrefab: {fileID: 6616180692884293340, guid: 543f4e8b59112784d9e5bd222a57dba4, type: 3}
   spawners:
   - {fileID: 691474225}
   - {fileID: 911239430}
   - {fileID: 1998605967}
   - {fileID: 1961412043}
+  spectreSpawners:
+  - {fileID: 691474225}
   spawnInterval: 2
   enemySpeed: 4.5
   difficultyIncreaseRate: 7
@@ -2084,6 +2087,10 @@ PrefabInstance:
     - target: {fileID: 3024670575873772354, guid: c7aa59db593409149b07eb5c93997eb9, type: 3}
       propertyPath: m_Name
       value: Axe(WithUIActivation) (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024670575873772354, guid: c7aa59db593409149b07eb5c93997eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8024610221277499366, guid: c7aa59db593409149b07eb5c93997eb9, type: 3}
       propertyPath: m_LocalPosition.x
