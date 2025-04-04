@@ -17,11 +17,10 @@ public class FlyingEnemyBehaviour : MonoBehaviour
     private float nextAttackTime = 0f;
     private Vector3 targetPosition;
     private Rigidbody rb;
-
+   
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
         rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -48,6 +47,7 @@ public class FlyingEnemyBehaviour : MonoBehaviour
         {
             nextAttackTime = Time.time + attackInterval;
             AttackPlayer();
+            
         }
     }
 

@@ -10,5 +10,9 @@ public class FlyingEnemyWallStop : MonoBehaviour
             enemy.speed = 0f;
             Debug.Log($"{other.name} hit the wall and was stopped.");
         }
+        
+        
     }
+    
+    
 }

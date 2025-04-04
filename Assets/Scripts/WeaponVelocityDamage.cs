@@ -14,8 +14,8 @@ public class WeaponVelocityDamage : MonoBehaviour
 
     void Update()
     {
-        if (rb != null)
-            Debug.Log($"[WeaponVelocityDamage] Current Velocity: {rb.linearVelocity.magnitude:F2}");
+       // if (rb != null)
+//            Debug.Log($"[WeaponVelocityDamage] Current Velocity: {rb.linearVelocity.magnitude:F2}");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -24,7 +24,7 @@ public class WeaponVelocityDamage : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log($"[WeaponVelocityDamage] Hit Enemy {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
+//            Debug.Log($"[WeaponVelocityDamage] Hit Enemy {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
 
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
