@@ -373,8 +373,9 @@ GameObject:
   - component: {fileID: 101774798921263651}
   - component: {fileID: 8073205935362403724}
   - component: {fileID: 7299001681108680759}
+  - component: {fileID: 5883921012089819278}
   m_Layer: 0
-  m_Name: AxePlayer
+  m_Name: TwoHandedAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,3 +603,17 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 1
+--- !u!114 &5883921012089819278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644933544631585752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageVelocityThreshold: 0.5
+  pushForce: 5
