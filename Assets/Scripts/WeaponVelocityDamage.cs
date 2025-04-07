@@ -34,7 +34,6 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
-                    GetComponent<HapticFeedback>().DestroyWithFeedback();
 
                 }
                 else

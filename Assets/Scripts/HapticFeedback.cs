@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class HapticFeedback : MonoBehaviour
 {
-    public XRNode controllerNode = XRNode.RightHand; // Choose LeftHand if needed
+    public XRNode controllerNode = XRNode.RightHand;  // Choose LeftHand if needed
     public float intensity = 0.5f;  // Haptic intensity (range 0 to 1)
     public float duration = 0.1f;   // Duration of the haptic feedback
 
@@ -12,7 +12,7 @@ public class HapticFeedback : MonoBehaviour
 
     void Start()
     {
-        // Initialize the InputDevice
+        // Initialize the InputDevice for the selected controller (RightHand or LeftHand)
         inputDevice = GetInputDevice();
         Debug.Log("Input Device: " + inputDevice.name + " valid: " + inputDevice.isValid);
     }
@@ -27,25 +27,23 @@ public class HapticFeedback : MonoBehaviour
         return new InputDevice(); // returns an invalid device if none is found
     }
 
-    public void TriggerHapticFeedback()
+    void OnDestroy()
+    {
+        // Trigger haptic feedback when this object is destroyed
+        TriggerHapticFeedback();
+    }
+
+    private void TriggerHapticFeedback()
     {
         if (inputDevice.isValid)
         {
+            // Send haptic feedback on the selected controller
             inputDevice.SendHapticImpulse(0, intensity, duration); // Channel 0, intensity, duration
-            Debug.Log("Triggered Haptic Feedback.");
+            Debug.Log("Haptic feedback triggered on " + controllerNode.ToString());
         }
         else
         {
             Debug.LogWarning("Input Device not valid, cannot trigger haptic feedback.");
         }
-    }
-
-    public void DestroyWithFeedback()
-    {
-        // Trigger haptic feedback first
-        TriggerHapticFeedback();
-
-        // Then destroy the object
-       // Destroy(gameObject);
     }
 }
