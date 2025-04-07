@@ -25,7 +25,8 @@ public class WeaponVelocityDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
 //            Debug.Log($"[WeaponVelocityDamage] Hit Enemy {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
-
+          
+            
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
@@ -33,6 +34,8 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
+                    GetComponent<HapticFeedback>().DestroyWithFeedback();
+
                 }
                 else
                 {
