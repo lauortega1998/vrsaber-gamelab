@@ -73,6 +73,6 @@ public class EnemyAttacking : MonoBehaviour
     private void PerformAction() //Appling the methods when the timer end 
     {
             playerHealth.TakeDamage(damageAmount);
-          
+            Destroy(this.gameObject);
     }
 }

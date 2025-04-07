@@ -56,6 +56,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
+            
             Debug.LogWarning("NormalModel or DestroyedModel not found on enemy.");
             Destroy(enemyRoot); // Fallback: just destroy the enemy
         }
