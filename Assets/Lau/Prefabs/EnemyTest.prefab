@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1269649435741183429}
   - component: {fileID: 5775749008350188120}
   - component: {fileID: 2101938665734594524}
+  - component: {fileID: 4331690948164209161}
   m_Layer: 3
   m_Name: EnemyTest
   m_TagString: Enemy
@@ -150,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  damageAmount: 10
 --- !u!65 &5775749008350188120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -185,6 +185,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownTime: 5
+  damageAmount: 10
+--- !u!114 &4331690948164209161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616180692884293340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d13b6ca0ffc274dbfa98913d3039ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerNode: 5
+  intensity: 0.5
+  duration: 0.1
 --- !u!1001 &966050096134396530
 PrefabInstance:
   m_ObjectHideFlags: 0
