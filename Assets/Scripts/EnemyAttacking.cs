@@ -15,17 +15,19 @@ public class EnemyAttacking : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>();
 
     }
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
-            timerStarted = true;
-            timer = countdownTime;
-            lastPrintedTime = -1;
-            Debug.Log($"{gameObject.name} collided! Timer started.");
+            StartTimer();
         }
+    } 
+    private void OnEnable()
+    {
+        ResetTimerState(); // Ensure fresh start
     }
-
+    
     private void Update()
     {
         if (timerStarted)
@@ -42,22 +44,35 @@ public class EnemyAttacking : MonoBehaviour
 
             if (timer <= 0f)
             {
-                timerStarted = false;
                 PerformAction();
-                StartTimer();
+                StartTimer(); // Optional: keep looping
             }
         }
     }
-    private void StartTimer()
+    public void StartTimer()
     {
         timerStarted = true;
         timer = countdownTime;
         lastPrintedTime = -1;
-        Debug.Log($"{gameObject.name} Timer restarted!");
+        Debug.Log($"{gameObject.name} Timer started!");
+    }
+
+    public void StopTimer()
+    {
+        timerStarted = false;
+        timer = 0;
+        Debug.Log($"{gameObject.name} Timer stopped/reset.");
+    }
+
+    public void ResetTimerState()
+    {
+        timerStarted = false;
+        timer = 0;
+        lastPrintedTime = -1;
     }
     private void PerformAction() //Appling the methods when the timer end 
     {
             playerHealth.TakeDamage(damageAmount);
-          //  Destroy(gameObject);
+          
     }
 }
