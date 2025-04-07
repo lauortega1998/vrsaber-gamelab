@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -7,11 +8,12 @@ public class PlayerHealth : MonoBehaviour
 
     public delegate void HealthChanged(int currentHealth, int maxHealth);
     public event HealthChanged OnHealthChanged;
-
+    public TextMeshProUGUI healthText;
     void Start()
     {
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        UpdateHealthUI();
     }
 
     public void TakeDamage(int damage)
@@ -21,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         Debug.Log($"Player took {damage} damage! Current health: {currentHealth}");
-
+        UpdateHealthUI();
         if (currentHealth <= 0)
         {
             Die();
@@ -30,11 +32,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
+        UpdateHealthUI();
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         Debug.Log($"Player healed {amount} health! Current health: {currentHealth}");
+    }
+    private void UpdateHealthUI()
+    {
+        if (healthText != null)
+        {
+            healthText.text = "Health: " + currentHealth + " / " + maxHealth;
+        }
     }
 
     private void Die()
