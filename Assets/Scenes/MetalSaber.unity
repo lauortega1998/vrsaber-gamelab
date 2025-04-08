@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &27113623
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -795,11 +795,11 @@ MonoBehaviour:
   - {fileID: 1568520863}
   - {fileID: 1761279921}
   - {fileID: 1647987142}
-  groundSpawnInterval: 3
-  flyingSpawnInterval: 10
+  groundSpawnInterval: 5
+  flyingSpawnInterval: 30
   enemySpeed: 4
-  difficultyIncreaseRate: 7
-  spawnIntervalDecrease: 0.3
+  difficultyIncreaseRate: 0
+  spawnIntervalDecrease: 0
   enemySpeedIncrease: 0
   minSpawnInterval: 1
 --- !u!4 &161480577
@@ -4816,7 +4816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9a7ad44fe12c16c458a8af9257c45dee, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8806,11 +8806,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835214168}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1858424040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3520531712595156767, guid: fedede2a605b35f47ba777d6a14d02f6, type: 3}
+  m_PrefabInstance: {fileID: 9220876274737552110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1858424043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4292106762939205029, guid: fedede2a605b35f47ba777d6a14d02f6, type: 3}
   m_PrefabInstance: {fileID: 9220876274737552110}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1858424047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858424040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 27113622}
+  objectToDeactivate: {fileID: 1946194795}
+  destructibleTag: DestructibleUI
+  requiredVelocity: 1
+  activationDuration: 3
 --- !u!1 &1859025916
 GameObject:
   m_ObjectHideFlags: 0
@@ -10128,7 +10150,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3520531712595156767, guid: fedede2a605b35f47ba777d6a14d02f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1858424047}
   m_SourcePrefab: {fileID: 100100000, guid: fedede2a605b35f47ba777d6a14d02f6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
