@@ -5,11 +5,16 @@ public class Enemy : MonoBehaviour
     public float speed = 5f; // Speed of the enemy
     private Transform player;
     private bool canMove = true;
+    [SerializeField] private Transform lookTarget; // <- this also works and keeps it private in code
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+      
     }
+
 
     void Update()
     {
@@ -24,9 +29,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper"))
         {
-          
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
             canMove = false;
+
+            // Face the player immediately
+        
         }
     }
 }

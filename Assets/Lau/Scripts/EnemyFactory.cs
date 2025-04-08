@@ -12,7 +12,8 @@ public class EnemyFactory : MonoBehaviour
     public List<EnemySpawner> spectreSpawners = new List<EnemySpawner>(); // Airborne spawners for spectres
 
     [Header("Spawn Settings")]
-    public float spawnInterval = 2f;
+    public float groundSpawnInterval = 2f;  // New: Ground enemies spawn interval
+    public float flyingSpawnInterval = 3f;  // New: Flying enemies spawn interval
     public float enemySpeed = 5f;
 
     [Header("Difficulty Settings")]
@@ -39,16 +40,26 @@ public class EnemyFactory : MonoBehaviour
             return;
         }
 
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnGroundEnemies());
+        StartCoroutine(SpawnFlyingEnemies());
         StartCoroutine(IncreaseDifficulty());
     }
 
-    private IEnumerator SpawnEnemies()
+    private IEnumerator SpawnGroundEnemies()
     {
         while (true)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnInterval);
+            SpawnGroundEnemy();
+            yield return new WaitForSeconds(groundSpawnInterval);
+        }
+    }
+
+    private IEnumerator SpawnFlyingEnemies()
+    {
+        while (true)
+        {
+            SpawnFlyingEnemy();
+            yield return new WaitForSeconds(flyingSpawnInterval);
         }
     }
 
@@ -58,52 +69,53 @@ public class EnemyFactory : MonoBehaviour
         {
             yield return new WaitForSeconds(difficultyIncreaseRate);
 
-            spawnInterval = Mathf.Max(spawnInterval - spawnIntervalDecrease, minSpawnInterval);
+            groundSpawnInterval = Mathf.Max(groundSpawnInterval - spawnIntervalDecrease, minSpawnInterval);
+            flyingSpawnInterval = Mathf.Max(flyingSpawnInterval - spawnIntervalDecrease, minSpawnInterval);
             enemySpeed += enemySpeedIncrease;
 
-            Debug.Log($"Difficulty increased! New Spawn Interval: {spawnInterval}, Enemy Speed: {enemySpeed}");
+            Debug.Log($"Difficulty increased! Ground Interval: {groundSpawnInterval}, Flying Interval: {flyingSpawnInterval}, Enemy Speed: {enemySpeed}");
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnGroundEnemy()
     {
-        bool spawnFlying = Random.value < 0.5f;
+        if (spawners.Count == 0) return;
 
-        EnemySpawner selectedSpawner = null;
-        Vector3 spawnPosition;
+        EnemySpawner selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+        Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
 
-        if (spawnFlying)
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+        if (newEnemy.TryGetComponent<Enemy>(out var enemy))
         {
-            if (spectreSpawners.Count > 0)
-            {
-                selectedSpawner = spectreSpawners[Random.Range(0, spectreSpawners.Count)];
-            }
-            else
-            {
-                Debug.LogWarning("Spectre spawner list is empty. Falling back to ground spawners.");
-                selectedSpawner = spawners[Random.Range(0, spawners.Count)];
-            }
+            enemy.speed = enemySpeed;
+        }
+    }
 
-            spawnPosition = selectedSpawner.GetRandomSpawnPosition();
-            GameObject newSpectre = Instantiate(flyingSpectrePrefab, spawnPosition, Quaternion.identity);
+    private void SpawnFlyingEnemy()
+    {
+        EnemySpawner selectedSpawner;
 
-            if (newSpectre.TryGetComponent<FlyingEnemyBehaviour>(out var spectre))
-            {
-                spectre.speed = enemySpeed;
-            }
+        if (spectreSpawners.Count > 0)
+        {
+            selectedSpawner = spectreSpawners[Random.Range(0, spectreSpawners.Count)];
+        }
+        else if (spawners.Count > 0)
+        {
+            Debug.LogWarning("Spectre spawner list is empty. Falling back to ground spawners.");
+            selectedSpawner = spawners[Random.Range(0, spawners.Count)];
         }
         else
         {
-            if (spawners.Count == 0) return;
-            selectedSpawner = spawners[Random.Range(0, spawners.Count)];
-            spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+            return; // No spawners available
+        }
 
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+        GameObject newSpectre = Instantiate(flyingSpectrePrefab, spawnPosition, Quaternion.identity);
 
-            if (newEnemy.TryGetComponent<Enemy>(out var enemy))
-            {
-                enemy.speed = enemySpeed;
-            }
+        if (newSpectre.TryGetComponent<FlyingEnemyBehaviour>(out var spectre))
+        {
+            spectre.speed = enemySpeed;
         }
     }
 }

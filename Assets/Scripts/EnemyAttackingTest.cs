@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class EnemyAttackingTest : MonoBehaviour
 {
@@ -10,14 +12,27 @@ public class EnemyAttackingTest : MonoBehaviour
     private int lastPrintedTime = -1; // For printing only when seconds change
 
     public float raycastDistance = 10f; // Maximum distance to check
-    public LayerMask raycastLayers;     // Layers you want the ray to check (you can set it to "Default" and "Shield")
-    public Transform raycastOrigin;   // Where the ray starts
-    public Transform raycastTarget;   // Where the ray points to
+    public LayerMask raycastLayers;     // Layers you want the ray to check (e.g., Default, Shield)
+    public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
+    private Transform raycastTarget;    // Will find LookTarget automatically
 
+    public GameObject enemyAttackEffect;
 
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
+
+        // Find the LookTarget automatically
+        GameObject targetObject = GameObject.FindGameObjectWithTag("LookTarget");
+
+        if (targetObject != null)
+        {
+            raycastTarget = targetObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("No object with tag 'LookTarget' found in the scene!");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -79,18 +94,23 @@ public class EnemyAttackingTest : MonoBehaviour
 
     private void PerformAction()
     {
-        if (playerHealth == null) return;
+        if (playerHealth == null || raycastOrigin == null || raycastTarget == null) return;
 
-        Vector3 origin = raycastOrigin != null ? raycastOrigin.position : transform.position;
-        Vector3 targetPosition = raycastTarget != null ? raycastTarget.position : playerHealth.transform.position;
-
-        Vector3 direction = (targetPosition - origin).normalized;
-        float distance = Vector3.Distance(origin, targetPosition);
+        Vector3 origin = raycastOrigin.position;
+        Vector3 direction = (raycastTarget.position - origin).normalized;
 
         Ray ray = new Ray(origin, direction);
         RaycastHit hit;
 
-        Debug.DrawRay(origin, direction * distance, Color.red, 1f); // Draw the ray for visualization
+        Debug.DrawRay(origin, direction * raycastDistance, Color.red, 1f); // Draw the ray for visualization
+
+        // Activate the attack effect
+        if (enemyAttackEffect != null)
+        {
+            enemyAttackEffect.SetActive(false); // Reset in case it was already active
+            enemyAttackEffect.SetActive(true);  // Re-activate
+            StartCoroutine(DisableAttackEffectAfterDelay(0.5f)); // Turn it off after 0.5 seconds (you can tweak)
+        }
 
         if (Physics.Raycast(ray, out hit, raycastDistance, raycastLayers))
         {
@@ -110,12 +130,22 @@ public class EnemyAttackingTest : MonoBehaviour
                     Debug.LogWarning("Hit a shield but no ShieldHealth component found!");
                 }
 
-                return; // <<< THIS IS THE KEY
+                return; // Stop here if a shield blocked it
             }
         }
 
         // No shield blocking, apply damage to player
         playerHealth.TakeDamage(damageAmount);
         Debug.Log("Player took damage!");
+    }
+
+    private System.Collections.IEnumerator DisableAttackEffectAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (enemyAttackEffect != null)
+        {
+            enemyAttackEffect.SetActive(false);
+        }
     }
 }

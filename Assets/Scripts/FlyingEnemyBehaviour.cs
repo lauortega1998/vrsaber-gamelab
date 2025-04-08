@@ -20,7 +20,7 @@ public class FlyingEnemyBehaviour : MonoBehaviour
    
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("LookTarget").transform;
         rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
