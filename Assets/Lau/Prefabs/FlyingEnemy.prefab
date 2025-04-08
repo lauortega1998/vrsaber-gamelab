@@ -172,8 +172,8 @@ MonoBehaviour:
   speed: 3
   hoverHeight: 6
   projectilePrefab: {fileID: 58200898402204406, guid: 7bf4a512fc5e7a347afd2cf4e50fe0e5, type: 3}
-  projectileSpeed: 10
-  attackInterval: 2
+  projectileSpeed: 7
+  attackInterval: 5
 --- !u!1001 &966050096134396530
 PrefabInstance:
   m_ObjectHideFlags: 0
