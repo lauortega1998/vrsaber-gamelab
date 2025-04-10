@@ -131,7 +131,7 @@ Rigidbody:
     m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  hoverHeight: 6
+  hoverHeight: 3
   projectilePrefab: {fileID: 58200898402204406, guid: 7bf4a512fc5e7a347afd2cf4e50fe0e5, type: 3}
   projectileSpeed: 7
   attackInterval: 5

@@ -11,6 +11,7 @@ TagManager:
   - Weapon
   - ParryArea
   - LookTarget
+  - SpearAim
   layers:
   - Default
   - TransparentFX
