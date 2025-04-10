@@ -1,49 +1,39 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR;
-using System.Collections.Generic;
+
 
 public class HapticFeedback : MonoBehaviour
 {
-    public XRNode controllerNode = XRNode.RightHand;  // Choose LeftHand if needed
-    public float intensity = 0.5f;  // Haptic intensity (range 0 to 1)
-    public float duration = 0.1f;   // Duration of the haptic feedback
+    [SerializeField] private XRNode controllerNode = XRNode.RightHand; // or XRNode.LeftHand
+    [SerializeField] private float amplitude = 0.7f;
+    [SerializeField] private float duration = 0.2f;
+    [SerializeField] private string enemyTag = "Enemy";
 
-    private InputDevice inputDevice;
+    private InputDevice device;
 
-    void Start()
+    private void Start()
     {
-        // Initialize the InputDevice for the selected controller (RightHand or LeftHand)
-        inputDevice = GetInputDevice();
-        Debug.Log("Input Device: " + inputDevice.name + " valid: " + inputDevice.isValid);
+        device = InputDevices.GetDeviceAtXRNode(controllerNode);
     }
 
-    private InputDevice GetInputDevice()
+    private void OnCollisionEnter(Collision collision)
     {
-        List<InputDevice> devices = new List<InputDevice>();
-        InputDevices.GetDevicesAtXRNode(controllerNode, devices);
-        if (devices.Count > 0)
-            return devices[0];
-
-        return new InputDevice(); // returns an invalid device if none is found
-    }
-
-    void OnDestroy()
-    {
-        // Trigger haptic feedback when this object is destroyed
-        TriggerHapticFeedback();
-    }
-
-    private void TriggerHapticFeedback()
-    {
-        if (inputDevice.isValid)
+        if (collision.gameObject.CompareTag(enemyTag))
         {
-            // Send haptic feedback on the selected controller
-            inputDevice.SendHapticImpulse(0, intensity, duration); // Channel 0, intensity, duration
-            Debug.Log("Haptic feedback triggered on " + controllerNode.ToString());
+            TriggerHaptic();
+        }
+    }
+
+    private void TriggerHaptic()
+    {
+        if (device.isValid)
+        {
+            device.SendHapticImpulse(0u, amplitude, duration);
         }
         else
         {
-            Debug.LogWarning("Input Device not valid, cannot trigger haptic feedback.");
+            Debug.LogWarning("Haptic device not valid.");
         }
     }
 }
