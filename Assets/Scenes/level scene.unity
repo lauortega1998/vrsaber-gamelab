@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.46540874, g: 0.46540874, b: 0.46540874, a: 1}
-  m_FogMode: 2
+  m_FogColor: {r: 0.63431025, g: 0.8576146, b: 0.9559748, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.002
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 800
+  m_LinearFogStart: 100
+  m_LinearFogEnd: 400
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -737,7 +737,7 @@ Transform:
   m_GameObject: {fileID: 925196450}
   serializedVersion: 2
   m_LocalRotation: {x: -0.003543195, y: 0.9998585, z: 0.016304143, w: 0.0021702223}
-  m_LocalPosition: {x: 1006, y: 79, z: 997}
+  m_LocalPosition: {x: 1027, y: 79, z: 980.5}
   m_LocalScale: {x: 3.964, y: 3.964, z: 3.964}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -954,7 +954,7 @@ Transform:
   m_GameObject: {fileID: 1273044022}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 477, y: 0, z: 495}
+  m_LocalPosition: {x: 495, y: 0, z: 514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
