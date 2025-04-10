@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -13,12 +14,14 @@ public class EnemyHealth : MonoBehaviour
     public float knockbackForce = 5f;
     public float enemyDestroyDelay = 2f;
 
+    public event Action OnDeath;
+
     public void Die(Transform weaponHitPoint)
     {
         GameObject enemyRoot = transform.root.gameObject;
         Debug.Log($"{enemyRoot.name} was killed!");
         KillCounter.Instance.AddKill();
-
+        OnDeath?.Invoke();
 
         // Spawn hit effect at closest point
         if (hitEffectPrefab != null && weaponHitPoint != null)
