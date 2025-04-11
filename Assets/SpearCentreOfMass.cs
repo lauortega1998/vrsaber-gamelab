@@ -27,7 +27,7 @@ public class SpearCenterOfMass : MonoBehaviour
             Vector3 throwEuler = velocityRotation.eulerAngles;
 
             // 3. Fix the X rotation to 11.3395624f, but keep the Y and Z from the throw
-            Vector3 finalRotation = new Vector3(11.3395624f, 262.872437f, throwEuler.z);
+            Vector3 finalRotation = new Vector3(throwEuler.x, throwEuler.y, throwEuler.z);
 
             // 4. Apply the final rotation to the spear
             transform.eulerAngles = finalRotation;
