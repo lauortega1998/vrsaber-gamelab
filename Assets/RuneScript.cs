@@ -1,8 +1,15 @@
+
+
 using UnityEngine;
 using System.Collections;
 
 public class SmashableUI : MonoBehaviour
 {
+    public enum RuneType { Play, Exit, Scoreboard, GoBack }
+    [Header("Rune Settings")]
+    public RuneType runeType;
+
+    [Header("Smash Settings")]
     [SerializeField] private float speedThreshold = 2.0f; // Speed needed to smash
     [SerializeField] private float pushForce = 5.0f;       // Force when not smashed
     [SerializeField] private float returnDelay = 2.0f;     // Time before returning
@@ -12,17 +19,21 @@ public class SmashableUI : MonoBehaviour
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private bool isReturning = false;
+    private UIManager uiManager;
+
+    private bool isActive = true;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         originalPosition = transform.position;
         originalRotation = transform.rotation;
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered with: " + other.name);
+        if (!isActive) return; // Skip if not active yet
 
         if (other.CompareTag("Weapon"))
         {
@@ -33,8 +44,6 @@ public class SmashableUI : MonoBehaviour
             {
                 impactSpeed = weaponRb.linearVelocity.magnitude;
             }
-
-            Debug.Log("Weapon speed: " + impactSpeed);
 
             if (impactSpeed >= speedThreshold)
             {
@@ -50,7 +59,28 @@ public class SmashableUI : MonoBehaviour
     private void Smash()
     {
         Debug.Log($"{gameObject.name} was smashed!");
-        Destroy(gameObject);
+
+        if (uiManager != null)
+        {
+            switch (runeType)
+            {
+                case RuneType.Play:
+                    uiManager.OnPlayRuneSmashed();
+                    break;
+                case RuneType.Exit:
+                    uiManager.OnExitRuneSmashed();
+                    break;
+                case RuneType.Scoreboard:
+                    uiManager.OnScoreboardRuneSmashed();
+                    break;
+                case RuneType.GoBack:
+                    uiManager.OnGoBackRuneSmashed();
+                    break;
+            }
+        }
+
+        // Instead of destroying, just hide it
+        gameObject.SetActive(false);
     }
 
     private void PushAway(Collider other)
