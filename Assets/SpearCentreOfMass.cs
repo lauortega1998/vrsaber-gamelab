@@ -13,10 +13,10 @@ public class SpearCenterOfMass : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         grabInteractable = GetComponent<XRGrabInteractable>();
 
-        grabInteractable.selectExited.AddListener(OnRelease);
+        //grabInteractable.selectExited.AddListener(OnRelease);
     }
 
-    void OnRelease(SelectExitEventArgs args)
+    /*void OnRelease(SelectExitEventArgs args)
     {
         if (rb.linearVelocity.magnitude > 0.1f)
         {
@@ -35,6 +35,7 @@ public class SpearCenterOfMass : MonoBehaviour
             Debug.Log($"Spear Released with Dynamic Y/Z, Fixed X. Final Rotation: {finalRotation}");
         }
     }
+    */
     void OnDrawGizmos()
     {
         if (rb == null)
