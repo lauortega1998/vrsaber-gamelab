@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 8073205935362403724}
   - component: {fileID: 7299001681108680759}
   - component: {fileID: 5883921012089819278}
+  - component: {fileID: 8274675195346310172}
   m_Layer: 0
   m_Name: TwoHandedAxe
   m_TagString: Untagged
@@ -617,3 +618,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 2
   pushForce: 7
+--- !u!65 &8274675195346310172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644933544631585752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.27841264, y: 0.028745163, z: 0.25128424}
+  m_Center: {x: 0.07790772, y: -0.00000049593234, z: -0.088595524}

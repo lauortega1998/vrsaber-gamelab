@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5611306935347328906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5749421349641391829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -799,12 +799,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionDelay: 2
+  gameCountDown: 5
   menuScreen: {fileID: 1353919373171666683}
-  countdownUI: {fileID: 1238310577302394832}
+  countdownUI: {fileID: 6658386320813256939}
   enemyFactory: {fileID: 0}
   torches: {fileID: 0}
   menuScreenForScoreboard: {fileID: 1353919373171666683}
   scoreboardScreen: {fileID: 6629420045340945471}
+  goBackButton: {fileID: 7084349816030223963}
   screensToCloseOnBack:
   - {fileID: 6629420045340945471}
   mainMenuScreen: {fileID: 1353919373171666683}

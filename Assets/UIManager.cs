@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [Header("Delay Settings")]
     [SerializeField] private float actionDelay = 2.0f; // Delay after rune smash before action happens
+    [SerializeField] private float gameCountDown = 5.0f; // Delay after rune smash before action happens
+
 
     [Header("Play Settings")]
     [SerializeField] private GameObject menuScreen; // The current menu UI
-    [SerializeField] private GameObject countdownUI; // The main game UI
+    [SerializeField] private TMP_Text countdownUI; // The main game UI
     [SerializeField] private GameObject enemyFactory; // The main game UI
     [SerializeField] private GameObject torches; // The main game UI
 
@@ -17,6 +20,8 @@ public class UIManager : MonoBehaviour
     [Header("Scoreboard Settings")]
     [SerializeField] private GameObject menuScreenForScoreboard; // The current menu UI
     [SerializeField] private GameObject scoreboardScreen; // The scoreboard UI
+    [SerializeField] private GameObject goBackButton; // The scoreboard UI
+
 
     [Header("Go Back Settings")]
     [SerializeField] private GameObject[] screensToCloseOnBack;
@@ -28,11 +33,12 @@ public class UIManager : MonoBehaviour
     // Called externally when runes are smashed
     public void OnPlayRuneSmashed()
     {
-        StartCoroutine(DelayedPlayAction());
+        StartCoroutine(DelayedGameStart());
     }
 
     public void OnExitRuneSmashed()
     {
+        StartCoroutine(DelayedPlayAction());
         StartCoroutine(DelayedExitAction());
     }
 
@@ -63,9 +69,38 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(actionDelay);
         if (menuScreen != null) menuScreen.SetActive(false);
-        if (countdownUI != null) countdownUI.SetActive(true);
-        if (enemyFactory != null) enemyFactory.SetActive(true);
+        //if (countdownUI != null) countdownUI.SetActive(true);
         if (torches != null) torches.SetActive(true);
+    }
+
+    private IEnumerator DelayedGameStart()
+    {
+        float countdown = gameCountDown;
+
+        if (countdownUI != null)
+            countdownUI.gameObject.SetActive(true); // Make sure the text is visible
+
+        while (countdown > 0)
+        {
+            if (countdownUI != null)
+                countdownUI.text = Mathf.CeilToInt(countdown).ToString(); // Show the countdown rounded up
+
+            yield return null; // Wait for the next frame
+            countdown -= Time.deltaTime; // Subtract the time passed since last frame
+        }
+
+        if (countdownUI != null)
+        {
+            countdownUI.text = "Go!"; // Optionally show "Go!" when countdown finishes
+            yield return new WaitForSeconds(1f); // Wait a moment before hiding
+            countdownUI.gameObject.SetActive(false);
+        }
+
+        if (countdownUI != null)
+            countdownUI.gameObject.SetActive(false);
+
+        if (enemyFactory != null)
+            enemyFactory.SetActive(true);
     }
 
     private IEnumerator DelayedExitAction()
@@ -84,5 +119,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(actionDelay);
         if (menuScreenForScoreboard != null) menuScreenForScoreboard.SetActive(false);
         if (scoreboardScreen != null) scoreboardScreen.SetActive(true);
+        if (scoreboardScreen != null) goBackButton.SetActive(true);
+
     }
 }

@@ -267,8 +267,9 @@ GameObject:
   - component: {fileID: 2169844699576329659}
   - component: {fileID: 5969083111853279434}
   - component: {fileID: 8220954984071184272}
+  - component: {fileID: 7210100863831037895}
   m_Layer: 0
-  m_Name: Axe(WithUIActivation)
+  m_Name: Hand_Axe_Weapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,6 +530,27 @@ MonoBehaviour:
   destructibleTag: DestructibleUI
   requiredVelocity: 0.5
   activationDuration: 3
+--- !u!65 &7210100863831037895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405664496063040454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.15056388, y: 0.050006114, z: 0.1766004}
+  m_Center: {x: 0.010909494, y: -0.000000045026287, z: -0.051116377}
 --- !u!1 &5772366454833740239
 GameObject:
   m_ObjectHideFlags: 0

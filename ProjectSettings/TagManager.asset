@@ -23,7 +23,7 @@ TagManager:
   - Placeable Surface
   - DamageDetector
   - UI
-  - 
+  - InvisibleWall
   - 
   - 
   - 
