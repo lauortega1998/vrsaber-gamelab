@@ -804,6 +804,7 @@ MonoBehaviour:
   countdownUI: {fileID: 6658386320813256939}
   enemyFactory: {fileID: 0}
   torches: {fileID: 0}
+  allMenuRunes: {fileID: 1353919373171666683}
   menuScreenForScoreboard: {fileID: 1353919373171666683}
   scoreboardScreen: {fileID: 6629420045340945471}
   goBackButton: {fileID: 7084349816030223963}

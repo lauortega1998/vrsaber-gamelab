@@ -266,7 +266,6 @@ GameObject:
   - component: {fileID: 8886775614024177657}
   - component: {fileID: 2169844699576329659}
   - component: {fileID: 5969083111853279434}
-  - component: {fileID: 8220954984071184272}
   - component: {fileID: 7210100863831037895}
   m_Layer: 0
   m_Name: Hand_Axe_Weapon
@@ -513,23 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 3
   pushForce: 5
---- !u!114 &8220954984071184272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4405664496063040454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 0}
-  objectToDeactivate: {fileID: 0}
-  destructibleTag: DestructibleUI
-  requiredVelocity: 0.5
-  activationDuration: 3
 --- !u!65 &7210100863831037895
 BoxCollider:
   m_ObjectHideFlags: 0

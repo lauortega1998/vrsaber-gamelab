@@ -24,7 +24,7 @@ public class WeaponVelocityDamage : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-//            Debug.Log($"[WeaponVelocityDamage] Hit Enemy {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
+           Debug.Log("CollidedWithEnemy");
           
             
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();

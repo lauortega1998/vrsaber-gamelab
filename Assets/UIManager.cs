@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text countdownUI; // The main game UI
     [SerializeField] private GameObject enemyFactory; // The main game UI
     [SerializeField] private GameObject torches; // The main game UI
+    [SerializeField] private GameObject allMenuRunes; // The current menu UI
+
 
 
 
@@ -71,6 +73,8 @@ public class UIManager : MonoBehaviour
         if (menuScreen != null) menuScreen.SetActive(false);
         //if (countdownUI != null) countdownUI.SetActive(true);
         if (torches != null) torches.SetActive(true);
+        Destroy(allMenuRunes);
+
     }
 
     private IEnumerator DelayedGameStart()
@@ -101,6 +105,8 @@ public class UIManager : MonoBehaviour
 
         if (enemyFactory != null)
             enemyFactory.SetActive(true);
+        Destroy(allMenuRunes);
+
     }
 
     private IEnumerator DelayedExitAction()

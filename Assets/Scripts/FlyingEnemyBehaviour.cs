@@ -25,7 +25,7 @@ public class FlyingEnemyBehaviour : MonoBehaviour
         if (rb != null)
         {
             rb.useGravity = false;
-            rb.isKinematic = true;
+            rb.isKinematic = false;
         }
     }
 
@@ -38,8 +38,8 @@ public class FlyingEnemyBehaviour : MonoBehaviour
             targetPosition = new Vector3(player.position.x, hoverHeight, player.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-            Vector3 lookDir = player.position - transform.position;
-            lookDir.y = 0;
+            Vector3 lookDir = player.position + transform.position;
+            lookDir.z = 20;
             if (lookDir != Vector3.zero)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 2f);
         }
@@ -51,9 +51,9 @@ public class FlyingEnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("MovementStopper"))
+        if (collision.gameObject.CompareTag("MovementStopper"))
         {
             Debug.Log($"{gameObject.name} hit a MovementStopper. Starting to attack.");
             canMove = false;
