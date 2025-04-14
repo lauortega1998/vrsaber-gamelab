@@ -25,12 +25,27 @@ public class SmashableUI : MonoBehaviour
 
     private bool isActive = true;
 
+    private Vector3 brokenRuneOriginalPosition;
+    private Quaternion brokenRuneOriginalRotation;
+
+    [Header("Destruction Settings")]
+    [SerializeField] private float destructionForceMin = 15f; // Minimum random force
+    [SerializeField] private float destructionForceMax = 30f; // Maximum random force
+    [SerializeField] private float destructionTorqueStrength = 10f; // Spin strength
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         originalPosition = transform.position;
         originalRotation = transform.rotation;
         uiManager = FindObjectOfType<UIManager>();
+
+        if (brokenRune != null)
+        {
+            brokenRuneOriginalPosition = brokenRune.transform.localPosition;
+            brokenRuneOriginalRotation = brokenRune.transform.localRotation;
+            brokenRune.SetActive(false); // Make sure broken rune starts hidden
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -86,15 +101,22 @@ public class SmashableUI : MonoBehaviour
             brokenRune.SetActive(true);
 
             // Apply small random impulse if it has a Rigidbody
-            Rigidbody brokenRb = brokenRune.GetComponent<Rigidbody>();
-            if (brokenRb != null)
-            {
-                brokenRb.isKinematic = false; // Make sure it's affected by physics
-                Vector3 randomDirection = (Vector3.up + Random.insideUnitSphere * 0.5f).normalized;
-                float randomForce = Random.Range(2f, 5f); // You can tweak the min/max force
-                brokenRb.AddForce(randomDirection * randomForce, ForceMode.Impulse);
-            }
+            Rigidbody[] brokenRigidbodies = brokenRune.GetComponentsInChildren<Rigidbody>();
 
+            foreach (Rigidbody brokenRb in brokenRigidbodies)
+            {
+                if (brokenRb != null)
+                {
+                    brokenRb.isKinematic = false; // Allow movement
+
+                    Vector3 randomDirection = (Vector3.up + Random.insideUnitSphere * 1f).normalized;
+                    float randomForce = Random.Range(destructionForceMin, destructionForceMax);
+                    brokenRb.AddForce(randomDirection * randomForce, ForceMode.Impulse);
+
+                    // Optional: Add random spin based on inspector value
+                    brokenRb.AddTorque(Random.insideUnitSphere * destructionTorqueStrength, ForceMode.Impulse);
+                }
+            }
             StartCoroutine(DisableBrokenRuneAfterDelay(brokenRune));
         }
         else
@@ -106,10 +128,10 @@ public class SmashableUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private IEnumerator DisableBrokenRuneAfterDelay(GameObject rune)
+    private IEnumerator DisableBrokenRuneAfterDelay(GameObject brokenRune)
     {
         yield return new WaitForSeconds(1f);
-        rune.SetActive(false);
+        brokenRune.SetActive(false);
     }
 
     private void PushAway(Collider other)
@@ -145,6 +167,26 @@ public class SmashableUI : MonoBehaviour
         transform.rotation = originalRotation;
         rb.isKinematic = true;
         isReturning = false;
+    }
+
+    public void ResetRune()
+    {
+        // Reactivate the main rune
+        gameObject.SetActive(true);
+
+        if (brokenRune != null)
+        {
+            brokenRune.SetActive(false);
+            brokenRune.transform.localPosition = brokenRuneOriginalPosition;
+            brokenRune.transform.localRotation = brokenRuneOriginalRotation;
+
+            Rigidbody brokenRb = brokenRune.GetComponent<Rigidbody>();
+            if (brokenRb != null)
+            {
+                brokenRb.linearVelocity = Vector3.zero;
+                brokenRb.angularVelocity = Vector3.zero;
+            }
+        }
     }
 }
 
