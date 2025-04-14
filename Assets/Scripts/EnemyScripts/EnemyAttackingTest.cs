@@ -17,7 +17,7 @@ public class EnemyAttackingTest : MonoBehaviour
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
     private Transform raycastTarget;    // Will find LookTarget automatically
     public GameObject enemyAttackEffect;
-
+    
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();

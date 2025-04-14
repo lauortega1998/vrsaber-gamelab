@@ -51,5 +51,6 @@ public class Enemy : MonoBehaviour
             // Face the player immediately
     
         }
+        
     }
 }

@@ -4,7 +4,7 @@ public class WeaponVelocityDamage : MonoBehaviour
 {
     public float damageVelocityThreshold = 1.5f;
     public float pushForce = 5f;
-
+    public Enemy enemyscript;
     private Rigidbody rb;
     private bool isOnGround = false;
 
@@ -37,16 +37,16 @@ public class WeaponVelocityDamage : MonoBehaviour
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
                 }
-                else
+                Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
+                Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+                if (enemyRb != null)
                 {
-                    Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
-                    Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
-                    if (enemyRb != null)
-                    {
-                        Vector3 pushDir = (collision.transform.position - transform.position).normalized;
-                        pushDir.y = 0;
-                        enemyRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
-                    }
+                    Vector3 pushDir = (collision.transform.position - transform.position).normalized;
+                    pushDir.y = 0;
+
+                    float clampedForce = Mathf.Min(pushForce, 5f); // prevent over-push
+                    enemyRb.drag = 2f; // increase drag to reduce sliding
+                    enemyRb.AddForce(pushDir * clampedForce, ForceMode.Impulse);
                 }
             }
         }
