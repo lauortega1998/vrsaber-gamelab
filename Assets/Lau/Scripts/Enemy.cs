@@ -38,9 +38,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("MovementStopper"))
         {
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
+
             canMove = false;
-              // Face the player immediately
-        anim.SetBool("isRunning",false); // set idle animation on by turning walking off ez pez
         }
     }
 }
