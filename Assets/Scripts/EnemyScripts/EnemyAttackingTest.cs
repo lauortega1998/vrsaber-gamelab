@@ -39,7 +39,7 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
-            EnemyManager.Instance.RegisterAttacker();
+            EnemyManager.Instance.isAnyEnemyAttacking = true;
             StartTimer();
         }
     }

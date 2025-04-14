@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject allMenuRunes; // The current menu UI
 
 
-
+    public SmashableUI smashableUI;
 
     [Header("Scoreboard Settings")]
     [SerializeField] private GameObject menuScreenForScoreboard; // The current menu UI
@@ -63,8 +63,17 @@ public class UIManager : MonoBehaviour
         foreach (GameObject rune in allRunes)
         {
             if (rune != null)
+            {
                 rune.SetActive(true);
+
+                SmashableUI smashable = rune.GetComponent<SmashableUI>();
+                if (smashable != null)
+                {
+                    smashable.ResetRune();
+                }
+            }
         }
+
     }
 
     private IEnumerator DelayedPlayAction()
