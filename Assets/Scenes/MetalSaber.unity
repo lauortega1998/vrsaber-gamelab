@@ -11973,6 +11973,30 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 985
       objectReference: {fileID: 0}
+    - target: {fileID: 234937823394938305, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMax
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 234937823394938305, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 234937823394938305, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionTorqueStrength
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 668222425628331115, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMax
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 668222425628331115, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 668222425628331115, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionTorqueStrength
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 859582244017179966, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12033,6 +12057,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1121757695}
+    - target: {fileID: 5272002719224398490, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMax
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272002719224398490, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionForceMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272002719224398490, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: destructionTorqueStrength
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5332558741968958018, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_IsActive
       value: 0
