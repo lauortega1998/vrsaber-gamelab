@@ -1451,14 +1451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39465d4ec40b229419beba2416c2a3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToActivate:
-  - {fileID: 206171199}
-  - {fileID: 294085628}
-  - {fileID: 378737645}
-  - {fileID: 1953351085}
-  - {fileID: 1603217137}
-  - {fileID: 1198345574}
-  interval: 1.5
 --- !u!1 &283178587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,10 +2247,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073745911
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3008,6 +3000,51 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3304020394966436886, guid: 9a7ad44fe12c16c458a8af9257c45dee, type: 3}
+--- !u!1 &636603271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636603273}
+  - component: {fileID: 636603272}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &636603272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636603271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5a6a6bc7c1d4b4ab841cfd0f2f4b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnyEnemyAttacking: 0
+--- !u!4 &636603273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636603271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639352167 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 85662014370612269, guid: d893e5028053a1a40ab6300083d1a643, type: 3}
@@ -3381,10 +3418,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073745911
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3462,11 +3499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 1345533390}
-  objectToDeactivate: {fileID: 893688378}
-  destructibleTag: DestructibleUI
-  requiredVelocity: 0.5
-  activationDuration: 3
 --- !u!1 &722426917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2549037513007000913, guid: d893e5028053a1a40ab6300083d1a643, type: 3}
@@ -4257,9 +4289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ef4bba8cb0b81499934e30521d3dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
-  healthText: {fileID: 0}
 --- !u!1 &885531324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dc727240c76d945969eee355669232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 1164394793}
 --- !u!114 &893482687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4768,6 +4796,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1269649435741183429, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
       propertyPath: m_Name
       value: EnemyTest-Lau (1)
@@ -4818,14 +4850,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 930676040}
+      addedObject: {fileID: 930676049}
   m_SourcePrefab: {fileID: 100100000, guid: 177a878ef4efe1241b285c453e077364, type: 3}
 --- !u!1 &930676039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
   m_PrefabInstance: {fileID: 930676038}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &930676040
+--- !u!95 &930676049
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -4835,7 +4867,7 @@ Animator:
   m_GameObject: {fileID: 930676039}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 39d03f82786b57d41af8bd27bce84402, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0356c5dddbaf44553be4cc5b0d74af47, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6272,11 +6304,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 884642588}
   m_SourcePrefab: {fileID: 100100000, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
---- !u!1 &1164394793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4733241811495153018, guid: 6817b7f5eb4e676408ec2c8f50e2e859, type: 3}
-  m_PrefabInstance: {fileID: 1787404067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190410735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4591608567920068512, guid: 6817b7f5eb4e676408ec2c8f50e2e859, type: 3}
@@ -6299,10 +6326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6d0d792d63a364bbbca0b940732086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToWatch: {fileID: 893688378}
-  objectToActivate: {fileID: 161480575}
-  torchToActivate: {fileID: 262588972}
-  delayBeforeActivation: 5
 --- !u!114 &1190410740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6315,14 +6338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39465d4ec40b229419beba2416c2a3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToActivate:
-  - {fileID: 206171199}
-  - {fileID: 294085628}
-  - {fileID: 378737645}
-  - {fileID: 1953351085}
-  - {fileID: 1603217137}
-  - {fileID: 1198345574}
-  interval: 2
 --- !u!1 &1198345574
 GameObject:
   m_ObjectHideFlags: 0
@@ -6673,10 +6688,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073745911
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -8413,8 +8428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f695ce922c229498da555ccd96e390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabZoneA: {fileID: 1839507828}
-  grabZoneB: {fileID: 1566674981}
 --- !u!114 &1539085179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10304,6 +10317,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1269649435741183429, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
       propertyPath: m_Name
       value: EnemyTest-Lau
@@ -10741,11 +10758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 1345533390}
-  objectToDeactivate: {fileID: 893688378}
-  destructibleTag: DestructibleUI
-  requiredVelocity: 0.5
-  activationDuration: 3
 --- !u!1 &1970537439
 GameObject:
   m_ObjectHideFlags: 0
@@ -11436,11 +11448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 0}
-  objectToDeactivate: {fileID: 0}
-  destructibleTag: DestructibleUI
-  requiredVelocity: 0.5
-  activationDuration: 3
 --- !u!4 &144330802216812908
 Transform:
   m_ObjectHideFlags: 0
@@ -12746,11 +12753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f75c9d3aa500344bf927d653460b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 1345533390}
-  objectToDeactivate: {fileID: 893688378}
-  destructibleTag: DestructibleUI
-  requiredVelocity: 0.5
-  activationDuration: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12791,3 +12793,4 @@ SceneRoots:
   - {fileID: 1672442730}
   - {fileID: 1498755570}
   - {fileID: 1107340124}
+  - {fileID: 636603273}
