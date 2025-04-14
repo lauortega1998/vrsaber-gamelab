@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private bool canMove = true;
     [SerializeField] private Transform lookTarget; // <- this also works and keeps it private in code
-
+    public Animator anim;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         {
             // Move towards the player's position
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+             anim.SetBool("isRunning",true);
         }
         
     }
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
             canMove = false;
 
             // Face the player immediately
-        
+        anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
         }
     }
 }
