@@ -20,11 +20,15 @@ public class EnemyAttacking : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
+            EnemyManager.Instance.isAnyEnemyAttacking = true;
+
             StartTimer();
         }
     } 
     private void OnEnable()
     {
+        EnemyManager.Instance.isAnyEnemyAttacking = true;
+
         ResetTimerState(); // Ensure fresh start
     }
     

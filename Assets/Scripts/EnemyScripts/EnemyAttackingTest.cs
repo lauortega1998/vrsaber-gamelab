@@ -15,7 +15,7 @@ public class EnemyAttackingTest : MonoBehaviour
     public LayerMask raycastLayers;     // Layers you want the ray to check (e.g., Default, Shield)
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
     private Transform raycastTarget;    // Will find LookTarget automatically
-
+    public EnemyManager enemyManager;
     public GameObject enemyAttackEffect;
 
     private void Start()
@@ -39,6 +39,7 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
+            EnemyManager.Instance.isAnyEnemyAttacking = true;
             StartTimer();
         }
     }

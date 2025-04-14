@@ -79,7 +79,7 @@ public class SpearThrowWithSpawn : MonoBehaviour
         if (isHeld && rb != null)
         {
             float currentSpeed = rb.linearVelocity.magnitude;
-            Debug.Log($"[UPDATE] Current spear speed: {currentSpeed:F2} m/s");
+//            Debug.Log($"[UPDATE] Current spear speed: {currentSpeed:F2} m/s");
         }
     }
 
