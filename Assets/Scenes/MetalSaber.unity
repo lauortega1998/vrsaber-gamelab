@@ -1056,14 +1056,14 @@ MonoBehaviour:
   - {fileID: 1761279921}
   - {fileID: 1647987142}
   groundSpawnInterval: 10
-  flyingSpawnInterval: 120
+  flyingSpawnInterval: 30
   enemySpeed: 5
-  difficultyIncreaseRate: 300
+  difficultyIncreaseRate: 45
   spawnIntervalDecrease: 2
-  enemySpeedIncrease: 1
+  enemySpeedIncrease: 0
   minSpawnInterval: 1
   maxGroundEnemies: 10
-  maxFlyingEnemies: 1
+  maxFlyingEnemies: 2
 --- !u!4 &161480577
 Transform:
   m_ObjectHideFlags: 0
