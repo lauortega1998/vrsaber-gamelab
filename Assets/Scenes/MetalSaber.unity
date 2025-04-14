@@ -1058,8 +1058,8 @@ MonoBehaviour:
   groundSpawnInterval: 10
   flyingSpawnInterval: 120
   enemySpeed: 5
-  difficultyIncreaseRate: 20
-  spawnIntervalDecrease: 1
+  difficultyIncreaseRate: 300
+  spawnIntervalDecrease: 2
   enemySpeedIncrease: 1
   minSpawnInterval: 1
   maxGroundEnemies: 10
@@ -6505,15 +6505,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5632266133985503989, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 22372751}
-    - targetCorrespondingSourceObject: {fileID: 5632266133985503989, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1196238204}
     - targetCorrespondingSourceObject: {fileID: 6484816944661230505, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 413974920}
     - targetCorrespondingSourceObject: {fileID: 5152808988721752482, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 133817140}
+    - targetCorrespondingSourceObject: {fileID: 5152808988721752482, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1196238204}
     - targetCorrespondingSourceObject: {fileID: 6484816945243591627, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7296429424466856811}
@@ -12251,19 +12251,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 884642581}
+    m_TransformParent: {fileID: 1766388592}
     m_Modifications:
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.034
+      value: 0.058
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.663
+      value: -0.166
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.097
+      value: -0.393
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12275,11 +12275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0020469467
+      value: 0.0020469427
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0002577657
+      value: 0.00025776553
       objectReference: {fileID: 0}
     - target: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
