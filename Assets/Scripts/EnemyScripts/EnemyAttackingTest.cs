@@ -10,12 +10,12 @@ public class EnemyAttackingTest : MonoBehaviour
     public int damageAmount = 10;
     private PlayerHealth playerHealth;
     private int lastPrintedTime = -1; // For printing only when seconds change
-
+    public bool isEnemyCollided = false;
+    
     public float raycastDistance = 10f; // Maximum distance to check
     public LayerMask raycastLayers;     // Layers you want the ray to check (e.g., Default, Shield)
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
     private Transform raycastTarget;    // Will find LookTarget automatically
-    public EnemyManager enemyManager;
     public GameObject enemyAttackEffect;
 
     private void Start()
@@ -39,8 +39,13 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
+            isEnemyCollided = true;
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
+        }
+        else
+        {
+            isEnemyCollided = false;
         }
     }
 
@@ -63,10 +68,14 @@ public class EnemyAttackingTest : MonoBehaviour
                 lastPrintedTime = currentSeconds;
             }
 
-            if (timer <= 0f)
+            if (timer <= 0f )
             {
-                PerformAction();
-                StartTimer(); // Optional: keep looping
+                if (isEnemyCollided == true)
+                {
+                    PerformAction();
+                    StartTimer(); 
+                }
+               // Optional: keep looping
             }
         }
     }
