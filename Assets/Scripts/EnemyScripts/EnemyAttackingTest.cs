@@ -17,7 +17,7 @@ public class EnemyAttackingTest : MonoBehaviour
     private Transform raycastTarget;    // Will find LookTarget automatically
     public EnemyManager enemyManager;
     public GameObject enemyAttackEffect;
-    public Animator anim;
+
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -39,8 +39,6 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
         {
-            anim.SetBool("idle",true); // set idle animation on by turning walking off ez pez
-
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
         }
