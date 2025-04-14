@@ -17,7 +17,10 @@ public class EnemyAttackingTest : MonoBehaviour
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
     private Transform raycastTarget;    // Will find LookTarget automatically
     public GameObject enemyAttackEffect;
-    
+    public GameObject enemyAttackCollider
+        ;
+
+
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -99,15 +102,7 @@ public class EnemyAttackingTest : MonoBehaviour
 
     private void PerformAction()
     {
-        if (playerHealth == null || raycastOrigin == null || raycastTarget == null) return;
-
-        Vector3 origin = raycastOrigin.position;
-        Vector3 direction = (raycastTarget.position - origin).normalized;
-
-        Ray ray = new Ray(origin, direction);
-        RaycastHit hit;
-
-        Debug.DrawRay(origin, direction * raycastDistance, Color.red, 1f); // Draw the ray for visualization
+       
 
         // Activate the attack effect
         if (enemyAttackEffect != null)
@@ -117,30 +112,8 @@ public class EnemyAttackingTest : MonoBehaviour
             StartCoroutine(DisableAttackEffectAfterDelay(0.5f)); // Turn it off after 0.5 seconds (you can tweak)
         }
 
-        if (Physics.Raycast(ray, out hit, raycastDistance, raycastLayers))
-        {
-            Debug.Log($"Raycast hit: {hit.collider.gameObject.name}");
+        
 
-            if (hit.collider.CompareTag("Shield"))
-            {
-                ShieldHealth shield = hit.collider.GetComponent<ShieldHealth>();
-
-                if (shield != null)
-                {
-                    shield.TakeDamage(damageAmount);
-                    Debug.Log("Shield took damage!");
-                }
-                else
-                {
-                    Debug.LogWarning("Hit a shield but no ShieldHealth component found!");
-                }
-
-                return; // Stop here if a shield blocked it
-            }
-        }
-
-        // No shield blocking, apply damage to player
-        playerHealth.TakeDamage(damageAmount);
         Debug.Log("Player took damage!");
     }
 
