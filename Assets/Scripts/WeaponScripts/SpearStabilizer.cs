@@ -11,8 +11,18 @@ public class SpearFlightStabilizer : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        
+
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            rb.isKinematic = true;
+
+        }
+    }
     void FixedUpdate()
     {
         if (rb.linearVelocity.magnitude > 0.5f)
