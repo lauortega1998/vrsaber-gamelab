@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
             canMove = false;
 
             // Face the player immediately
-        anim.SetBool("isRunning",false); // 
+        anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
         }
     }
 }
