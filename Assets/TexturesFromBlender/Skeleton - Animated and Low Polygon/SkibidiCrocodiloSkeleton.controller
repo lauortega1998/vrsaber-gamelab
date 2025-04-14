@@ -121,7 +121,11 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8486591519997208399}
+<<<<<<< HEAD
     m_Position: {x: 520, y: 250, z: 0}
+=======
+    m_Position: {x: 510, y: 240, z: 0}
+>>>>>>> parent of a553528 (Merge branch 'main' of https://github.com/lauortega1998/vrsaber-gamelab)
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

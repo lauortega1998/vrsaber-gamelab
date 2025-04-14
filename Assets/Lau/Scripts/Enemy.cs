@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-         anim = GetComponent<Animator>(); // grabs animator of object 
+
+      
     }
 
 
@@ -39,8 +40,9 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
             canMove = false;
-              // Face the player immediately
-        anim.SetBool("isRunning",false); // set idle animation on by turning walking off ez pez
+
+            // Face the player immediately
+        anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
         }
     }
 }
