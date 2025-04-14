@@ -6,32 +6,39 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private bool canMove = true;
     [SerializeField] private Transform lookTarget; // <- this also works and keeps it private in code
-    public Animator anim; //animator reference
+    private Animator anim; //animator reference
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
+        anim = GetComponent<Animator>();
       
     }
 
 
     void Update()
-    {   //   anim.SetBool("isRunning",true); //start running boyz
+    {   
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {     
             // Move towards the player's position
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-             
+             anim.SetBool("isRunning",true); // run forrest run ! 
+               
+        }
+        else
+        {    
+             anim.SetBool("isIdle", true);
         }
         
     }
     public void StopMovement()
-    {
+    {    
         canMove = false;
+      
     }
 
     public void ResumeMovement()
-    {
+    {       
+         
         canMove = true;
     }
     private void OnCollisionEnter(Collision collision)
@@ -42,7 +49,7 @@ public class Enemy : MonoBehaviour
             canMove = false;
 
             // Face the player immediately
-     //   anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
+    
         }
     }
 }
