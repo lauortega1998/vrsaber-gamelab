@@ -12,6 +12,7 @@ TagManager:
   - ParryArea
   - LookTarget
   - SpearAim
+  - ProjectileMagnet
   layers:
   - Default
   - TransparentFX
