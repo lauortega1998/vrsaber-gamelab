@@ -7,10 +7,13 @@ public class Enemy : MonoBehaviour
     private bool canMove = true;
     [SerializeField] private Transform lookTarget; // private look target
     private Animator anim; // animator reference
+    private bool isAtWall = false; // New variable to check if enemy is at wall
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        lookTarget = GameObject.FindGameObjectWithTag("LookTransform").transform;
+
         // anim = GetComponent<Animator>();
     }
 
@@ -19,11 +22,16 @@ public class Enemy : MonoBehaviour
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            // anim.SetBool("isRunning", true); // run forrest run!
+            // anim.SetBool("isRunning", true); // run Forrest run!
         }
         else
         {
             // anim.SetBool("isIdle", true);
+        }
+
+        if (isAtWall)
+        {
+            FacePlayer();
         }
     }
 
@@ -43,6 +51,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
             StopMovement();
+            isAtWall = true; // Start facing the player
         }
     }
 
@@ -51,6 +60,21 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("MovementStopper"))
         {
             ResumeMovement();
+            isAtWall = false; // Stop facing the player
+        }
+    }
+
+    private void FacePlayer()
+    {
+        if (lookTarget == null) return;
+
+        Vector3 direction = (lookTarget.position + transform.position).normalized;
+        direction.y = 0f; // Keep only horizontal rotation (don't tilt up/down)
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Smooth turn
         }
     }
 }

@@ -157,7 +157,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 5
   pushForce: 2
+  enemyscript: {fileID: 0}
 --- !u!1 &6698253516699103325
 GameObject:
   m_ObjectHideFlags: 0

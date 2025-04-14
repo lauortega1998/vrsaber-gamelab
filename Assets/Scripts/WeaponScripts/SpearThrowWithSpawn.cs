@@ -63,14 +63,16 @@ public class SpearThrowWithSpawn : MonoBehaviour
                 thrownRb.linearVelocity = gazeDirection * throwForce;
             }
 
-            // 5. Destroy the original spear
+            //  NEW: Destroy the thrown spear after 6 seconds
+            Destroy(thrownSpear, 6f);
+
+            // 5. Destroy the original spear immediately
             Destroy(gameObject);
         }
         else
         {
             Debug.Log("[THROW] Speed too low. No spear thrown.");
-            // ? Don't destroy the held spear
-            // Just let it drop naturally.
+            // Don't destroy the held spear
         }
     }
 

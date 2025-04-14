@@ -14,6 +14,7 @@ TagManager:
   - SpearAim
   - ProjectileMagnet
   - Floor
+  - LookTransform
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - Projectile
   - Fragment
   - AttackCollider
-  - 
-  - 
+  - Shield
+  - ShieldVR
   - 
   - 
   - 

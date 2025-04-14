@@ -115,6 +115,10 @@ public class EnemyAttackingTest : MonoBehaviour
         {
             enemyAttackCollider.SetActive(false);
             enemyAttackCollider.SetActive(true);
+
+            // Reset shield and wall tracking AFTER re-enabling
+            enemyAttackCollider.GetComponent<EnemyAttackCollider>().ResetProtectionStatus();
+
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackCollider, 0.5f));
         }
 
