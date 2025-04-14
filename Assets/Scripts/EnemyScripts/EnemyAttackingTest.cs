@@ -35,17 +35,13 @@ public class EnemyAttackingTest : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("MovementStopper") && !timerStarted)
+        if (other.CompareTag("MovementStopper") && !timerStarted)
         {
             isEnemyCollided = true;
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
-        }
-        else
-        {
-            isEnemyCollided = false;
         }
     }
 
