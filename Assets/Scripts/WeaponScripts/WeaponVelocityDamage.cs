@@ -45,7 +45,7 @@ public class WeaponVelocityDamage : MonoBehaviour
                     pushDir.y = 0;
 
                     float clampedForce = Mathf.Min(pushForce, 5f); // prevent over-push
-                    enemyRb.drag = 2f; // increase drag to reduce sliding
+                    enemyRb.linearDamping = 2f; // increase drag to reduce sliding
                     enemyRb.AddForce(pushDir * clampedForce, ForceMode.Impulse);
                 }
             }
