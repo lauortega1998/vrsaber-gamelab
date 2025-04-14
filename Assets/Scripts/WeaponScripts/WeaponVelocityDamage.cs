@@ -42,8 +42,14 @@ public class WeaponVelocityDamage : MonoBehaviour
                     Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
                     if (enemyRb != null)
                     {
-                        Vector3 pushDir = (collision.transform.position + transform.position).normalized;
-                        pushDir.y = 0;
+                        // Calculate direction (FIXED: Use subtraction, not addition)
+                        Vector3 pushDir = (collision.transform.position - transform.position).normalized;
+                        pushDir.y = 0; // Remove vertical influence from force
+    
+                        // Freeze Y position to prevent any movement on that axis
+                        enemyRb.constraints = RigidbodyConstraints.FreezePositionY;
+    
+                        // Apply force (horizontal only)
                         enemyRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
                     }
                 }

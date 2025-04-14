@@ -75,7 +75,6 @@ public class EnemyAttackingTest : MonoBehaviour
                     PerformAction();
                     StartTimer(); 
                 }
-               // Optional: keep looping
             }
         }
     }

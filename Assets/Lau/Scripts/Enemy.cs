@@ -19,10 +19,10 @@ public class Enemy : MonoBehaviour
     {   //   anim.SetBool("isRunning",true); //start running boyz
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {     
-            // Move towards the player's position
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
              
         }
+        
         
     }
     public void StopMovement()
