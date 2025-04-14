@@ -48,8 +48,11 @@ public class Enemy : MonoBehaviour
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
             canMove = false;
 
+
+
             // Face the player immediately
     
         }
+        else { canMove = true; }
     }
 }
