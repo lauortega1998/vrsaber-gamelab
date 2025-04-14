@@ -18,12 +18,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die(Transform weaponHitPoint)
     {
-        EnemyManager.Instance.UnregisterAttacker();
         GameObject enemyRoot = transform.root.gameObject;
         Debug.Log($"{enemyRoot.name} was killed!");
         KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
-
 
         // Spawn hit effect at closest point
         if (hitEffectPrefab != null && weaponHitPoint != null)
