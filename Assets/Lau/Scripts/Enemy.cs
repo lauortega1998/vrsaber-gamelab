@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
 
     void Update()
-    {      anim.SetBool("isRunning",true); //start running boyz
+    {   //   anim.SetBool("isRunning",true); //start running boyz
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {     
             // Move towards the player's position
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
             canMove = false;
 
             // Face the player immediately
-        anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
+     //   anim.SetBool("isRunning",false); // set idle anim on by turning walking off ez pez
         }
     }
 }
