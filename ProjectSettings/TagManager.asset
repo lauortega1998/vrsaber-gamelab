@@ -13,6 +13,7 @@ TagManager:
   - LookTarget
   - SpearAim
   - ProjectileMagnet
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - UI
   - InvisibleWall
   - Projectile
-  - 
+  - Fragment
   - 
   - 
   - 

@@ -6,27 +6,29 @@ public class WeaponVelocityDamage : MonoBehaviour
     public float pushForce = 5f;
 
     private Rigidbody rb;
+    private bool isOnGround = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-       // if (rb != null)
-//            Debug.Log($"[WeaponVelocityDamage] Current Velocity: {rb.linearVelocity.magnitude:F2}");
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         float impactVelocity = rb.linearVelocity.magnitude;
 
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isOnGround = true;
+            return; // Early exit, no further logic when touching ground
+        }
+
+        if (isOnGround) return; // Don't damage enemies if on ground
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-           Debug.Log("CollidedWithEnemy");
-          
-            
+            Debug.Log("CollidedWithEnemy");
+
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
@@ -34,7 +36,6 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
-
                 }
                 else
                 {
@@ -42,7 +43,7 @@ public class WeaponVelocityDamage : MonoBehaviour
                     Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
                     if (enemyRb != null)
                     {
-                        Vector3 pushDir = (collision.transform.position + transform.position).normalized;
+                        Vector3 pushDir = (collision.transform.position - transform.position).normalized;
                         pushDir.y = 0;
                         enemyRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
                     }
@@ -61,5 +62,12 @@ public class WeaponVelocityDamage : MonoBehaviour
             }
         }
     }
-}
 
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isOnGround = false;
+        }
+    }
+}
