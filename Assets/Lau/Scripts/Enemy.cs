@@ -16,8 +16,10 @@ public class Enemy : MonoBehaviour
 
 
     void Update()
-    {   
-        if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
+    {
+        
+       
+        if (canMove  && !EnemyManager.Instance.isAnyEnemyAttacking)
         {     
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
              anim.SetBool("isRunning",true); // run forrest run ! 
@@ -46,11 +48,22 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("MovementStopper"))
         {
             Debug.Log($"{gameObject.name} hit a MovementStopper. Stopping movement.");
-            canMove = false;
+            StopMovement();
 
-            // Face the player immediately
+            
     
         }
-        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        {
+            if (collision.gameObject.CompareTag("MovementStopper"))
+            {
+                
+                ResumeMovement();
+            }
+        }
+
     }
 }
