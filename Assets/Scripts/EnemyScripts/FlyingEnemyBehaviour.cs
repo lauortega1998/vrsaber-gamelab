@@ -63,11 +63,22 @@ public class FlyingEnemyBehaviour : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (player == null || projectilePrefab == null) return;
+        GameObject magnet = GameObject.FindGameObjectWithTag("ProjectileMagnet");
+
+        if (magnet == null || projectilePrefab == null) return;
 
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-        Vector3 direction = (player.position - transform.position).normalized;
+        Vector3 direction = (magnet.transform.position - transform.position).normalized;
+
+        // Add some random inaccuracy
+        float spreadAngle = 5f; // Max spread angle in degrees
+        direction = Quaternion.Euler(
+            Random.Range(-spreadAngle, spreadAngle),
+            Random.Range(-spreadAngle, spreadAngle),
+            Random.Range(-spreadAngle, spreadAngle)
+        ) * direction;
+
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
         if (projectileRb != null)
@@ -75,7 +86,7 @@ public class FlyingEnemyBehaviour : MonoBehaviour
             projectileRb.linearVelocity = direction * projectileSpeed;
         }
 
-        Debug.Log($"{gameObject.name} attacks the player with a projectile!");
+        Debug.Log($"{gameObject.name} attacks the ProjectileMagnet with a randomized projectile!");
     }
 
     // Optional method if you want to stop the enemy from other scripts

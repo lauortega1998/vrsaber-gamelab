@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 5
-  pushForce: 8
+  pushForce: 2
 --- !u!1 &6698253516699103325
 GameObject:
   m_ObjectHideFlags: 0
