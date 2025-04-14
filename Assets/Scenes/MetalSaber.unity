@@ -3298,6 +3298,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4037103055099411616, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
       propertyPath: m_Name
       value: EnemyTest-Lau
@@ -3841,7 +3845,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 8200
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 1073750007

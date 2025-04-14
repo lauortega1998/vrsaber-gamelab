@@ -27,7 +27,7 @@ public class EnemyAttackCollider : MonoBehaviour
             }
             // No damage to player if shield detected
         }
-        else if (other.CompareTag("Player"))
+        else if (other.CompareTag("MovementStopper"))
         {
             if (playerHealth != null)
             {

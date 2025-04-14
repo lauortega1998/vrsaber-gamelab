@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1840473813035606900}
   - component: {fileID: 4511256986943525643}
   - component: {fileID: 7957748411240010229}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: EnemyAttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,8 +60,8 @@ Transform:
   m_GameObject: {fileID: 4037103055099411616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.581, z: -0.545}
-  m_LocalScale: {x: 0.76448107, y: 1.0860555, z: 0.8317523}
+  m_LocalPosition: {x: 0.04, y: 0.676, z: -0.736}
+  m_LocalScale: {x: 0.63210595, y: 1.3987834, z: 1.1234095}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8843557008215468505}
@@ -349,6 +349,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   raycastOrigin: {fileID: 8305025830420269389}
   enemyAttackEffect: {fileID: 8813073879207027401}
+  enemyAttackCollider: {fileID: 4037103055099411616}
 --- !u!1001 &966050096134396530
 PrefabInstance:
   m_ObjectHideFlags: 0

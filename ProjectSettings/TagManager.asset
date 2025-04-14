@@ -28,7 +28,7 @@ TagManager:
   - InvisibleWall
   - Projectile
   - Fragment
-  - 
+  - AttackCollider
   - 
   - 
   - 

@@ -11,7 +11,7 @@ public class EnemyAttackingTest : MonoBehaviour
     private PlayerHealth playerHealth;
     private int lastPrintedTime = -1; // For printing only when seconds change
     public bool isEnemyCollided = false;
-    
+
     public float raycastDistance = 10f; // Maximum distance to check
     public LayerMask raycastLayers;     // Layers you want the ray to check (e.g., Default, Shield)
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
@@ -67,12 +67,12 @@ public class EnemyAttackingTest : MonoBehaviour
                 lastPrintedTime = currentSeconds;
             }
 
-            if (timer <= 0f )
+            if (timer <= 0f)
             {
                 if (isEnemyCollided == true)
                 {
                     PerformAction();
-                    StartTimer(); 
+                    StartTimer();
                 }
             }
         }
@@ -102,28 +102,36 @@ public class EnemyAttackingTest : MonoBehaviour
 
     private void PerformAction()
     {
-       
-
-        // Activate the attack effect
-        if (enemyAttackEffect != null)
-        {
-            enemyAttackEffect.SetActive(false); // Reset in case it was already active
-            enemyAttackEffect.SetActive(true);  // Re-activate
-            StartCoroutine(DisableAttackEffectAfterDelay(0.5f)); // Turn it off after 0.5 seconds (you can tweak)
-        }
-
-        
-
-        Debug.Log("Player took damage!");
-    }
-
-    private System.Collections.IEnumerator DisableAttackEffectAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
+        // Activate the attack effect (visuals)
         if (enemyAttackEffect != null)
         {
             enemyAttackEffect.SetActive(false);
+            enemyAttackEffect.SetActive(true);
+            StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackEffect, 0.5f));
+        }
+
+        // Activate the attack collider (logic)
+        if (enemyAttackCollider != null)
+        {
+            enemyAttackCollider.SetActive(false);
+            enemyAttackCollider.SetActive(true);
+            StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackCollider, 0.5f));
+        }
+
+        Debug.Log("Attack performed!");
+    }
+
+    
+
+    private System.Collections.IEnumerator DisableAttackEffectAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (obj != null)
+        {
+            obj.SetActive(false);
         }
     }
+
+
 }
