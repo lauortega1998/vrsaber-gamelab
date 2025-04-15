@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 3
   pushForce: 5
+  enemyscript: {fileID: 0}
 --- !u!114 &4379798608756642887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +477,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fa0dd7d80ba9d6f4685aaecd53597d81, type: 3}
       propertyPath: m_Name
       value: sword 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa0dd7d80ba9d6f4685aaecd53597d81, type: 3}
+      propertyPath: m_TagString
+      value: ParryArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
