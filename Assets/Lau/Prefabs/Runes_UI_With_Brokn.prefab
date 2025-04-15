@@ -2157,6 +2157,9 @@ MonoBehaviour:
   returnDelay: 1
   returnSpeed: 0.5
   brokenRune: {fileID: 5332558741968958018}
+  destructionForceMin: 15
+  destructionForceMax: 30
+  destructionTorqueStrength: 10
 --- !u!54 &6051575056251509724
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3060,6 +3063,7 @@ MonoBehaviour:
   enemyFactory: {fileID: 0}
   torches: {fileID: 0}
   allMenuRunes: {fileID: 8348227157816914623}
+  smashableUI: {fileID: 0}
   menuScreenForScoreboard: {fileID: 8348227157816914623}
   scoreboardScreen: {fileID: 6660339230483727093}
   goBackButton: {fileID: 2459880214328415060}
@@ -4901,6 +4905,9 @@ MonoBehaviour:
   returnDelay: 1
   returnSpeed: 0.5
   brokenRune: {fileID: 326877904226084606}
+  destructionForceMin: 15
+  destructionForceMax: 30
+  destructionTorqueStrength: 10
 --- !u!54 &1405275970384457023
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14365,15 +14372,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7292606325626998919}
   m_LocalRotation: {x: -3.4924588e-10, y: -0.9994301, z: -0.000000008585628, w: -0.03375555}
-  m_LocalPosition: {x: 0, y: 0, z: 7.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 1.2563, y: 1.2563, z: 1.2563}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4533371010787133618}
   m_LocalEulerAnglesHint: {x: 0, y: -183.869, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41.3, y: -8}
+  m_AnchoredPosition: {x: -24, y: 73}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6100509940181874893
@@ -14413,8 +14420,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281544399
+  m_fontColor: {r: 0.8113208, g: 0.17986828, b: 0.1990047, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16822,6 +16829,9 @@ MonoBehaviour:
   returnDelay: 1
   returnSpeed: 0.5
   brokenRune: {fileID: 6482093221990387538}
+  destructionForceMin: 15
+  destructionForceMax: 30
+  destructionTorqueStrength: 10
 --- !u!54 &4906775874967899265
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19377,6 +19387,9 @@ MonoBehaviour:
   returnDelay: 1
   returnSpeed: 0.5
   brokenRune: {fileID: 2974615183319615113}
+  destructionForceMin: 15
+  destructionForceMax: 30
+  destructionTorqueStrength: 10
 --- !u!54 &1679707426843447491
 Rigidbody:
   m_ObjectHideFlags: 0
