@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lookTarget = GameObject.FindGameObjectWithTag("LookTransform").transform;
 
-        // anim = GetComponent<Animator>();
+         anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            // anim.SetBool("isRunning", true); // run Forrest run!
+         
         }
         else
         {
@@ -38,11 +38,15 @@ public class Enemy : MonoBehaviour
     public void StopMovement()
     {
         canMove = false;
+       anim.SetBool("isWalking", false);
+        anim.SetBool("IsIdle",true);
     }
 
     public void ResumeMovement()
     {
         canMove = true;
+       anim.SetBool("IsIdle", false);
+        anim.SetBool("isWalking",true);
     }
 
     private void OnTriggerEnter(Collider other)

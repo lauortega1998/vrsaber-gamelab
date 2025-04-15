@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 1269649435741183429}
   - component: {fileID: 5775749008350188120}
   - component: {fileID: 1165594700048336418}
+  - component: {fileID: -7777420298753244433}
   m_Layer: 3
   m_Name: EnemyTest-Lau
   m_TagString: Enemy
@@ -350,6 +351,28 @@ MonoBehaviour:
   raycastOrigin: {fileID: 8305025830420269389}
   enemyAttackEffect: {fileID: 8813073879207027401}
   enemyAttackCollider: {fileID: 4037103055099411616}
+--- !u!95 &-7777420298753244433
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616180692884293340}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 39d03f82786b57d41af8bd27bce84402, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4d35c213b403cae4fbfc1eea659e8c8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &966050096134396530
 PrefabInstance:
   m_ObjectHideFlags: 0

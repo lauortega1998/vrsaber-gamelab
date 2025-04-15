@@ -60,6 +60,7 @@ public class EnemyFactory : MonoBehaviour
             if (currentGroundEnemies < maxGroundEnemies)
             {
                 SpawnGroundEnemy();
+                
             }
             yield return new WaitForSeconds(groundSpawnInterval);
         }

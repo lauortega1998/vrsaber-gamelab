@@ -17,14 +17,14 @@ public class EnemyAttackingTest : MonoBehaviour
     public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
     private Transform raycastTarget;    // Will find LookTarget automatically
     public GameObject enemyAttackEffect;
-    public GameObject enemyAttackCollider
-        ;
+    public GameObject enemyAttackCollider;
+    private Animator anim;
 
 
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
-
+        anim = GetComponent<Animator>();
         // Find the LookTarget automatically
         GameObject targetObject = GameObject.FindGameObjectWithTag("LookTarget");
 
@@ -43,6 +43,7 @@ public class EnemyAttackingTest : MonoBehaviour
         if (other.CompareTag("MovementStopper") && !timerStarted)
         {
             isEnemyCollided = true;
+            
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
         }
@@ -102,6 +103,7 @@ public class EnemyAttackingTest : MonoBehaviour
 
     private void PerformAction()
     {
+        anim.SetTrigger("attack");        //sdasdhere go animation 
         // Activate the attack effect (visuals)
         if (enemyAttackEffect != null)
         {
