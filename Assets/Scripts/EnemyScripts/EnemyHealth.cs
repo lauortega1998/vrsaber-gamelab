@@ -6,9 +6,8 @@ public class EnemyHealth : MonoBehaviour
     [Header("Hit Effect")]
     public GameObject hitEffectPrefab;
 
-    [Header("Death Model Swap")]
-    public string normalModelName = "NormalModel";
-    public string destroyedModelName = "DestroyedModel";
+    [Header("Broken Version")]
+    public GameObject brokenSkeletonPrefab;
 
     [Header("Death Effects")]
     public float knockbackForce = 5f;
@@ -18,14 +17,16 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die(Transform weaponHitPoint)
     {
+        // Disable the main collider
+        GetComponent<Collider>().enabled = false;
+
         EnemyManager.Instance.UnregisterAttacker();
         GameObject enemyRoot = transform.root.gameObject;
         Debug.Log($"{enemyRoot.name} was killed!");
         KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
 
-
-        // Spawn hit effect at closest point
+        // Spawn hit effect
         if (hitEffectPrefab != null && weaponHitPoint != null)
         {
             Vector3 hitPoint = GetComponent<Collider>().ClosestPoint(weaponHitPoint.position);
@@ -33,17 +34,13 @@ public class EnemyHealth : MonoBehaviour
             Destroy(effect, 2f);
         }
 
-        // Find enemy models
-        Transform normalModel = enemyRoot.transform.Find(normalModelName);
-        Transform destroyedModel = enemyRoot.transform.Find(destroyedModelName);
-
-        if (normalModel != null && destroyedModel != null)
+        // Instantiate broken version
+        if (brokenSkeletonPrefab != null)
         {
-            normalModel.gameObject.SetActive(false);
-            destroyedModel.gameObject.SetActive(true);
+            GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, enemyRoot.transform.position, enemyRoot.transform.rotation);
 
-            // Push ragdoll parts
-            Rigidbody[] ragdollRigidbodies = destroyedModel.GetComponentsInChildren<Rigidbody>();
+            // Apply knockback to all rigidbodies
+            Rigidbody[] ragdollRigidbodies = brokenInstance.GetComponentsInChildren<Rigidbody>();
             Vector3 pushDirection = (enemyRoot.transform.position - weaponHitPoint.position).normalized;
             pushDirection.y = 0;
 
@@ -56,14 +53,10 @@ public class EnemyHealth : MonoBehaviour
                 }
             }
 
-            // Destroy the enemy object after a delay
-            Destroy(enemyRoot, enemyDestroyDelay);
+            Destroy(brokenInstance, enemyDestroyDelay); // Optional: clean up broken version after delay
         }
-        else
-        {
-            
-            Debug.LogWarning("NormalModel or DestroyedModel not found on enemy.");
-            Destroy(enemyRoot); // Fallback: just destroy the enemy
-        }
+
+        // Instantly destroy the original enemy object
+        Destroy(enemyRoot);
     }
 }
