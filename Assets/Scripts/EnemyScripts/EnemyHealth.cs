@@ -15,8 +15,13 @@ public class EnemyHealth : MonoBehaviour
 
     public event Action OnDeath;
 
+    private bool hasDied = false;
+
     public void Die(Transform weaponHitPoint)
     {
+        if (hasDied) return;
+        hasDied = true;
+
         // Disable the main collider
         GetComponent<Collider>().enabled = false;
 
@@ -37,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
         // Instantiate broken version
         if (brokenSkeletonPrefab != null)
         {
-            GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, enemyRoot.transform.position, enemyRoot.transform.rotation);
+            GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, transform.position, transform.rotation);
 
             // Apply knockback to all rigidbodies
             Rigidbody[] ragdollRigidbodies = brokenInstance.GetComponentsInChildren<Rigidbody>();
@@ -53,10 +58,10 @@ public class EnemyHealth : MonoBehaviour
                 }
             }
 
-            Destroy(brokenInstance, enemyDestroyDelay); // Optional: clean up broken version after delay
+            Destroy(brokenInstance, enemyDestroyDelay);
         }
 
-        // Instantly destroy the original enemy object
+        // Destroy the original enemy object
         Destroy(enemyRoot);
     }
 }

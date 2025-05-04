@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 
 public class EnemyAttackingTest : MonoBehaviour
 {
@@ -9,25 +9,27 @@ public class EnemyAttackingTest : MonoBehaviour
     private float timer;
     public int damageAmount = 10;
     private PlayerHealth playerHealth;
-    private int lastPrintedTime = -1; // For printing only when seconds change
+    private int lastPrintedTime = -1;
     public bool isEnemyCollided = false;
 
-    public float raycastDistance = 10f; // Maximum distance to check
-    public LayerMask raycastLayers;     // Layers you want the ray to check (e.g., Default, Shield)
-    public Transform raycastOrigin;     // The object inside the prefab (already assigned!)
-    private Transform raycastTarget;    // Will find LookTarget automatically
+    public float raycastDistance = 10f;
+    public LayerMask raycastLayers;
+    public Transform raycastOrigin;
+    private Transform raycastTarget;
     public GameObject enemyAttackEffect;
     public GameObject enemyAttackCollider;
     private Animator anim;
 
+    [Header("Block Indicator UI")]
+    public GameObject blockIndicatorCanvas;
+    public Slider blockSlider;
 
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
         anim = GetComponent<Animator>();
-        // Find the LookTarget automatically
-        GameObject targetObject = GameObject.FindGameObjectWithTag("LookTarget");
 
+        GameObject targetObject = GameObject.FindGameObjectWithTag("LookTarget");
         if (targetObject != null)
         {
             raycastTarget = targetObject.transform;
@@ -36,6 +38,9 @@ public class EnemyAttackingTest : MonoBehaviour
         {
             Debug.LogWarning("No object with tag 'LookTarget' found in the scene!");
         }
+
+        if (blockIndicatorCanvas != null)
+            blockIndicatorCanvas.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,7 +48,6 @@ public class EnemyAttackingTest : MonoBehaviour
         if (other.CompareTag("MovementStopper") && !timerStarted)
         {
             isEnemyCollided = true;
-            
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
         }
@@ -51,7 +55,7 @@ public class EnemyAttackingTest : MonoBehaviour
 
     private void OnEnable()
     {
-        ResetTimerState(); // Ensure fresh start
+        ResetTimerState();
     }
 
     private void Update()
@@ -59,9 +63,13 @@ public class EnemyAttackingTest : MonoBehaviour
         if (timerStarted)
         {
             timer -= Time.deltaTime;
+            float progress = 1f - (timer / countdownTime);
+
+            // Update UI slider
+            if (blockSlider != null)
+                blockSlider.value = progress;
 
             int currentSeconds = Mathf.CeilToInt(timer);
-
             if (currentSeconds != lastPrintedTime && currentSeconds >= 0)
             {
                 Debug.Log($"{gameObject.name} Timer: {currentSeconds} seconds remaining");
@@ -70,7 +78,7 @@ public class EnemyAttackingTest : MonoBehaviour
 
             if (timer <= 0f)
             {
-                if (isEnemyCollided == true)
+                if (isEnemyCollided)
                 {
                     PerformAction();
                     StartTimer();
@@ -84,6 +92,18 @@ public class EnemyAttackingTest : MonoBehaviour
         timerStarted = true;
         timer = countdownTime;
         lastPrintedTime = -1;
+
+        // Show block indicator UI
+        if (blockIndicatorCanvas != null)
+            blockIndicatorCanvas.SetActive(true);
+
+        if (blockSlider != null)
+        {
+            blockSlider.minValue = 0;
+            blockSlider.maxValue = 1;
+            blockSlider.value = 0;
+        }
+
         Debug.Log($"{gameObject.name} Timer started!");
     }
 
@@ -91,6 +111,10 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         timerStarted = false;
         timer = 0;
+
+        if (blockIndicatorCanvas != null)
+            blockIndicatorCanvas.SetActive(false);
+
         Debug.Log($"{gameObject.name} Timer stopped/reset.");
     }
 
@@ -99,12 +123,15 @@ public class EnemyAttackingTest : MonoBehaviour
         timerStarted = false;
         timer = 0;
         lastPrintedTime = -1;
+
+        if (blockIndicatorCanvas != null)
+            blockIndicatorCanvas.SetActive(false);
     }
 
     private void PerformAction()
     {
-        anim.SetTrigger("attack");        //sdasdhere go animation 
-        // Activate the attack effect (visuals)
+        anim.SetTrigger("attack");
+
         if (enemyAttackEffect != null)
         {
             enemyAttackEffect.SetActive(false);
@@ -112,32 +139,25 @@ public class EnemyAttackingTest : MonoBehaviour
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackEffect, 0.5f));
         }
 
-        // Activate the attack collider (logic)
         if (enemyAttackCollider != null)
         {
             enemyAttackCollider.SetActive(false);
             enemyAttackCollider.SetActive(true);
 
-            // Reset shield and wall tracking AFTER re-enabling
             enemyAttackCollider.GetComponent<EnemyAttackCollider>().ResetProtectionStatus();
-
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackCollider, 0.5f));
         }
+
+        if (blockIndicatorCanvas != null)
+            blockIndicatorCanvas.SetActive(false);
 
         Debug.Log("Attack performed!");
     }
 
-    
-
-    private System.Collections.IEnumerator DisableAttackEffectAfterDelay(GameObject obj, float delay)
+    private IEnumerator DisableAttackEffectAfterDelay(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
-
         if (obj != null)
-        {
             obj.SetActive(false);
-        }
     }
-
-
 }
