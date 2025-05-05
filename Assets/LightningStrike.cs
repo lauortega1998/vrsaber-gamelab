@@ -4,6 +4,8 @@ public class LightFlicker : MonoBehaviour
 {
     private Light lightComponent;  // Reference to the light component
     public Light otherLight;  // Reference to the other light that will be deactivated
+    public AudioSource audioSource;  // Reference to the AudioSource
+    public AudioClip thunderSound;  // Thunder sound clip
     public float activeDuration = 5f;  // Duration the light stays active
     public float inactiveDuration = 3f;  // Duration the light stays inactive
     public float minFlickerInterval = 0.05f;  // Minimum flicker interval (in seconds)
@@ -16,6 +18,7 @@ public class LightFlicker : MonoBehaviour
     private float flickerTimer = 0f;  // Timer for flicker intervals
 
     private bool hasRotated = false;  // To track if the rotation has been set for this activation
+    private bool hasPlayedThunderSound = false;  // To track if thunder sound has been played
 
     void Start()
     {
@@ -32,6 +35,11 @@ public class LightFlicker : MonoBehaviour
             otherLight.enabled = true;  // Ensure the other light starts as enabled
         }
         timer = inactiveDuration;  // Set initial timer for deactivation
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();  // Ensure AudioSource is attached
+        }
     }
 
     void Update()
@@ -65,6 +73,7 @@ public class LightFlicker : MonoBehaviour
 
                 timer = inactiveDuration;  // Reset the timer for the inactive duration
                 hasRotated = false;  // Reset the rotation flag for the next activation
+                hasPlayedThunderSound = false;  // Reset the thunder sound flag
             }
         }
         else
@@ -83,10 +92,17 @@ public class LightFlicker : MonoBehaviour
                     otherLight.enabled = false;
                 }
 
+                // Play the thunder sound only once when the light is activated
+                if (!hasPlayedThunderSound && thunderSound != null)
+                {
+                    audioSource.PlayOneShot(thunderSound);
+                    hasPlayedThunderSound = true;  // Set flag to prevent it from playing again
+                }
+
                 // Randomize the rotation once when the light is activated
                 //if (!hasRotated)
                 {
-                  //  RandomizeRotation();
+                    //  RandomizeRotation();
                     hasRotated = true;  // Set the flag to ensure rotation only happens once per activation
                 }
 
