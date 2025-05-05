@@ -11,6 +11,7 @@ public class GazePickupDetector : MonoBehaviour
     {
         Ray gazeRay = new Ray(transform.position, transform.forward);
         RaycastHit hit;
+        float sphereRadius = 5f; // Adjust this for "thickness"
 
         if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
         {
@@ -42,7 +43,7 @@ public class GazePickupDetector : MonoBehaviour
 
     void TogglePickupIndicator(GameObject target, bool state)
     {
-        // Search only within this target’s hierarchy
+        // Search only within this targetï¿½s hierarchy
         Canvas foundCanvas = target.GetComponentInChildren<Canvas>(true);
 
         if (foundCanvas != null)
