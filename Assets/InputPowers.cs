@@ -11,6 +11,9 @@ public class InputPowers : MonoBehaviour
     public GameObject firePowerObject; // Object for Fire Power
     public GameObject icePowerObject;  // Object for Ice Power
 
+    public GameObject firePowerTutorial;
+    public GameObject icePowerTutorial;
+
     void OnEnable()
     {
         leftTriggerAction.action.Enable();
@@ -29,6 +32,7 @@ public class InputPowers : MonoBehaviour
         if (leftTriggerAction.action.ReadValue<float>() > 0.1f)
         {
             firePowerObject.SetActive(true);
+            firePowerTutorial.SetActive(false);
         }
         else
         {
@@ -39,6 +43,7 @@ public class InputPowers : MonoBehaviour
         if (rightTriggerAction.action.ReadValue<float>() > 0.1f)
         {
             icePowerObject.SetActive(true);
+            icePowerTutorial.SetActive(false);
         }
         else
         {
