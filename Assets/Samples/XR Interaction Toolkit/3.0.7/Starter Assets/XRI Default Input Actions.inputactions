@@ -461,6 +461,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HideUI",
+                    "type": "Button",
+                    "id": "ab2af276-6188-4765-9078-54aa1164a2b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -879,6 +888,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TriggerHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6abf3193-b5bc-450e-8c96-683fd438bfd3",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HideUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1552,6 +1572,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HideUI",
+                    "type": "Button",
+                    "id": "b0080965-9308-4bba-8bf9-a49e06314b75",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1642,6 +1671,17 @@
                     "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8eec63bc-0fc2-489a-9072-51ce2797a06d",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HideUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
