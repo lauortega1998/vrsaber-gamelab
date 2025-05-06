@@ -54,5 +54,8 @@ public class GazePickupDetector : MonoBehaviour
         {
             Debug.LogWarning("PickupIndicator not found on: " + target.name);
         }
+        
+        
+        
     }
 }

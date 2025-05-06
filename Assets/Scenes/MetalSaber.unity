@@ -611,6 +611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1895254301}
     m_Modifications:
+    - target: {fileID: 716259481372017097, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 3555722710939811628, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
       propertyPath: m_TagString
       value: ParryArea
@@ -658,6 +662,14 @@ PrefabInstance:
     - target: {fileID: 5900647888177980442, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
       propertyPath: m_Name
       value: Sword_Weapon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520062464028988620, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828143586904376956, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7792,6 +7804,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1895254301}
     m_Modifications:
+    - target: {fileID: 13302966709351835, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615638774959583603, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4839135935112785434, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.897
@@ -7854,6 +7874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1895254301}
     m_Modifications:
+    - target: {fileID: 716259481372017097, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 4839135935112785434, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.738
@@ -7897,6 +7921,10 @@ PrefabInstance:
     - target: {fileID: 5900647888177980442, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
       propertyPath: m_Name
       value: Sword_Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520062464028988620, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
