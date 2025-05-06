@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 682503501122884177}
   - component: {fileID: 117266628718136434}
   - component: {fileID: 7502503910520097158}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Axe_002_C08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 749227287592932877}
   - component: {fileID: 55573476646659591}
   - component: {fileID: 8279070512966368107}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Axe_002_C05
   m_TagString: ParryArea
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7820253174451744268}
   - component: {fileID: 4862800322459259424}
   - component: {fileID: 6769785936273209484}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Axe_002_C06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 2924426570185642110}
   - component: {fileID: 3479761285483016321}
   - component: {fileID: 6484316036625674933}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Axe_002_C07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 3618163939291747230}
   - component: {fileID: 3884112736932861145}
   - component: {fileID: 1163453750683589308}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Cube
   m_TagString: ParryArea
   m_Icon: {fileID: 0}
@@ -387,13 +387,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7684164861579766387}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.431, y: -0.086, z: -0.018}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0.438, y: 0.07, z: -0.002}
   m_LocalScale: {x: 0.11, y: 0.6173191, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3868909022615769109}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!33 &252902035290758334
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 7299001681108680759}
   - component: {fileID: 5883921012089819278}
   - component: {fileID: 8274675195346310172}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: TwoHandedAxe
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -761,7 +761,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 402437199486896316, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877704536700663814, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885015759863145894, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_Color.a
+      value: 0.24313726
       objectReference: {fileID: 0}
     - target: {fileID: 5910607522183539896, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_Pivot.x
@@ -844,6 +852,18 @@ PrefabInstance:
       value: 125.15
       objectReference: {fileID: 0}
     - target: {fileID: 6404756163843419288, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404756163843419288, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.30969602
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404756163843419288, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404756163843419288, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.5
       objectReference: {fileID: 0}
@@ -855,17 +875,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -14.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6404756163843419288, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8815870072165293497, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_Name
       value: PickupIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 8815870072165293497, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8815870072165293497, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
