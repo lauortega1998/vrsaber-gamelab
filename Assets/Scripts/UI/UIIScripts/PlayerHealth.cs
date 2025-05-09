@@ -1,7 +1,9 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement; // <- For reloading the scene
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -123,4 +125,15 @@ public class PlayerHealth : MonoBehaviour
         // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+
+   
+
+    //MANA LOGIC
+    
+    
+    
+    
+    
+    
 }
