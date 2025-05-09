@@ -4,7 +4,7 @@ using System.Collections;
 public class SmashableUI : MonoBehaviour
 {
     public enum RuneType { Play, Exit, Scoreboard, GoBack }
-
+    public GazePickupDetector gazePickupDetectorscript;
     [Header("Rune Settings")]
     public RuneType runeType;
 
@@ -55,7 +55,8 @@ public class SmashableUI : MonoBehaviour
         if (other.CompareTag("Weapon"))
         {
             Rigidbody weaponRb = other.attachedRigidbody;
-
+            
+            
             float impactSpeed = 0f;
             if (weaponRb != null)
             {

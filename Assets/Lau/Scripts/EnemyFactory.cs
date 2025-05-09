@@ -6,11 +6,14 @@ public class EnemyFactory : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject flyingSpectrePrefab;
-
+    public GameObject heavyenemyPrefab;
+    
     [Header("Spawners")]
     public List<EnemySpawner> spawners = new List<EnemySpawner>(); // Ground spawners
     public List<EnemySpawner> spectreSpawners = new List<EnemySpawner>(); // Airborne spawners for spectres
-
+    
+    
+    
     [Header("Spawn Settings")]
     public float groundSpawnInterval = 2f;  // New: Ground enemies spawn interval
     public float flyingSpawnInterval = 3f;  // New: Flying enemies spawn interval
@@ -60,7 +63,7 @@ public class EnemyFactory : MonoBehaviour
             if (currentGroundEnemies < maxGroundEnemies)
             {
                 SpawnGroundEnemy();
-                
+                SpawnHeavyGroundEnemy();
             }
             yield return new WaitForSeconds(groundSpawnInterval);
         }
@@ -92,7 +95,7 @@ public class EnemyFactory : MonoBehaviour
         }
     }
 
-    private void SpawnGroundEnemy()
+    private void SpawnHeavyGroundEnemy()
     {
         if (spawners.Count == 0) return;
 
@@ -102,6 +105,37 @@ public class EnemyFactory : MonoBehaviour
 
         // Instantiate the enemy
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        newEnemy.tag = "HeavyEnemy";
+        newEnemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        
+
+        // Check if the enemy has the EnemyHealth component
+        if (newEnemy.TryGetComponent<EnemyHealth>(out var enemyHealth))
+        {
+            // Optionally set speed or other properties on the enemyHealth (if needed)
+            // enemyHealth.speed = enemySpeed;  // Uncomment if there's a speed property
+
+            // Increment the count of ground enemies
+            currentGroundEnemies++;
+
+            // Subscribe to the OnDeath event
+            enemyHealth.OnDeath += () =>
+            {
+                currentGroundEnemies--; // Decrease the count when this enemy dies
+            };
+        }
+    }
+    private void SpawnGroundEnemy()
+    {
+        if (spawners.Count == 0) return;
+
+        // Select a random spawner and get a spawn position
+        EnemySpawner selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+        Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+        
+        // Instantiate the enemy
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        newEnemy.tag = "Enemy";
 
         // Check if the enemy has the EnemyHealth component
         if (newEnemy.TryGetComponent<EnemyHealth>(out var enemyHealth))

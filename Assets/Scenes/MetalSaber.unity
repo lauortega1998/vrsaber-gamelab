@@ -1593,6 +1593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
   flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
+  heavyenemyPrefab: {fileID: 1821995390}
   spawners:
   - {fileID: 691474225}
   - {fileID: 911239430}
@@ -3018,6 +3019,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 131072
+  pickedUp: 0
 --- !u!1001 &460559619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4934,6 +4936,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 296810381988919220, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 1104978214145010958, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.10586337
@@ -4992,11 +4998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597489386747405138, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4611806562876143191, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6698253516699103325, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_Layer
@@ -6836,7 +6842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &965908202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9636,6 +9642,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80977082}
     m_Modifications:
+    - target: {fileID: 6909575672851291012, guid: 637a7c82e97bb0e4da8f6da0a561c7b1, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 8161080457549785213, guid: 637a7c82e97bb0e4da8f6da0a561c7b1, type: 3}
       propertyPath: m_Name
       value: Shield_Weapon_Right
@@ -9647,6 +9657,10 @@ PrefabInstance:
     - target: {fileID: 8161080457549785213, guid: 637a7c82e97bb0e4da8f6da0a561c7b1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161080457549785213, guid: 637a7c82e97bb0e4da8f6da0a561c7b1, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 8793889340206052039, guid: 637a7c82e97bb0e4da8f6da0a561c7b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -15557,6 +15571,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5910607522183539896, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
   m_PrefabInstance: {fileID: 1817591813}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1821995390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+  m_PrefabInstance: {fileID: 1295988882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1835214168
 GameObject:
   m_ObjectHideFlags: 0
@@ -17258,7 +17277,7 @@ PrefabInstance:
       objectReference: {fileID: 1327098428}
     - target: {fileID: 83284169397392542, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_VersionIndex
-      value: 1039
+      value: 1042
       objectReference: {fileID: 0}
     - target: {fileID: 234937823394938305, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: destructionForceMax
@@ -17322,7 +17341,7 @@ PrefabInstance:
       objectReference: {fileID: 1121757695}
     - target: {fileID: 2137762195273183109, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_VersionIndex
-      value: 803
+      value: 806
       objectReference: {fileID: 0}
     - target: {fileID: 2931802762741696739, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_IsActive
@@ -17474,7 +17493,7 @@ PrefabInstance:
       objectReference: {fileID: 1664582628}
     - target: {fileID: 7377816206976962538, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_VersionIndex
-      value: 655
+      value: 658
       objectReference: {fileID: 0}
     - target: {fileID: 8107449674047349229, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: brokenRune

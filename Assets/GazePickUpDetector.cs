@@ -61,76 +61,82 @@ public class GazePickupDetector : MonoBehaviour
    
    
    
-   public float gazeDistance = 5f;
-   public LayerMask interactableLayer = ~0;
+   
+  public float gazeDistance = 5f;
+    public LayerMask interactableLayer = ~0;
 
-   private GameObject currentTarget;
+    public bool pickedUp = false;
+    private GameObject currentTarget;
 
-   void Update()
-   {
-       Ray gazeRay = new Ray(transform.position, transform.forward);
-       RaycastHit hit;
+    private bool hasClearedUI = false;
 
-       if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
-       {
-           GameObject hitObject = hit.collider.gameObject;
+    void Update()
+    {
+        // 1. Gaze logic
+        if (!pickedUp)
+        {
+            Ray gazeRay = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
 
-           if (hitObject != currentTarget)
-           {
-               // Clear the previous indicator (shrink + fade it)
-               if (currentTarget != null)
-                   TogglePickupIndicator(currentTarget, false);
+            if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
+            {
+                GameObject hitObject = hit.collider.gameObject;
 
-               currentTarget = hitObject;
+                if (hitObject != currentTarget)
+                {
+                    if (currentTarget != null)
+                        TogglePickupIndicator(currentTarget, false);
 
-               // Expand + brighten the new target's indicator
-               TogglePickupIndicator(currentTarget, true);
-               Debug.Log("Gazing at: " + hitObject.name);
-           }
-       }
-       else
-       {
-           // Raycast hit nothing — fade/shrink the previous
-           if (currentTarget != null)
-           {
-               TogglePickupIndicator(currentTarget, false);
-               currentTarget = null;
-           }
-       }
-   }
+                    currentTarget = hitObject;
+                    TogglePickupIndicator(currentTarget, true);
+                }
+            }
+            else
+            {
+                if (currentTarget != null)
+                {
+                    TogglePickupIndicator(currentTarget, false);
+                    currentTarget = null;
+                }
+            }
+        }
 
-   void TogglePickupIndicator(GameObject target, bool state)
-   {
-       Transform indicator = target.transform.Find("PickupIndicator");
+        // 2. Watch for bool from Inspector
+        if (pickedUp && !hasClearedUI)
+        {
+            DisableAllPickupIndicators();
+            hasClearedUI = true;
+        }
+    }
 
-       if (indicator != null)
-       {
-           GameObject indicatorObj = indicator.gameObject;
+    void DisableAllPickupIndicators()
+    {
+        GameObject[] all = GameObject.FindGameObjectsWithTag("Interactable");
+        foreach (GameObject obj in all)
+        {
+            Transform indicator = obj.transform.Find("PickupIndicator");
+            if (indicator != null)
+                indicator.gameObject.SetActive(false);
+        }
 
-           // No SetActive — we keep it always on
-           // Find the Image inside the canvas
-           UnityEngine.UI.Image image = indicatorObj.GetComponentInChildren<UnityEngine.UI.Image>();
-           if (image != null)
-           {
-               RectTransform imgRect = image.GetComponent<RectTransform>();
-               if (imgRect != null)
-               {
-                   imgRect.sizeDelta = state ? new Vector2(150, 150) : new Vector2(100, 100); // adjust values to your liking
-               }
+        Debug.Log("All pickup UIs disabled.");
+    }
 
-               // Optional: also change color/opacity
-               Color color = image.color;
-               color.a = state ? 1f : 0.3f;
-               image.color = color;
-           }
+    void TogglePickupIndicator(GameObject target, bool state)
+    {
+        Transform indicator = target.transform.Find("PickupIndicator");
 
-           // Optional: you can still use CanvasGroup for global fading (if needed)
-           // But not necessary if you control the image color directly
-       }
-       else
-       {
-           Debug.LogWarning("PickupIndicator not found on: " + target.name);
-       }
-   }
-
+        if (indicator != null)
+        {
+            UnityEngine.UI.Image image = indicator.GetComponentInChildren<UnityEngine.UI.Image>();
+            if (image != null)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, state ? 1f : 0.3f);
+                RectTransform imgRect = image.GetComponent<RectTransform>();
+                imgRect.sizeDelta = state ? new Vector2(150, 150) : new Vector2(100, 100);
+            }
+        }
+    }
 }
+
+

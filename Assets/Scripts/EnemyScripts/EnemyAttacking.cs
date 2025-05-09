@@ -9,7 +9,8 @@ public class EnemyAttacking : MonoBehaviour
     private PlayerHealth playerHealth;
     private int lastPrintedTime = -1; // For printing only when seconds change
 
-
+    public GameObject heavyEnemy;
+    public GameObject enemy;
     public void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -76,7 +77,12 @@ public class EnemyAttacking : MonoBehaviour
     }
     private void PerformAction() //Appling the methods when the timer end 
     {
-            playerHealth.TakeDamage(damageAmount);
+            playerHealth.TakeDamage(15);
             Destroy(this.gameObject);
+    }
+    private void PerformActionHeavy() //Appling the methods when the timer end 
+    {
+        playerHealth.TakeDamage(20);
+        Destroy(this.gameObject);
     }
 }

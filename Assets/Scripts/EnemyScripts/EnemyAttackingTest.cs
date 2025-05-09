@@ -7,7 +7,7 @@ public class EnemyAttackingTest : MonoBehaviour
     public float countdownTime = 3f;
     private bool timerStarted = false;
     private float timer;
-    public int damageAmount = 10;
+    
     private PlayerHealth playerHealth;
     private int lastPrintedTime = -1;
     public bool isEnemyCollided = false;
@@ -19,7 +19,10 @@ public class EnemyAttackingTest : MonoBehaviour
     public GameObject enemyAttackEffect;
     public GameObject enemyAttackCollider;
     private Animator anim;
-
+    public EnemyAttacCollision enemyattackScript;
+    public bool enemy;
+    public bool heavyenemy;
+    
     [Header("Block Indicator UI")]
     public GameObject blockIndicatorCanvas;
     public Slider blockSlider;
@@ -47,10 +50,19 @@ public class EnemyAttackingTest : MonoBehaviour
     {
         if (other.CompareTag("MovementStopper") && !timerStarted)
         {
+            
             isEnemyCollided = true;
             EnemyManager.Instance.RegisterAttacker();
             StartTimer();
         }
+        if (other.CompareTag("MovementStopper")  && !timerStarted)
+        {
+            
+            isEnemyCollided = true;
+            EnemyManager.Instance.RegisterAttacker();
+            StartTimer();
+        }
+        
     }
 
     private void OnEnable()
@@ -144,7 +156,7 @@ public class EnemyAttackingTest : MonoBehaviour
             enemyAttackCollider.SetActive(false);
             enemyAttackCollider.SetActive(true);
 
-            enemyAttackCollider.GetComponent<EnemyAttackCollider>().ResetProtectionStatus();
+            enemyAttackCollider.GetComponent<EnemyAttacCollision>().ResetProtectionStatus();
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackCollider, 0.5f));
         }
 

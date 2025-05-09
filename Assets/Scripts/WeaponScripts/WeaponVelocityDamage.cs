@@ -61,6 +61,33 @@ public class WeaponVelocityDamage : MonoBehaviour
                 column.Die(transform);
             }
         }
+        //Logic for heavy enemy
+        if (collision.gameObject.layer == LayerMask.NameToLayer("HeavyEnemy"))
+        {
+            Debug.Log("CollidedWithEnemy");
+
+            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                if (impactVelocity >= damageVelocityThreshold)
+                {
+                    Debug.Log("[WeaponVelocityDamage] Killing enemy.");
+                    enemy.Die(transform);
+                }
+                Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
+                Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+                if (enemyRb != null)
+                {
+                    Vector3 pushDir = (collision.transform.position - transform.position).normalized;
+                    pushDir.y = 0;
+
+                    float clampedForce = Mathf.Min(pushForce, 5f); // prevent over-push
+                    enemyRb.linearDamping = 2f; // increase drag to reduce sliding
+                    enemyRb.AddForce(pushDir * clampedForce, ForceMode.Impulse);
+                    
+                }
+            }
+        }
     }
 
     void OnCollisionExit(Collision collision)

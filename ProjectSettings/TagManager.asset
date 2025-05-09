@@ -15,6 +15,7 @@ TagManager:
   - ProjectileMagnet
   - Floor
   - LookTransform
+  - HeavyEnemy
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - ShieldVR
   - Weapon
   - Pickable
-  - 
+  - HeavyEnemy
   - 
   - 
   - 

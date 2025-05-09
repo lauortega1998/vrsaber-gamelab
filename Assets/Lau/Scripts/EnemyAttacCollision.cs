@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class EnemyAttackCollider : MonoBehaviour
+public class EnemyAttacCollision : MonoBehaviour
 {
     public int damageAmount = 10;
     private PlayerHealth playerHealth;
     private bool shieldInside = false;
     private bool wallInside = false;
-
+    public bool enemy = false;
+    public bool heavyenemy  = false;
     public GameObject shieldBlockEffect;
 
 
@@ -17,18 +18,43 @@ public class EnemyAttackCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+        if (other.CompareTag("Enemy"))
+        {
+            enemy = true;
+        }
+        if (other.CompareTag("HeavyEnemy"))
+        {
+            heavyenemy = true;
+        }
+        
         if (other.CompareTag("Shield"))
         {
             ShieldHealth shield = other.GetComponent<ShieldHealth>();
 
             if (shield != null)
             {
-                shield.TakeDamage(damageAmount);
-                Debug.Log("Shield took damage!");
-
-                if (shieldBlockEffect != null)
+                if (heavyenemy)
                 {
-                    Instantiate(shieldBlockEffect, transform.position, Quaternion.identity);
+                    shield.TakeDamage(50);
+
+                    Debug.Log("Shield took damage!");
+
+                    if (shieldBlockEffect != null)
+                    {
+                        Instantiate(shieldBlockEffect, transform.position, Quaternion.identity);
+                    }
+                }
+                if (enemy)
+                {
+                    shield.TakeDamage(10);
+
+                    Debug.Log("Shield took damage!");
+
+                    if (shieldBlockEffect != null)
+                    {
+                        Instantiate(shieldBlockEffect, transform.position, Quaternion.identity);
+                    }
                 }
             }
             else
@@ -63,10 +89,13 @@ public class EnemyAttackCollider : MonoBehaviour
         {
             if (!shieldInside)
             {
+             
                 // Wall is inside but no shield to protect -> player takes damage
+                
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(damageAmount);
+                    
+                    playerHealth.TakeDamage(10);
                     Debug.Log("Player took damage because no shield was protecting!");
                 }
 
@@ -85,4 +114,6 @@ public class EnemyAttackCollider : MonoBehaviour
         shieldInside = false;
         wallInside = false;
     }
+    
+    
 }
