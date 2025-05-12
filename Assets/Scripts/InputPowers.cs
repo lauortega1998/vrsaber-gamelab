@@ -13,11 +13,14 @@ public class InputPowers : MonoBehaviour
 
     public GameObject firePowerTutorial;
     public GameObject icePowerTutorial;
+    
+    public PlayerStats playerStats; // Reference to the PlayerStats script
 
     void OnEnable()
     {
         leftTriggerAction.action.Enable();
         rightTriggerAction.action.Enable();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     void OnDisable()
@@ -28,26 +31,29 @@ public class InputPowers : MonoBehaviour
 
     void Update()
     {
-        // Fire Power Activation (Left Trigger)
-        if (leftTriggerAction.action.ReadValue<float>() > 0.1f)
+        if (playerStats != null)
         {
-            firePowerObject.SetActive(true);
-            firePowerTutorial.SetActive(false);
-        }
-        else
-        {
-            firePowerObject.SetActive(false);
-        }
+            // Fire Power Activation (Left Trigger)
+            if (leftTriggerAction.action.ReadValue<float>() > 0.1f && playerStats.CurrentMana > 0)
+            {
+                firePowerObject.SetActive(true);
+                firePowerTutorial.SetActive(false);
+            }
+            else
+            {
+                firePowerObject.SetActive(false);
+            }
 
-        // Ice Power Activation (Right Trigger)
-        if (rightTriggerAction.action.ReadValue<float>() > 0.1f)
-        {
-            icePowerObject.SetActive(true);
-            icePowerTutorial.SetActive(false);
-        }
-        else
-        {
-            icePowerObject.SetActive(false);
+            // Ice Power Activation (Right Trigger)
+            if (rightTriggerAction.action.ReadValue<float>() > 0.1f && playerStats.CurrentMana > 0)
+            {
+                icePowerObject.SetActive(true);
+                icePowerTutorial.SetActive(false);
+            }
+            else
+            {
+                icePowerObject.SetActive(false);
+            }
         }
     }
 }
