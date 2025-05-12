@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int maxMana = 100;
     [SerializeField] private int currentMana;
     [SerializeField] private float manaDrainRate = 10f;
-
+    public EnemyHealth enemyhealth;
     [Header("Input")]
     [SerializeField] private InputActionReference useManaAction;
 
@@ -34,6 +34,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        
         if (isDraining && currentMana > 0)
         {
             float manaToDrain = manaDrainRate * Time.deltaTime;
@@ -49,7 +50,12 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
-
+    public void GainMana(int amount)
+    {
+        currentMana += amount;
+        currentMana = Mathf.Clamp(currentMana, 0, maxMana);
+        UpdateManaUI();
+    }
     private void UpdateManaUI()
     {
         if (manaText != null)
@@ -58,7 +64,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void Die() //apply to something happens when the mana is 0
     {
         Debug.Log("Player has no mana left and died.");
     }

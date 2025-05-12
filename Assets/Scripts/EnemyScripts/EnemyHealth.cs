@@ -12,7 +12,6 @@ public class EnemyHealth : MonoBehaviour
     [Header("Death Effects")]
     public float knockbackForce = 5f;
     public float enemyDestroyDelay = 2f;
-
     public event Action OnDeath;
 
     private bool hasDied = false;
@@ -21,7 +20,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (hasDied) return;
         hasDied = true;
-
         // Disable the main collider
         GetComponent<Collider>().enabled = false;
 
@@ -30,7 +28,13 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"{enemyRoot.name} was killed!");
         KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
-
+        
+        //give mana 
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        if (playerStats != null)
+        {
+            playerStats.GainMana(20); // Adjust the amount of mana given per enemy
+        }
         // Spawn hit effect
         if (hitEffectPrefab != null && weaponHitPoint != null)
         {
@@ -63,5 +67,6 @@ public class EnemyHealth : MonoBehaviour
 
         // Destroy the original enemy object
         Destroy(enemyRoot);
+
     }
 }
