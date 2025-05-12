@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4d0e1de330a1e4da67df64607c0ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  normalEnemyDamage: 10
+  heavyEnemyDamage: 30
   shieldBlockEffect: {fileID: 4254853601451261160, guid: 0c2a7d0134b0bf54095119f2c6cc0254, type: 3}
 --- !u!1 &6616180692884293340
 GameObject:
@@ -171,6 +172,8 @@ GameObject:
   - component: {fileID: 5775749008350188120}
   - component: {fileID: 1165594700048336418}
   - component: {fileID: -7777420298753244433}
+  - component: {fileID: -4872185798151402726}
+  - component: {fileID: -2129936444911939810}
   m_Layer: 3
   m_Name: EnemyTest-Lau
   m_TagString: Enemy
@@ -341,7 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownTime: 3
-  damageAmount: 10
   isEnemyCollided: 0
   raycastDistance: 10
   raycastLayers:
@@ -350,6 +352,11 @@ MonoBehaviour:
   raycastOrigin: {fileID: 8305025830420269389}
   enemyAttackEffect: {fileID: 8813073879207027401}
   enemyAttackCollider: {fileID: 4037103055099411616}
+  enemyattackScript: {fileID: 0}
+  enemy: 0
+  heavyenemy: 0
+  blockIndicatorCanvas: {fileID: 0}
+  blockSlider: {fileID: 0}
 --- !u!95 &-7777420298753244433
 Animator:
   serializedVersion: 7
@@ -372,6 +379,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4872185798151402726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616180692884293340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3645474535f1a5f40937761a150d2976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHeavy: 0
+--- !u!114 &-2129936444911939810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616180692884293340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9ec52f4ef7d8745be4f53e6895c56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
 --- !u!1001 &966050096134396530
 PrefabInstance:
   m_ObjectHideFlags: 0
