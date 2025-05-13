@@ -1268,6 +1268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
   flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
+  heavyenemyPrefab: {fileID: 0}
   spawners:
   - {fileID: 691474225}
   - {fileID: 911239430}
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   - {fileID: 1568520863}
   - {fileID: 1761279921}
   - {fileID: 1647987142}
+  isHeavy: 0
   groundSpawnInterval: 3
   flyingSpawnInterval: 1000000
   enemySpeed: 5.5
@@ -2734,6 +2736,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 131072
+  pickedUp: 0
 --- !u!20 &450390599 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6484816944661230508, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
@@ -5355,6 +5358,7 @@ MonoBehaviour:
   icePowerObject: {fileID: 1774346406}
   firePowerTutorial: {fileID: 900880028}
   icePowerTutorial: {fileID: 490718902}
+  playerStats: {fileID: 0}
 --- !u!114 &884642597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6406,7 +6410,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.5613208, g: 0.794483, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13847,7 +13851,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902942210}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.19406372, g: 0.35115257, b: 0.46226418, a: 1}
