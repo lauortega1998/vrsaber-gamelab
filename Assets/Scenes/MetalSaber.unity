@@ -5982,11 +5982,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d227cf8f0dbc944a1314b90217a9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 100
+  maxMana: 150
   currentMana: 0
   manaDrainRate: 10
   enemyhealth: {fileID: 0}
   useManaAction: {fileID: -429793169750358113, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  useManaActionFire: {fileID: 34591966262495615, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   manaText: {fileID: 95454616}
 --- !u!1001 &884695859
 PrefabInstance:
