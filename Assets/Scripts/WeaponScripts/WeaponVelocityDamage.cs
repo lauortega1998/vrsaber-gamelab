@@ -26,7 +26,9 @@ public class WeaponVelocityDamage : MonoBehaviour
         if (isOnGround) return; // Don't damage enemies if on ground
 
         if (collision.gameObject.CompareTag("Enemy"))
-        {
+        {  // Haptics again 
+             HapticsManager.Instance.TriggerHaptics(0.5f, 0.1f);
+
             Debug.Log("CollidedWithEnemy");
 
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
@@ -51,7 +53,8 @@ public class WeaponVelocityDamage : MonoBehaviour
             }
         }
         else if (collision.gameObject.CompareTag("DestructibleUI"))
-        {
+        {   // Haptics again for the Destructible UI
+             HapticsManager.Instance.TriggerHaptics(0.5f, 0.1f);
             Debug.Log($"[WeaponVelocityDamage] Hit Column {collision.gameObject.name} | Velocity: {impactVelocity:F2}");
 
             var column = collision.gameObject.GetComponentInParent<MenuHitActivate>();

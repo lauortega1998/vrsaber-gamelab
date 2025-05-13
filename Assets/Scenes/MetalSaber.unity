@@ -1604,6 +1604,7 @@ MonoBehaviour:
   - {fileID: 1568520863}
   - {fileID: 1761279921}
   - {fileID: 1647987142}
+  isHeavy: 0
   groundSpawnInterval: 5
   flyingSpawnInterval: 30
   enemySpeed: 3
@@ -5952,6 +5953,7 @@ MonoBehaviour:
   icePowerObject: {fileID: 1774346406}
   firePowerTutorial: {fileID: 1577418122}
   icePowerTutorial: {fileID: 1727590118}
+  playerStats: {fileID: 0}
 --- !u!114 &884642592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5983,6 +5985,7 @@ MonoBehaviour:
   maxMana: 100
   currentMana: 0
   manaDrainRate: 10
+  enemyhealth: {fileID: 0}
   useManaAction: {fileID: -429793169750358113, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   manaText: {fileID: 95454616}
 --- !u!1001 &884695859
@@ -17263,6 +17266,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &878893312008825168
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 594387273853177981, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_Name
+      value: HapticsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334078273566877750, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db1583cabc9bf4e29b758f1b007bfa6c, type: 3}
 --- !u!1001 &1451087685100740640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17822,3 +17882,4 @@ SceneRoots:
   - {fileID: 17334473}
   - {fileID: 899725110}
   - {fileID: 1295988882}
+  - {fileID: 878893312008825168}
