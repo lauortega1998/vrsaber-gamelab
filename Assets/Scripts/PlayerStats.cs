@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private InputActionReference useManaAction;
+    [SerializeField] private InputActionReference useManaActionFire;
+
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI manaText; // ← Drag the Text UI here
@@ -29,12 +31,20 @@ public class PlayerStats : MonoBehaviour
         useManaAction.action.canceled += ctx => isDraining = false;
 
         useManaAction.action.Enable();
+
+        useManaActionFire.action.started += ctx => isDraining = true;
+        useManaActionFire.action.canceled += ctx => isDraining = false;
+
+        useManaActionFire.action.Enable();
     }
 
     private void OnDestroy()
     {
         useManaAction.action.started -= ctx => isDraining = true;
         useManaAction.action.canceled -= ctx => isDraining = false;
+
+        useManaActionFire.action.started -= ctx => isDraining = true;
+        useManaActionFire.action.canceled -= ctx => isDraining = false;
     }
 
     private void Update()
