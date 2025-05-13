@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
-
+  //vibration intensity and amplitude parameters can only be modified in the scripts where haptics are called
+  
 public class HapticsManager : MonoBehaviour
 {
     public static HapticsManager Instance { get; private set; } // a singleton instance, all scripts can call this instance to trigger the haptics
