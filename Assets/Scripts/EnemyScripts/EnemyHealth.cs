@@ -20,21 +20,28 @@ public class EnemyHealth : MonoBehaviour
     {
         if (hasDied) return;
         hasDied = true;
-        // Disable the main collider
-        GetComponent<Collider>().enabled = false;
 
+        GetComponent<Collider>().enabled = false;
         EnemyManager.Instance.UnregisterAttacker();
         GameObject enemyRoot = transform.root.gameObject;
         Debug.Log($"{enemyRoot.name} was killed!");
         KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
-        
-        //give mana 
+
+        // give mana 
         PlayerStats playerStats = FindObjectOfType<PlayerStats>();
         if (playerStats != null)
         {
-            playerStats.GainMana(20); // Adjust the amount of mana given per enemy
+            playerStats.GainMana(20);
         }
+
+        // give rage
+        RageSystem rageSystem = FindObjectOfType<RageSystem>();
+        if (rageSystem != null)
+        {
+            rageSystem.OnEnemyKilled();
+        }
+
         // Spawn hit effect
         if (hitEffectPrefab != null && weaponHitPoint != null)
         {
@@ -48,7 +55,6 @@ public class EnemyHealth : MonoBehaviour
         {
             GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, transform.position, transform.rotation);
 
-            // Apply knockback to all rigidbodies
             Rigidbody[] ragdollRigidbodies = brokenInstance.GetComponentsInChildren<Rigidbody>();
             Vector3 pushDirection = (enemyRoot.transform.position - weaponHitPoint.position).normalized;
             pushDirection.y = 0;
@@ -65,8 +71,6 @@ public class EnemyHealth : MonoBehaviour
             Destroy(brokenInstance, enemyDestroyDelay);
         }
 
-        // Destroy the original enemy object
         Destroy(enemyRoot);
-
     }
 }
