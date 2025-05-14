@@ -16,6 +16,7 @@ TagManager:
   - Floor
   - LookTransform
   - HeavyEnemy
+  - Crosshair
   layers:
   - Default
   - TransparentFX

@@ -33,7 +33,7 @@ Material:
   m_InvalidKeywords:
   - _ALPHABLEND_ON
   - _REQUIRE_UV2
-  m_LightmapFlags: 0
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -133,11 +133,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.20087217, g: 0.6683423, b: 0.6981132, a: 1}
+    - _BaseColor: {r: 0.26666668, g: 0.3693359, b: 0.5803922, a: 0.39215687}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.20087212, g: 0.6683423, b: 0.6981132, a: 1}
-    - _EmissionColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+    - _Color: {r: 0.26666665, g: 0.36933586, b: 0.5803921, a: 0.39215687}
+    - _EmissionColor: {r: 0.015035378, g: 0.015035378, b: 0.015035378, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -267,7 +267,8 @@ GameObject:
   - component: {fileID: 2169844699576329659}
   - component: {fileID: 5969083111853279434}
   - component: {fileID: 7210100863831037895}
-  m_Layer: 0
+  - component: {fileID: 1815732394536536932}
+  m_Layer: 16
   m_Name: Hand_Axe_Weapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -528,7 +529,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -536,6 +537,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15056388, y: 0.050006114, z: 0.1766004}
   m_Center: {x: 0.010909494, y: -0.000000045026287, z: -0.051116377}
+--- !u!114 &1815732394536536932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405664496063040454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da34f8fe9ba3234a872aea122d7de91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 6
 --- !u!1 &4926688569160985310
 GameObject:
   m_ObjectHideFlags: 0

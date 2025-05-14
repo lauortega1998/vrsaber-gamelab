@@ -16,8 +16,12 @@ public class RageSystem : MonoBehaviour
 
     [Header("Rage Effects")]
     public GameObject fireHandEffectObject;
+    public GameObject fireHandEffectPower;
+
     public GameObject fireHandUI;
     public GameObject iceHandEffectObject;
+    public GameObject iceHandEffectPower;
+
     public GameObject iceHandUI;
 
     [Header("Power Activation")]
@@ -29,25 +33,29 @@ public class RageSystem : MonoBehaviour
     [Header("Post-Processing Settings (Rage Mode)")]
     public float rageVignetteIntensity = 0.85f;
     public float rageBloomIntensity = 15f;
-    public float rageSaturationBoost = 40f;
+    public float rageSaturationBoost = 0f; // Removed saturation boost
     public Color rageColorFilter = new Color(1f, 0.3f, 0.3f);
+    public float rageFilmGrainIntensity = 0.5f; // Added film grain intensity
 
     [Header("Post-Processing Settings (Normal Mode)")]
     public float normalVignetteIntensity = 0f;
     public float normalBloomIntensity = 0f;
     public float normalSaturation = 0f;
     public Color normalColorFilter = Color.white;
- [Header("Rage Haptics")]
+    public float normalFilmGrainIntensity = 0f; // Normal film grain intensity
+
+    [Header("Rage Haptics")]
     [Tooltip("Strength of each pulse when Rage is triggered (0–1)")]
     public float rageHapticAmplitude = 0.7f;
     [Tooltip("Duration of each pulse in seconds")]
-    public float rageHapticDuration  = 0.1f;
+    public float rageHapticDuration = 0.1f;
     [Tooltip("Gap between the two pulses (in seconds, must be <1)")]
-    public float rageHapticInterval  = 0.5f;
-   
+    public float rageHapticInterval = 0.5f;
+
     private Vignette vignette;
     private Bloom bloom;
     private ColorAdjustments colorAdjustments;
+    private FilmGrain filmGrain;
 
     private bool isDepleting = false;
 
@@ -58,6 +66,7 @@ public class RageSystem : MonoBehaviour
             postProcessingVolume.profile.TryGet(out vignette);
             postProcessingVolume.profile.TryGet(out bloom);
             postProcessingVolume.profile.TryGet(out colorAdjustments);
+            postProcessingVolume.profile.TryGet(out filmGrain);
 
             ResetPostProcessing(); // Start with normal settings
         }
@@ -97,15 +106,18 @@ public class RageSystem : MonoBehaviour
     {
         isDepleting = true;
         ActivateRageEffects();
-//haptics implementation to let the players know that the rage-meter is full and ready to use 
-      HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration); //first pulse in the controllers, 
 
-        Invoke(nameof(SecondRagePulse), rageHapticInterval); //Unity waits  rageHapticInterval seconds and the second pulse in the controllers 
+        // Haptics implementation to let the players know that the rage-meter is full and ready to use 
+        HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration); // first pulse in the controllers
+
+        Invoke(nameof(SecondRagePulse), rageHapticInterval); // Unity waits rageHapticInterval seconds and the second pulse in the controllers
     }
-      private void SecondRagePulse()
+
+    private void SecondRagePulse()
     {
         HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration);
     }
+
     private void DepleteRage()
     {
         currentRage -= rageDepletionRate * Time.deltaTime;
@@ -149,9 +161,12 @@ public class RageSystem : MonoBehaviour
 
         if (colorAdjustments != null)
         {
-            colorAdjustments.saturation.value = rageSaturationBoost;
+            colorAdjustments.saturation.value = rageSaturationBoost; // Removed saturation boost
             colorAdjustments.colorFilter.value = rageColorFilter;
         }
+
+        if (filmGrain != null)
+            filmGrain.intensity.value = rageFilmGrainIntensity; // Added film grain intensity
     }
 
     private void DeactivateRageEffects()
@@ -159,8 +174,14 @@ public class RageSystem : MonoBehaviour
         if (fireHandEffectObject != null)
             fireHandEffectObject.SetActive(false);
 
+        if (fireHandEffectPower != null)
+            fireHandEffectPower.SetActive(false);
+
         if (iceHandEffectObject != null)
             iceHandEffectObject.SetActive(false);
+
+        if (iceHandEffectPower != null)
+            iceHandEffectPower.SetActive(false);
 
         if (fireHandUI != null)
             fireHandUI.SetActive(false);
@@ -187,6 +208,9 @@ public class RageSystem : MonoBehaviour
             colorAdjustments.saturation.value = normalSaturation;
             colorAdjustments.colorFilter.value = normalColorFilter;
         }
+
+        if (filmGrain != null)
+            filmGrain.intensity.value = normalFilmGrainIntensity; // Normal film grain intensity
     }
 
     private void UpdateRageUI()

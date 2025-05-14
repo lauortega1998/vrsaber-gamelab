@@ -54,7 +54,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   saturation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -69,11 +69,11 @@ MonoBehaviour:
   m_Name: RagePostProcessing Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 147881092722360212}
   - {fileID: -9125842987821883096}
   - {fileID: -2190335123984097966}
   - {fileID: 3206675980879955730}
---- !u!114 &147881092722360212
+  - {fileID: 2391705612659462011}
+--- !u!114 &2391705612659462011
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,13 +82,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.385
+    m_Value: 0
+  response:
+    m_OverrideState: 1
+    m_Value: 1
+  texture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
 --- !u!114 &3206675980879955730
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -110,7 +119,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   scatter:
     m_OverrideState: 0
     m_Value: 0.7

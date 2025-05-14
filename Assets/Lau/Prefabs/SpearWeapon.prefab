@@ -802,6 +802,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3438982783699170569}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6444700581515649732}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5219286312479296617}
   m_SourcePrefab: {fileID: 100100000, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
 --- !u!4 &7467973357516425461 stripped
 Transform:
@@ -996,7 +1002,7 @@ MeshCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -1020,7 +1026,7 @@ MonoBehaviour:
   throwingSpeedThreshold: 22
   spearPrefab: {fileID: 8620090362284706586, guid: 612430d5c61e1134187b2af669fcd066, type: 3}
   gazeInteractor: {fileID: 0}
-  throwForce: 15
+  throwForce: 20
 --- !u!114 &7065101398722742653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +1052,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 1.5
-  pushForce: 2
+  damageVelocityThreshold: 2.5
+  pushForce: 0.3
   enemyscript: {fileID: 0}
+--- !u!114 &6444700581515649732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847595601434333775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48952b5f9c48664f903c6f3f83c1261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairObject: {fileID: 0}
+--- !u!114 &5219286312479296617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847595601434333775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da34f8fe9ba3234a872aea122d7de91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 6
