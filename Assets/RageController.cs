@@ -37,7 +37,14 @@ public class RageSystem : MonoBehaviour
     public float normalBloomIntensity = 0f;
     public float normalSaturation = 0f;
     public Color normalColorFilter = Color.white;
-
+ [Header("Rage Haptics")]
+    [Tooltip("Strength of each pulse when Rage is triggered (0–1)")]
+    public float rageHapticAmplitude = 0.7f;
+    [Tooltip("Duration of each pulse in seconds")]
+    public float rageHapticDuration  = 0.1f;
+    [Tooltip("Gap between the two pulses (in seconds, must be <1)")]
+    public float rageHapticInterval  = 0.5f;
+   
     private Vignette vignette;
     private Bloom bloom;
     private ColorAdjustments colorAdjustments;
@@ -90,8 +97,15 @@ public class RageSystem : MonoBehaviour
     {
         isDepleting = true;
         ActivateRageEffects();
-    }
+//haptics implementation to let the players know that the rage-meter is full and ready to use 
+      HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration); //first pulse in the controllers, 
 
+        Invoke(nameof(SecondRagePulse), rageHapticInterval); //Unity waits  rageHapticInterval seconds and the second pulse in the controllers 
+    }
+      private void SecondRagePulse()
+    {
+        HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration);
+    }
     private void DepleteRage()
     {
         currentRage -= rageDepletionRate * Time.deltaTime;
