@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen; // The current menu UI
     [SerializeField] private TMP_Text countdownUI; // The main game UI
     [SerializeField] private GameObject enemyFactory; // The main game UI
+    [SerializeField] private GameObject enemyTutorial; // The main game UI
+
     [SerializeField] private GameObject torches; // The main game UI
     [SerializeField] private GameObject allMenuRunes; // The current menu UI
 
@@ -137,4 +139,6 @@ public class UIManager : MonoBehaviour
         if (scoreboardScreen != null) goBackButton.SetActive(true);
 
     }
+
+
 }

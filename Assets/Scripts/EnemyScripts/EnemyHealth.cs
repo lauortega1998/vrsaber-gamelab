@@ -28,6 +28,13 @@ public class EnemyHealth : MonoBehaviour
         KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
 
+        TutorialEnemy tutorialEnemy = GetComponent<TutorialEnemy>(); // Find the TutorialEnemy script on this object
+        if (tutorialEnemy != null)
+        {
+            tutorialEnemy.ActivateEnemyFactory(); // Call the method to activate the factory
+        }
+
+
         // give mana 
         PlayerStats playerStats = FindObjectOfType<PlayerStats>();
         if (playerStats != null)
