@@ -1,9 +1,70 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GazePickupDetector : MonoBehaviour
 {
-   /* public float gazeDistance = 5f;
-    public LayerMask interactableLayer = ~0; // Default to everything
+    /* public float gazeDistance = 5f;
+     public LayerMask interactableLayer = ~0; // Default to everything
+
+     private GameObject currentTarget;
+
+     void Update()
+     {
+         Ray gazeRay = new Ray(transform.position, transform.forward);
+         RaycastHit hit;
+         float sphereRadius = 5f; // Adjust this for "thickness"
+
+         if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
+         {
+             GameObject hitObject = hit.collider.gameObject;
+
+             if (hitObject != currentTarget)
+             {
+                 ClearPreviousTarget();
+
+                 currentTarget = hitObject;
+                 TogglePickupIndicator(currentTarget, true);
+                 Debug.Log("Gazing at: " + hitObject.name);
+             }
+         }
+         else
+         {
+             ClearPreviousTarget();
+         }
+     }
+
+     void ClearPreviousTarget()
+     {
+         if (currentTarget != null)
+         {
+             TogglePickupIndicator(currentTarget, false);
+             currentTarget = null;
+         }
+     }
+
+     void TogglePickupIndicator(GameObject target, bool state)
+     {
+         // Search only within this target�s hierarchy
+         Canvas foundCanvas = target.GetComponentInChildren<Canvas>(true);
+
+         if (foundCanvas != null)
+         {
+             foundCanvas.gameObject.SetActive(state);
+         }
+         else
+         {
+             Debug.LogWarning("PickupIndicator not found on: " + target.name);
+         }
+
+
+
+     }*/
+
+
+
+
+    public float gazeDistance = 5f;
+    public LayerMask interactableLayer = ~0;
 
     private GameObject currentTarget;
 
@@ -11,7 +72,6 @@ public class GazePickupDetector : MonoBehaviour
     {
         Ray gazeRay = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        float sphereRadius = 5f; // Adjust this for "thickness"
 
         if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
         {
@@ -19,107 +79,26 @@ public class GazePickupDetector : MonoBehaviour
 
             if (hitObject != currentTarget)
             {
-                ClearPreviousTarget();
+                // Clear the previous indicator (shrink + fade it)
+                if (currentTarget != null)
+                    TogglePickupIndicator(currentTarget, false);
 
                 currentTarget = hitObject;
+
+                // Expand + brighten the new target's indicator
                 TogglePickupIndicator(currentTarget, true);
                 Debug.Log("Gazing at: " + hitObject.name);
             }
         }
         else
         {
-            ClearPreviousTarget();
-        }
-    }
-
-    void ClearPreviousTarget()
-    {
-        if (currentTarget != null)
-        {
-            TogglePickupIndicator(currentTarget, false);
-            currentTarget = null;
-        }
-    }
-
-    void TogglePickupIndicator(GameObject target, bool state)
-    {
-        // Search only within this target�s hierarchy
-        Canvas foundCanvas = target.GetComponentInChildren<Canvas>(true);
-
-        if (foundCanvas != null)
-        {
-            foundCanvas.gameObject.SetActive(state);
-        }
-        else
-        {
-            Debug.LogWarning("PickupIndicator not found on: " + target.name);
-        }
-        
-        
-        
-    }*/
-   
-   
-   
-   
-  public float gazeDistance = 5f;
-    public LayerMask interactableLayer = ~0;
-
-    public bool pickedUp = false;
-    private GameObject currentTarget;
-
-    private bool hasClearedUI = false;
-
-    void Update()
-    {
-        // 1. Gaze logic
-        if (!pickedUp)
-        {
-            Ray gazeRay = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(gazeRay, out hit, gazeDistance, interactableLayer))
+            // Raycast hit nothing — fade/shrink the previous
+            if (currentTarget != null)
             {
-                GameObject hitObject = hit.collider.gameObject;
-
-                if (hitObject != currentTarget)
-                {
-                    if (currentTarget != null)
-                        TogglePickupIndicator(currentTarget, false);
-
-                    currentTarget = hitObject;
-                    TogglePickupIndicator(currentTarget, true);
-                }
-            }
-            else
-            {
-                if (currentTarget != null)
-                {
-                    TogglePickupIndicator(currentTarget, false);
-                    currentTarget = null;
-                }
+                TogglePickupIndicator(currentTarget, false);
+                currentTarget = null;
             }
         }
-
-        // 2. Watch for bool from Inspector
-        if (pickedUp && !hasClearedUI)
-        {
-            DisableAllPickupIndicators();
-            hasClearedUI = true;
-        }
-    }
-
-    void DisableAllPickupIndicators()
-    {
-        GameObject[] all = GameObject.FindGameObjectsWithTag("Interactable");
-        foreach (GameObject obj in all)
-        {
-            Transform indicator = obj.transform.Find("PickupIndicator");
-            if (indicator != null)
-                indicator.gameObject.SetActive(false);
-        }
-
-        Debug.Log("All pickup UIs disabled.");
     }
 
     void TogglePickupIndicator(GameObject target, bool state)
@@ -128,15 +107,33 @@ public class GazePickupDetector : MonoBehaviour
 
         if (indicator != null)
         {
-            UnityEngine.UI.Image image = indicator.GetComponentInChildren<UnityEngine.UI.Image>();
+            GameObject indicatorObj = indicator.gameObject;
+
+            // No SetActive — we keep it always on
+            // Find the Image inside the canvas
+            UnityEngine.UI.Image image = indicatorObj.GetComponentInChildren<UnityEngine.UI.Image>();
             if (image != null)
             {
-                image.color = new Color(image.color.r, image.color.g, image.color.b, state ? 1f : 0.3f);
                 RectTransform imgRect = image.GetComponent<RectTransform>();
-                imgRect.sizeDelta = state ? new Vector2(150, 150) : new Vector2(100, 100);
+                if (imgRect != null)
+                {
+                    imgRect.sizeDelta =
+                        state ? new Vector2(150, 150) : new Vector2(100, 100); // adjust values to your liking
+                }
+
+                // Optional: also change color/opacity
+                Color color = image.color;
+                color.a = state ? 1f : 0.3f;
+                image.color = color;
             }
+
+            // Optional: you can still use CanvasGroup for global fading (if needed)
+            // But not necessary if you control the image color directly
+        }
+        else
+        {
+            Debug.LogWarning("PickupIndicator not found on: " + target.name);
         }
     }
 }
-
 
