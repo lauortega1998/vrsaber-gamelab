@@ -17,6 +17,10 @@ public class HideUIOnGripBothHands : MonoBehaviour
     {
         leftGripAction.action.performed += OnLeftGripPressed;
         rightGripAction.action.performed += OnRightGripPressed;
+        leftGripAction.action.canceled += OnLeftGripPressed;
+        rightGripAction.action.canceled += OnRightGripPressed;
+
+
 
         leftGripAction.action.Enable();
         rightGripAction.action.Enable();
@@ -26,6 +30,8 @@ public class HideUIOnGripBothHands : MonoBehaviour
     {
         leftGripAction.action.performed -= OnLeftGripPressed;
         rightGripAction.action.performed -= OnRightGripPressed;
+        leftGripAction.action.canceled -= OnLeftGripPressed;
+        rightGripAction.action.canceled -= OnRightGripPressed;
 
         leftGripAction.action.Disable();
         rightGripAction.action.Disable();
@@ -33,25 +39,47 @@ public class HideUIOnGripBothHands : MonoBehaviour
 
     private void OnLeftGripPressed(InputAction.CallbackContext context)
     {
-        if (leftHandUI != null)
-            leftHandUI.SetActive(false);
-        foreach (GameObject obj in pickupIndicator)
+        if (context.performed)
         {
-            obj.SetActive(false);
-        }
-        
+            if (leftHandUI != null)
+                leftHandUI.SetActive(false);
 
-            
+            foreach (GameObject obj in pickupIndicator)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else if (context.canceled)
+        {
+           
+
+            foreach (GameObject obj in pickupIndicator)
+            {
+                obj.SetActive(true);
+            }
+        }
     }
 
     private void OnRightGripPressed(InputAction.CallbackContext context)
     {
-        if (rightHandUI != null)
-            rightHandUI.SetActive(false);
-        foreach (GameObject obj in pickupIndicator)
+        if (context.performed)
         {
-            obj.SetActive(false);
-        }
+            if (rightHandUI != null)
+                rightHandUI.SetActive(false);
 
+            foreach (GameObject obj in pickupIndicator)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else if (context.canceled)
+        {
+           
+
+            foreach (GameObject obj in pickupIndicator)
+            {
+                obj.SetActive(true);
+            }
+        }
     }
 }
