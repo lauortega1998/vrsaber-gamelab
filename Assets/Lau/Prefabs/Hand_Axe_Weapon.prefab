@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 5969083111853279434}
   - component: {fileID: 7210100863831037895}
   - component: {fileID: 1815732394536536932}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Hand_Axe_Weapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 3548651363641609470}
   - component: {fileID: 3625196195496910751}
   - component: {fileID: 6555254840188252566}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: UIPickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
