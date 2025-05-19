@@ -42,7 +42,6 @@ public class LightFlicker : MonoBehaviour
             audioSource = GetComponent<AudioSource>();  // Ensure AudioSource is attached
         }
 
-        FindAnyObjectByType<AudioManager>().Play("Thunder1");
 
     }
 
@@ -52,6 +51,7 @@ public class LightFlicker : MonoBehaviour
         {
             // If the light is active, start the flickering process
             FlickerLight();
+            FindAnyObjectByType<AudioManager>().Play("Thunder2");
             flickerTimer -= Time.deltaTime;
 
             // If the flicker timer has elapsed, reset the flicker with a random interval
