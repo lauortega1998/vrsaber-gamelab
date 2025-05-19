@@ -4437,7 +4437,7 @@ MonoBehaviour:
   gazeDistance: 5
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 16385
 --- !u!1 &451100158
 GameObject:
   m_ObjectHideFlags: 0
