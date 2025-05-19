@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +8,7 @@ public class HideUIOnGripBothHands : MonoBehaviour
     [Header("UI Elements to Hide")]
     public GameObject leftHandUI;
     public GameObject rightHandUI;
-
+    public List<GameObject> pickupIndicator;  
     [Header("Grip Input Actions")]
     public InputActionReference leftGripAction;  // Assign Left Grip action
     public InputActionReference rightGripAction; // Assign Right Grip action
@@ -33,11 +35,23 @@ public class HideUIOnGripBothHands : MonoBehaviour
     {
         if (leftHandUI != null)
             leftHandUI.SetActive(false);
+        foreach (GameObject obj in pickupIndicator)
+        {
+            obj.SetActive(false);
+        }
+        
+
+            
     }
 
     private void OnRightGripPressed(InputAction.CallbackContext context)
     {
         if (rightHandUI != null)
             rightHandUI.SetActive(false);
+        foreach (GameObject obj in pickupIndicator)
+        {
+            obj.SetActive(false);
+        }
+
     }
 }
