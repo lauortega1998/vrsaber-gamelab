@@ -20,7 +20,8 @@ public class UIManager : MonoBehaviour
 
 
     public SmashableUI smashableUI;
-
+    public LevelManager levelManager;
+    
     [Header("Scoreboard Settings")]
     [SerializeField] private GameObject menuScreenForScoreboard; // The current menu UI
     [SerializeField] private GameObject scoreboardScreen; // The scoreboard UI
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     // Called externally when runes are smashed
     public void OnPlayRuneSmashed()
     {
+
         StartCoroutine(DelayedGameStart());
     }
 
@@ -117,6 +119,7 @@ public class UIManager : MonoBehaviour
         if (enemyFactory != null)
             enemyFactory.SetActive(true);
         Destroy(allMenuRunes);
+        levelManager. OnStartButtonPressed();
 
     }
 
