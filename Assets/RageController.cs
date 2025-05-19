@@ -102,7 +102,7 @@ public class RageSystem : MonoBehaviour
         }
     }
 
-    private void StartDepletingRage()
+    public void StartDepletingRage()
     {
         isDepleting = true;
         ActivateRageEffects();

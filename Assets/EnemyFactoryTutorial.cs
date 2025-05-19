@@ -29,6 +29,9 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
     private List<GameObject> rageWaveEnemies = new List<GameObject>();
     private GameObject flyingEnemy;
 
+    public RageSystem rageSystem; // drag your RageSystem object into this in the Inspector
+
+
     void Start()
     {
         StartCoroutine(SpawnTutorialEnemies());
@@ -61,13 +64,11 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
         // Step 6: Wait for giant to be defeated
         yield return new WaitUntil(() => strong == null);
 
-        // Step 7: Activate Rage Mode (optional)
-        /*
-        if (rageController != null)
+        if (rageSystem != null)
         {
-            rageController.ActivateRage();
+            rageSystem.currentRage = rageSystem.rageMax;   // fill to 100%
+            rageSystem.StartDepletingRage();               // trigger rage effects manually
         }
-        */
 
         if (rageUIElement != null)
         {
