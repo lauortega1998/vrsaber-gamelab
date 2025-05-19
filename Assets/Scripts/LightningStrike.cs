@@ -22,6 +22,7 @@ public class LightFlicker : MonoBehaviour
 
     void Start()
     {
+
         lightComponent = GetComponent<Light>();  // Get the Light component attached to the GameObject
         if (lightComponent == null)
         {
@@ -40,6 +41,9 @@ public class LightFlicker : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();  // Ensure AudioSource is attached
         }
+
+        FindAnyObjectByType<AudioManager>().Play("Thunder1");
+
     }
 
     void Update()
