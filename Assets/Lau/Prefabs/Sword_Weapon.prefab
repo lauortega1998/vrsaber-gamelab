@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 8835924348584249840}
   - component: {fileID: 1899803796276208349}
   - component: {fileID: 3850984815717643358}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4379798608756642887}
   - component: {fileID: 8828143586904376956}
   - component: {fileID: 4579858280728432684}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Sword_Weapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2862683227903276444, guid: 1f898b6c9c50d5e4bb5beb73522b1a53, type: 3}
+  m_Mesh: {fileID: -5495902117074765545, guid: fa0dd7d80ba9d6f4685aaecd53597d81, type: 3}
 --- !u!114 &4579858280728432684
 MonoBehaviour:
   m_ObjectHideFlags: 0
