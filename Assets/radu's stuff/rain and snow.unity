@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rainfall
       objectReference: {fileID: 0}
+    - target: {fileID: 97442611509791666, guid: c4f300a6f7846bb45b6cb20013dcf60e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7971406411296775498, guid: c4f300a6f7846bb45b6cb20013dcf60e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
