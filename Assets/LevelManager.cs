@@ -12,7 +12,9 @@ public class LevelManager : MonoBehaviour
     public Color redColor;
     public Color blueColor;
     public float transitionDuration = 2f;
-
+    public GameObject enemyspawnerLevelTutorial;
+    public GameObject enemyspanwerLevelFire;
+    public GameObject enemyspanwerLevelIce;
     void Start()
     {
         // Initial ground color to black
@@ -35,31 +37,39 @@ public class LevelManager : MonoBehaviour
     {
         // Wait 5 seconds after pressing Start
         Debug.Log("Start button pressed. Starting in 5 seconds...");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f); //it should be 5f
 
         // Tutorial Level (1 min)
         Debug.Log("Tutorial started. Duration: 1 minute.");
-        yield return new WaitForSeconds(5f);
+        enemyspawnerLevelTutorial.SetActive(true);
+        yield return new WaitForSeconds(60f); //it should be 60f 
+        enemyspawnerLevelTutorial.SetActive(false);
+
+        
         Debug.Log("Tutorial rage mode started (last 10 seconds).");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);   //it should be 10f  
 
         // Transition to Fire Level
         Debug.Log("Transition to Fire level...");
         yield return StartCoroutine(TransitionGroundColor(redColor));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f); //it should be 10f 
 
         // Fire Level (2 min)
         Debug.Log("Fire level started. Duration: 2 minutes.");
-        yield return new WaitForSeconds(5f);
+        enemyspanwerLevelFire.SetActive(true);
+        yield return new WaitForSeconds(120f); //it should be 120f
+        enemyspanwerLevelFire.SetActive(false);
 
         // Transition to Ice Level
         Debug.Log("Transition to Ice level...");
         yield return StartCoroutine(TransitionGroundColor(blueColor));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f); //it should be 10f
 
         // Ice Level (3 min)
         Debug.Log("Ice level started. Duration: 3 minutes.");
-        yield return new WaitForSeconds(5f);
+        enemyspanwerLevelIce.SetActive(true);
+        yield return new WaitForSeconds(180f); //it should be 180f
+        enemyspanwerLevelIce.SetActive(false);
 
         Debug.Log("Game completed!");
     }

@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3934317
 Transform:
   m_ObjectHideFlags: 0
@@ -21979,6 +21979,9 @@ MonoBehaviour:
   redColor: {r: 1, g: 0, b: 0, a: 0}
   blueColor: {r: 0, g: 0.14121628, b: 1, a: 0}
   transitionDuration: 2
+  enemyspawnerLevelTutorial: {fileID: 27839403}
+  enemyspanwerLevelFire: {fileID: 3934316}
+  enemyspanwerLevelIce: {fileID: 303169587}
 --- !u!4 &1837286992
 Transform:
   m_ObjectHideFlags: 0
@@ -21988,7 +21991,7 @@ Transform:
   m_GameObject: {fileID: 1837286990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48235798, y: 2.4587376, z: 0.62652785}
+  m_LocalPosition: {x: -0.48235798, y: 2.92, z: 0.62652785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24099,6 +24102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4936989221609191255, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9209731671692182969, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.555308
@@ -24701,7 +24708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1361853567853114548, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1764811687386590091, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: m_Mesh
@@ -24730,7 +24737,11 @@ PrefabInstance:
     - target: {fileID: 2944067037122208484, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: enemyFactory
       value: 
-      objectReference: {fileID: 27839403}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944067037122208484, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1837286991}
     - target: {fileID: 2944067037122208484, guid: 9342ebda2b50d8a44a498aaf16b0604b, type: 3}
       propertyPath: enemyTutorial
       value: 
