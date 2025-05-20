@@ -58,7 +58,7 @@ public class RageSystem : MonoBehaviour
     private FilmGrain filmGrain;
 
     private bool isDepleting = false;
-
+    public TimeManager timeManager;
     private void Start()
     {
         if (postProcessingVolume != null)
@@ -100,6 +100,7 @@ public class RageSystem : MonoBehaviour
                 StartDepletingRage();
             }
         }
+
     }
 
     public void StartDepletingRage()

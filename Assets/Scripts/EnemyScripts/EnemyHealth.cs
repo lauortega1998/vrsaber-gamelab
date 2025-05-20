@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour
 
     private bool hasDied = false;
 
+    public TimeManager timeManager;
+    
+  
+
+
     public void Die(Transform weaponHitPoint)
     {
         if (hasDied) return;
@@ -34,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
             tutorialEnemy.ActivateEnemyFactory(); // Call the method to activate the factory
         }
 
+        
 
         // give mana 
         PlayerStats playerStats = FindObjectOfType<PlayerStats>();
@@ -77,7 +83,13 @@ public class EnemyHealth : MonoBehaviour
 
             Destroy(brokenInstance, enemyDestroyDelay);
         }
+        TimeManager timeManager = FindObjectOfType<TimeManager>();
+        if (timeManager != null)
+        {
+            timeManager.SlowDown();
+        }
 
         Destroy(enemyRoot);
+
     }
 }
