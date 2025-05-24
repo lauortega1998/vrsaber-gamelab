@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Play Settings")]
     [SerializeField] private GameObject menuScreen; // The current menu UI
+    [SerializeField] private GameObject levelName; // The current menu UI
     [SerializeField] private TMP_Text countdownUI; // The main game UI
     [SerializeField] private GameObject enemyFactory; // The main game UI
     [SerializeField] private GameObject enemyTutorial; // The main game UI
@@ -95,6 +96,9 @@ public class UIManager : MonoBehaviour
         float countdown = gameCountDown;
 
         if (countdownUI != null)
+            levelManager.OnStartButtonPressed();
+
+        levelName.gameObject.SetActive(true);
             countdownUI.gameObject.SetActive(true); // Make sure the text is visible
 
         while (countdown > 0)
@@ -114,12 +118,12 @@ public class UIManager : MonoBehaviour
         }
 
         if (countdownUI != null)
-            countdownUI.gameObject.SetActive(false);
+            levelName.gameObject.SetActive(false);
+        countdownUI.gameObject.SetActive(false);
 
         if (enemyFactory != null)
             enemyFactory.SetActive(true);
         Destroy(allMenuRunes);
-        levelManager. OnStartButtonPressed();
 
     }
 

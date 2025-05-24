@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -26,6 +27,13 @@ public class EnemyFactoryFirstLevel : MonoBehaviour
     private float waveTimer = 0f;
     private bool waveRunning = false;
 
+    public float preWaveCountdown = 3f;
+
+    // === UI Elements ===
+    public GameObject levelStartUI;
+    public GameObject levelEndUI;
+    public TextMeshProUGUI countdownText;
+
     public float delayBetweenWaves = 5f;
 
     public void StartWaves()
@@ -39,15 +47,31 @@ public class EnemyFactoryFirstLevel : MonoBehaviour
     private IEnumerator RunWave(EnemyWave wave)
     {
         waveRunning = true;
-        waveTimer = 0f;
 
+        // === Start UI ===
+        levelStartUI.SetActive(true);
+        levelEndUI.SetActive(false);
+        countdownText.gameObject.SetActive(true);
+
+        // Countdown before spawning
+        float countdown = preWaveCountdown;
+        while (countdown > 0)
+        {
+            countdownText.text = Mathf.Ceil(countdown).ToString();
+            countdown -= Time.deltaTime;
+            yield return null;
+        }
+
+        countdownText.gameObject.SetActive(false);
+        levelStartUI.SetActive(false);
+
+        waveTimer = 0f;
         List<SpawnEvent> events = new List<SpawnEvent>(wave.spawnEvents);
         events.Sort((a, b) => a.spawnTime.CompareTo(b.spawnTime));
 
         while (events.Count > 0)
         {
             SpawnEvent nextEvent = events[0];
-
             if (waveTimer >= nextEvent.spawnTime)
             {
                 for (int i = 0; i < nextEvent.amount; i++)
@@ -62,24 +86,10 @@ public class EnemyFactoryFirstLevel : MonoBehaviour
             waveTimer += Time.deltaTime;
             yield return null;
         }
-
-        yield return new WaitForSeconds(delayBetweenWaves);
-
-        currentWaveIndex++;
-        if (currentWaveIndex < waves.Count)
+        void Start()
         {
-            StartCoroutine(RunWave(waves[currentWaveIndex]));
-        }
-        else
-        {
-            Debug.Log("All waves completed.");
-        }
+            StartWaves();
 
-        waveRunning = false;
-    }
-    void Start()
-    {
-        StartWaves();
-
+        }
     }
 }
