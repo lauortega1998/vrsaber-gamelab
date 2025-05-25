@@ -48,9 +48,9 @@ GameObject:
   - component: {fileID: 4399808357656491141}
   - component: {fileID: 5681432866044961230}
   - component: {fileID: 6092707899373207365}
-  m_Layer: 3
+  m_Layer: 18
   m_Name: EnemyTest - HitIndicator_2
-  m_TagString: Enemy
+  m_TagString: HeavyEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   brokenSkeletonPrefab: {fileID: 596590499570407748, guid: 9f29c6bfb92647a4db9dda4a3a92ab2e, type: 3}
   knockbackForce: 5
   enemyDestroyDelay: 2
+  timeManager: {fileID: 0}
 --- !u!54 &8475857238604398321
 Rigidbody:
   m_ObjectHideFlags: 0

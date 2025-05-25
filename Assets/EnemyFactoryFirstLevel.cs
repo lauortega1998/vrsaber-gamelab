@@ -86,10 +86,11 @@ public class EnemyFactoryFirstLevel : MonoBehaviour
             waveTimer += Time.deltaTime;
             yield return null;
         }
-        void Start()
-        {
-            StartWaves();
 
-        }
+    }
+    void Start()
+    {
+        StartWaves();
+
     }
 }

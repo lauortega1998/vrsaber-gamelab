@@ -1059,6 +1059,7 @@ MonoBehaviour:
   damageVelocityThreshold: 2.5
   pushForce: 0.3
   enemyscript: {fileID: 0}
+  incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
 --- !u!114 &6444700581515649732
 MonoBehaviour:
   m_ObjectHideFlags: 0

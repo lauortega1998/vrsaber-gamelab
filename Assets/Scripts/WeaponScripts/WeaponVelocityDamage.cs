@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponVelocityDamage : MonoBehaviour
 {
@@ -7,6 +7,8 @@ public class WeaponVelocityDamage : MonoBehaviour
     public Enemy enemyscript;
     private Rigidbody rb;
     private bool isOnGround = false;
+    public GameObject incorrectStrikeEffect;  // Particle effect to instantiate on incorrect strike
+
 
     void Start()
     {
@@ -65,29 +67,41 @@ public class WeaponVelocityDamage : MonoBehaviour
             }
         }
         //Logic for heavy enemy
-        if (collision.gameObject.layer == LayerMask.NameToLayer("HeavyEnemy"))
+        if (collision.gameObject.CompareTag("HeavyEnemy"))
         {
-            Debug.Log("CollidedWithEnemy");
+            Debug.Log("Collided with Enemy");
 
-            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
-            if (enemy != null)
+            EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            StrikeZone strikeZone = collision.gameObject.GetComponentInChildren<StrikeZone>();
+
+            if (enemy != null && strikeZone != null)
             {
-                if (impactVelocity >= damageVelocityThreshold)
+                if (impactVelocity >= damageVelocityThreshold && strikeZone.IsCorrectStrike(rb.linearVelocity))
                 {
-                    Debug.Log("[WeaponVelocityDamage] Killing enemy.");
+                    Debug.Log("[Weapon] Correct strike � Enemy killed.");
                     enemy.Die(transform);
                 }
-                Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
+                else
+                {
+                    Debug.Log("[Weapon] Incorrect strike direction or too slow.");
+                    if (incorrectStrikeEffect != null && collision.contacts.Length > 0)
+                    {
+                        Vector3 impactPoint = collision.contacts[0].point;
+                        Instantiate(incorrectStrikeEffect, impactPoint, Quaternion.identity);
+                    }
+                }
+
                 Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (enemyRb != null)
                 {
                     Vector3 pushDir = (collision.transform.position - transform.position).normalized;
                     pushDir.y = 0;
 
-                    float clampedForce = Mathf.Min(pushForce, 5f); // prevent over-push
-                    enemyRb.linearDamping = 2f; // increase drag to reduce sliding
+                    float clampedForce = Mathf.Min(pushForce, 2f);
+                    enemyRb.linearDamping = 2f;
                     enemyRb.AddForce(pushDir * clampedForce, ForceMode.Impulse);
-                    
+
+                   
                 }
             }
         }
