@@ -55,9 +55,9 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(10f); //it should be 10f 
 
         // Fire Level (2 min)
-        Debug.Log("Fire level started. Duration: 2 minutes.");
+        Debug.Log("Fire level started. Duration: 1.5 minutes.");
         enemyspanwerLevelFire.SetActive(true);
-        yield return new WaitForSeconds(120f); //it should be 120f
+        yield return new WaitForSeconds(90f); //it should be 120f
         enemyspanwerLevelFire.SetActive(false);
 
         // Transition to Ice Level
@@ -66,9 +66,9 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(10f); //it should be 10f
 
         // Ice Level (3 min)
-        Debug.Log("Ice level started. Duration: 3 minutes.");
+        Debug.Log("Ice level started. Duration: 2 minutes.");
         enemyspanwerLevelIce.SetActive(true);
-        yield return new WaitForSeconds(180f); //it should be 180f
+        yield return new WaitForSeconds(120f); //it should be 180f
         enemyspanwerLevelIce.SetActive(false);
 
         Debug.Log("Game completed!");
