@@ -7,7 +7,7 @@ public class WeaponRespawner : MonoBehaviour
 {
     public float respawnTime = 10f;  // Time before respawn
     private float timer = 0f;        // Current time left for respawn
-    private bool isDropped = false;  // Flag to check if the weapon is dropped
+    public bool isDropped = false;  // Flag to check if the weapon is dropped
     private Vector3 originalPosition; // Original position to teleport the weapon back
     private Quaternion originalRotation; // Original rotation of the weapon
 
