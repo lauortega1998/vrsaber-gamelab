@@ -20,8 +20,6 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
     // public RageController rageController;
 
     [Header("Next Factory")]
-    public GameObject nextEnemyFactoryPrefab;
-    public Transform nextFactorySpawnPoint;
     public float delayBeforeNextFactory = 3f;
 
     private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -89,16 +87,9 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
         // Step 10: Wait before spawning next factory
         yield return new WaitForSeconds(delayBeforeNextFactory);
 
-        // Step 11: Spawn next enemy factory
-        if (nextEnemyFactoryPrefab != null && nextFactorySpawnPoint != null)
-        {
-            nextEnemyFactoryPrefab.SetActive(true);
-            rageUIElement.SetActive(false);
-
-        }
+        rageUIElement.SetActive(false);       
 
         // Step 12: Destroy this factory
-        Destroy(gameObject);
     }
 
     private bool NormalEnemiesDefeated()

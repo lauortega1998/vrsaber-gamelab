@@ -20,14 +20,12 @@ public class EnemyWave
 
 
 
-public class EnemyFactoryFirstLevel : MonoBehaviour
+public class EnemyFactoryLevels : MonoBehaviour
 {
     public List<EnemyWave> waves = new List<EnemyWave>();
     private int currentWaveIndex = 0;
     private float waveTimer = 0f;
     private bool waveRunning = false;
-
-    public float preWaveCountdown = 3f;
 
     // === UI Elements ===
     public GameObject levelStartUI;
@@ -54,13 +52,7 @@ public class EnemyFactoryFirstLevel : MonoBehaviour
         countdownText.gameObject.SetActive(true);
 
         // Countdown before spawning
-        float countdown = preWaveCountdown;
-        while (countdown > 0)
-        {
-            countdownText.text = Mathf.Ceil(countdown).ToString();
-            countdown -= Time.deltaTime;
-            yield return null;
-        }
+        
 
         countdownText.gameObject.SetActive(false);
         levelStartUI.SetActive(false);
