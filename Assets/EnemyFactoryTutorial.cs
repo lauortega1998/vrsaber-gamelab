@@ -64,7 +64,7 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
         // Step 6: Wait for giant to be defeated
         yield return new WaitUntil(() => strong == null);
 
-        if (rageSystem != null)
+        if (rageSystem != null) 
         {
             rageSystem.currentRage = rageSystem.rageMax;   // fill to 100%
             rageSystem.StartDepletingRage();               // trigger rage effects manually
