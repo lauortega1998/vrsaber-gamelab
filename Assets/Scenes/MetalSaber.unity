@@ -285,9 +285,7 @@ MonoBehaviour:
       - {fileID: 1568520867}
       - {fileID: 1761279925}
       - {fileID: 1647987146}
-  currentWaveIndex: 0
-  waveTimer: 0
-  waveRunning: 0
+  preWaveCountdown: 3
   levelStartUI: {fileID: 914899574}
   levelEndUI: {fileID: 914899574}
   countdownText: {fileID: 1203908976}
@@ -689,6 +687,8 @@ MonoBehaviour:
   flyingSpawnPoint: {fileID: 518992014}
   strongSpawnPoint: {fileID: 1961412047}
   rageUIElement: {fileID: 1645725626}
+  nextEnemyFactoryPrefab: {fileID: 0}
+  nextFactorySpawnPoint: {fileID: 0}
   delayBeforeNextFactory: 0
   rageSystem: {fileID: 884642601}
 --- !u!1001 &27862999
@@ -955,6 +955,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &56078272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 1846376002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &56474628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,6 +2001,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 1996671369}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -3276,6 +3285,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 1488173123}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -5506,6 +5519,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4839135935112785434, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
   m_PrefabInstance: {fileID: 109756428}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &485852803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 1092022697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &489641709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6319,9 +6337,7 @@ MonoBehaviour:
       - {fileID: 1568520867}
       - {fileID: 1761279925}
       - {fileID: 1647987146}
-  currentWaveIndex: 0
-  waveTimer: 0
-  waveRunning: 0
+  preWaveCountdown: 3
   levelStartUI: {fileID: 914899574}
   levelEndUI: {fileID: 914899574}
   countdownText: {fileID: 1203908976}
@@ -9298,6 +9314,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &810991806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 1156395669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813179158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8520062464028988620, guid: 9202160e1aab11e4bb4ab1be2fbf9500, type: 3}
@@ -13108,6 +13129,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 485852803}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -14011,6 +14036,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 1155831371}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -14240,6 +14269,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6391579207171690961, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 191715295}
+    - targetCorrespondingSourceObject: {fileID: 6391579207171690961, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570044792}
     - targetCorrespondingSourceObject: {fileID: 5632266133985503989, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 22372751}
@@ -14423,6 +14455,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7467973357516425461, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
   m_PrefabInstance: {fileID: 1154503248}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1155831371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 1129946406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1156395669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14435,6 +14472,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 810991806}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -14880,6 +14921,11 @@ Mesh:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3286523833319246476, guid: 3b240812ce4b47547bea32841018b029, type: 3}
   m_PrefabInstance: {fileID: 6437378940301071841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1200645711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 2034210445}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1203908975
 GameObject:
@@ -17457,6 +17503,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1391023924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391023926}
+  - component: {fileID: 1391023925}
+  m_Layer: 0
+  m_Name: WeaponSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1391023925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391023924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da34f8fe9ba3234a872aea122d7de91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spearPrefab: {fileID: 0}
+  respawnTime: 10
+--- !u!4 &1391023926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391023924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.153144, y: -8.041454, z: -12.459866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393427886
 GameObject:
   m_ObjectHideFlags: 0
@@ -18615,6 +18707,11 @@ RectTransform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6391579207171690961, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
   m_PrefabInstance: {fileID: 1140410421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1488173123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 257080250}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490349362
 GameObject:
@@ -19835,6 +19932,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 679852964}
   m_LocalEulerAnglesHint: {x: 0, y: -38.94, z: 0}
+--- !u!1 &1570044791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570044792}
+  - component: {fileID: 1570044795}
+  - component: {fileID: 1570044794}
+  - component: {fileID: 1570044793}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: ProjectileDamage
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570044792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570044791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7031684, y: -0.07452647, z: 0.07452647, w: 0.7031684}
+  m_LocalPosition: {x: 0.041, y: 1.397, z: -0.513}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1481599672}
+  m_LocalEulerAnglesHint: {x: 90, y: -12.1, z: 0}
+--- !u!64 &1570044793
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570044791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1570044794
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570044791}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1570044795
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570044791}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1577418121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23575,12 +23781,6 @@ MonoBehaviour:
   enemyspawnerLevelTutorial: {fileID: 27839403}
   enemyspanwerLevelFire: {fileID: 536968180}
   enemyspanwerLevelIce: {fileID: 3934316}
-  levelStartUIIce: {fileID: 1917668885}
-  levelEndUIIce: {fileID: 995454729}
-  countdownIce: {fileID: 2028175516}
-  levelStartUIFire: {fileID: 2189557}
-  gameEndingUI: {fileID: 640548737}
-  countdownTextFire: {fileID: 1667592350}
 --- !u!4 &1837286992
 Transform:
   m_ObjectHideFlags: 0
@@ -23714,6 +23914,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 56078272}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -24845,6 +25049,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1104978214145010958, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
   m_PrefabInstance: {fileID: 443799740}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1996671369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+  m_PrefabInstance: {fileID: 149158086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1998605966
 GameObject:
   m_ObjectHideFlags: 0
@@ -25187,6 +25396,10 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: spearPrefab
+      value: 
+      objectReference: {fileID: 1200645711}
     - target: {fileID: 6444700581515649732, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: crosshairObject
       value: 
@@ -27110,3 +27323,4 @@ SceneRoots:
   - {fileID: 1959893565}
   - {fileID: 348017605}
   - {fileID: 1512300358}
+  - {fileID: 1391023926}

@@ -17,6 +17,7 @@ TagManager:
   - LookTransform
   - HeavyEnemy
   - Crosshair
+  - ProjectileDamage
   layers:
   - Default
   - TransparentFX
