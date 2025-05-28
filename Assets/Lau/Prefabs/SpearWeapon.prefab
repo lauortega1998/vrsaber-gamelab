@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76daad4aea6b10459a4f80262ce437c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwingSpeedThreshold: 22
+  throwingSpeedThreshold: 15
   spearPrefab: {fileID: 8620090362284706586, guid: 612430d5c61e1134187b2af669fcd066, type: 3}
   gazeInteractor: {fileID: 0}
   throwForce: 20

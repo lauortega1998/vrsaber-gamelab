@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement; // <- For reloading the scene
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using Random = UnityEngine.Random;
 
@@ -12,27 +13,38 @@ public class PlayerHealth : MonoBehaviour
 
     public delegate void HealthChanged(int currentHealth, int maxHealth);
     public event HealthChanged OnHealthChanged;
-    public TextMeshProUGUI healthText;
+
+    [Header("UI References")]
+    public Slider healthSlider; // Reference to the Slider component
+    public TextMeshProUGUI healthText; // Optional text display
+
+    [Header("Text Flash Settings")]
+    public Color damageColor = Color.red;
+    public float damageFontSizeIncrease = 10f;
+    public float flashDuration = 0.3f;
+
+    [Header("Health Bar Color Gradient")]
+    public Color fullHealthColor = Color.green;
+    public Color lowHealthColor = Color.red;
+
+    [Header("Vibration Settings")]
+    public float vibrationIntensity = 5f;
+    public float vibrationDuration = 0.3f;
 
     private Color originalColor;
     private float originalFontSize;
     private Vector3 originalPosition;
 
-    public Color damageColor = Color.red;
-    public float damageFontSizeIncrease = 10f;
-    public float flashDuration = 0.3f;
-
-    public Color fullHealthColor = Color.green;
-    public Color lowHealthColor = Color.red;
-
-    public float vibrationIntensity = 5f; // How much the text vibrates
-    public float vibrationDuration = 0.3f; // How long the vibration lasts
-
     void Start()
     {
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        UpdateHealthUI();
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
 
         if (healthText != null)
         {
@@ -40,6 +52,8 @@ public class PlayerHealth : MonoBehaviour
             originalFontSize = healthText.fontSize;
             originalPosition = healthText.rectTransform.localPosition;
         }
+
+        UpdateHealthUI();
     }
 
     public void TakeDamage(int damage)
@@ -76,24 +90,33 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthUI()
     {
+        float healthPercent = (float)currentHealth / maxHealth;
+
+        // Update the slider value
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+
+            // If the slider has a Fill image, change its color
+            Image fillImage = healthSlider.fillRect?.GetComponent<Image>();
+            if (fillImage != null)
+            {
+                fillImage.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);
+            }
+        }
+
+        // Optional: keep or remove text
         if (healthText != null)
         {
-            healthText.text = "Health: " + currentHealth + " / " + maxHealth;
-
-            // Change color based on current health
-            float healthPercent = (float)currentHealth / maxHealth;
+            healthText.text = $"Health: ";
             healthText.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);
         }
     }
 
     private IEnumerator FlashHealthText()
     {
-        // Make text bigger (no color change here)
         healthText.fontSize = originalFontSize + damageFontSizeIncrease;
-
         yield return new WaitForSeconds(flashDuration);
-
-        // Restore original size
         healthText.fontSize = originalFontSize;
     }
 
@@ -103,33 +126,23 @@ public class PlayerHealth : MonoBehaviour
 
         while (elapsed < vibrationDuration)
         {
-            Vector3 randomOffset = new Vector3(
-                Random.Range(-vibrationIntensity, vibrationIntensity),
-                Random.Range(-vibrationIntensity, vibrationIntensity),
+            Vector3 offset = new Vector3(
+                UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity),
+                UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity),
                 0f
             );
 
-            healthText.rectTransform.localPosition = originalPosition + randomOffset;
-
+            healthText.rectTransform.localPosition = originalPosition + offset;
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Reset to original position after vibration
         healthText.rectTransform.localPosition = originalPosition;
     }
 
     private void Die()
     {
         Debug.Log("Player Died!");
-        // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    
-    
-    
-    
-    
-    
 }
