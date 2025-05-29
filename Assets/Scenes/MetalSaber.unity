@@ -2368,7 +2368,7 @@ GameObject:
   - component: {fileID: 161480577}
   - component: {fileID: 161480576}
   m_Layer: 0
-  m_Name: EnemyFactory_1
+  m_Name: EnemyFactory_Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   groundSpawnInterval: 5
   flyingSpawnInterval: 30
   enemySpeed: 3
-  difficultyIncreaseRate: 20
+  difficultyIncreaseRate: 15
   spawnIntervalDecrease: 0.5
   enemySpeedIncrease: 0
   minSpawnInterval: 0
@@ -25168,8 +25168,8 @@ MonoBehaviour:
   blueColor: {r: 1, g: 0.11202903, b: 0, a: 0}
   transitionDuration: 10
   enemyspawnerLevelTutorial: {fileID: 27839403}
-  enemyspanwerLevelFire: {fileID: 536968180}
-  enemyspanwerLevelIce: {fileID: 3934316}
+  enemyspanwerLevelFire: {fileID: 1975306634}
+  enemyspanwerLevelIce: {fileID: 161480575}
 --- !u!4 &1837286992
 Transform:
   m_ObjectHideFlags: 0
@@ -26214,7 +26214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2789405737935955140, guid: 9ed70f6741e327c4fbd4e2fdce253d9f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -114.49705
+      value: -114.38
       objectReference: {fileID: 0}
     - target: {fileID: 2789405737935955140, guid: 9ed70f6741e327c4fbd4e2fdce253d9f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26222,7 +26222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2789405737935955140, guid: 9ed70f6741e327c4fbd4e2fdce253d9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -142.8483
+      value: -142.44
       objectReference: {fileID: 0}
     - target: {fileID: 2789405737935955140, guid: 9ed70f6741e327c4fbd4e2fdce253d9f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26809,7 +26809,7 @@ GameObject:
   - component: {fileID: 1975306635}
   - component: {fileID: 1975306636}
   m_Layer: 0
-  m_Name: EnemyFactory_2
+  m_Name: EnemyFactory_Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26860,12 +26860,12 @@ MonoBehaviour:
   isHeavy: 0
   groundSpawnInterval: 5
   flyingSpawnInterval: 30
-  enemySpeed: 3
-  difficultyIncreaseRate: 20
+  enemySpeed: 4
+  difficultyIncreaseRate: 10
   spawnIntervalDecrease: 0.5
-  enemySpeedIncrease: 0
+  enemySpeedIncrease: 2
   minSpawnInterval: 0
-  maxGroundEnemies: 10
+  maxGroundEnemies: 12
   maxFlyingEnemies: 3
 --- !u!1 &1996671369 stripped
 GameObject:

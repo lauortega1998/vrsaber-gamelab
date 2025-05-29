@@ -103,20 +103,13 @@ public class EnemyFactory : MonoBehaviour
         EnemySpawner selectedSpawner = spawners[Random.Range(0, spawners.Count)];
         Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        GameObject newEnemy = Instantiate(heavyenemyPrefab, spawnPosition, Quaternion.identity);
         newEnemy.tag = "Enemy";
 
-        // Set heavy type and damage
-        if (newEnemy.TryGetComponent<EnemyType>(out var enemyType))
-        {
-            enemyType.isHeavy = true;
-        }
-
-        newEnemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-
+        // Set normal damage
         if (newEnemy.TryGetComponent<EnemyDamage>(out var damage))
         {
-            damage.damageAmount = 50;
+            damage.damageAmount = 25;
         }
 
         if (newEnemy.TryGetComponent<EnemyHealth>(out var enemyHealth))
