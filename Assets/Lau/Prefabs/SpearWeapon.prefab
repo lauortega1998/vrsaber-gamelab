@@ -700,6 +700,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5219286312479296617}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5948531420286332236}
   m_SourcePrefab: {fileID: 100100000, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
 --- !u!4 &7467973357516425461 stripped
 Transform:
@@ -917,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwingSpeedThreshold: 15
   spearPrefab: {fileID: 8620090362284706586, guid: 612430d5c61e1134187b2af669fcd066, type: 3}
+  respawnPrefab: {fileID: 7847595601434333775}
   gazeInteractor: {fileID: 0}
   throwForce: 20
 --- !u!114 &7065101398722742653
@@ -975,3 +979,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 6
   isDropped: 0
+--- !u!114 &5948531420286332236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847595601434333775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44d017b2e27c984297b0c0ef784d48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spearPrefab: {fileID: 7847595601434333775}
