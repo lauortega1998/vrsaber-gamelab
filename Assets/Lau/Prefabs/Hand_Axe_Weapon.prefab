@@ -484,25 +484,25 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9666748
-      value: 0.5353775
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 2.2
+  m_ThrowVelocityScale: 2
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 6
+  isDropped: 0
 --- !u!64 &7751001241479996249
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -609,13 +610,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5772366454833740239}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6873326, y: -0.7012344, z: -0.12186143, w: -0.14489375}
-  m_LocalPosition: {x: 0.351, y: -0.0069999695, z: -0.047999993}
-  m_LocalScale: {x: 0.063083, y: 0.063083, z: 0.063083}
+  m_LocalRotation: {x: 0.7071068, y: -0.7071068, z: 0, w: 0}
+  m_LocalPosition: {x: 0.447, y: -0.009, z: -0.074}
+  m_LocalScale: {x: 0.04784278, y: 0.04784278, z: 0.04784278}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968961117630013980}
-  m_LocalEulerAnglesHint: {x: -21.721, y: 177.798, z: 271.57}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 90}
 --- !u!33 &3421110949160476393
 MeshFilter:
   m_ObjectHideFlags: 0
