@@ -84,7 +84,7 @@ public class EnemyAttackingTest : MonoBehaviour
             int currentSeconds = Mathf.CeilToInt(timer);
             if (currentSeconds != lastPrintedTime && currentSeconds >= 0)
             {
-                Debug.Log($"{gameObject.name} Timer: {currentSeconds} seconds remaining");
+                //Debug.Log($"{gameObject.name} Timer: {currentSeconds} seconds remaining");
                 lastPrintedTime = currentSeconds;
             }
 
@@ -116,7 +116,7 @@ public class EnemyAttackingTest : MonoBehaviour
             blockSlider.value = 0;
         }
 
-        Debug.Log($"{gameObject.name} Timer started!");
+        //Debug.Log($"{gameObject.name} Timer started!");
     }
 
     public void StopTimer()
@@ -127,7 +127,7 @@ public class EnemyAttackingTest : MonoBehaviour
         if (blockIndicatorCanvas != null)
             blockIndicatorCanvas.SetActive(false);
 
-        Debug.Log($"{gameObject.name} Timer stopped/reset.");
+       // Debug.Log($"{gameObject.name} Timer stopped/reset.");
     }
 
     public void ResetTimerState()
@@ -163,7 +163,7 @@ public class EnemyAttackingTest : MonoBehaviour
         if (blockIndicatorCanvas != null)
             blockIndicatorCanvas.SetActive(false);
 
-        Debug.Log("Attack performed!");
+        //Debug.Log("Attack performed!");
     }
 
     private IEnumerator DisableAttackEffectAfterDelay(GameObject obj, float delay)

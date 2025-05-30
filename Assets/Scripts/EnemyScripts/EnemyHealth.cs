@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("Broken Version")]
     public GameObject brokenSkeletonPrefab;
+    public Transform skeletonSpawnPoint; // ← assign in Inspector
+
 
     [Header("Death Effects")]
     public float knockbackForce = 5f;
@@ -66,8 +68,10 @@ public class EnemyHealth : MonoBehaviour
         // Instantiate broken version
         if (brokenSkeletonPrefab != null)
         {
-            GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, transform.position, transform.rotation);
+            Vector3 spawnPosition = skeletonSpawnPoint != null ? skeletonSpawnPoint.position : transform.position;
+            Quaternion spawnRotation = skeletonSpawnPoint != null ? skeletonSpawnPoint.rotation : transform.rotation;
 
+            GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, spawnPosition, spawnRotation);
             Rigidbody[] ragdollRigidbodies = brokenInstance.GetComponentsInChildren<Rigidbody>();
             Vector3 pushDirection = (enemyRoot.transform.position - weaponHitPoint.position).normalized;
             pushDirection.y = 0;
