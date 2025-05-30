@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class LevelManager : MonoBehaviour
     public GameObject enemyspawnerLevelTutorial;
     public GameObject enemyspanwerLevelFire;
     public GameObject enemyspanwerLevelIce;
+
+    public TextMeshProUGUI countdownText;
+    public GameObject gameCompleted;
+    public GameObject iceLevelStarted;
+    public GameObject fireLevelStarted;
+    
+    
     void Start()
     {
         // Initial ground color to black
@@ -35,43 +43,48 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LevelFlow()
     {
-        // Wait 5 seconds after pressing Start
         Debug.Log("Start button pressed. Starting in 5 seconds...");
-        yield return new WaitForSeconds(5f); //it should be 5f
+        yield return new WaitForSeconds(5f);
 
-        // Tutorial Level (1 min)
+        // Tutorial Level
         Debug.Log("Tutorial started. Duration: 1 minute.");
         enemyspawnerLevelTutorial.SetActive(true);
-        yield return new WaitForSeconds(60f); //it should be 60f 
+        yield return new WaitForSeconds(60f);
         enemyspawnerLevelTutorial.SetActive(false);
 
-        
-        Debug.Log("Tutorial rage mode started (last 10 seconds).");
-        yield return new WaitForSeconds(10f);   //it should be 10f  
+       
 
-        // Transition to Fire Level
-        Debug.Log("Transition to Fire level...");
-        yield return StartCoroutine(TransitionGroundColor(redColor));
-        yield return new WaitForSeconds(10f); //it should be 10f 
-
-        // Fire Level (2 min)
-        Debug.Log("Fire level started. Duration: 1.5 minutes.");
-        enemyspanwerLevelFire.SetActive(true);
-        yield return new WaitForSeconds(90f); //it should be 120f
-        enemyspanwerLevelFire.SetActive(false);
-
-        // Transition to Ice Level
+        // ICE LEVEL
         Debug.Log("Transition to Ice level...");
         yield return StartCoroutine(TransitionGroundColor(blueColor));
-        yield return new WaitForSeconds(10f); //it should be 10f
 
-        // Ice Level (3 min)
-        Debug.Log("Ice level started. Duration: 2 minutes.");
+        Debug.Log("Countdown before Ice level...");
+        yield return StartCoroutine(Countdown(5f)); // Countdown before Ice starts
+
+        Debug.Log("Ice level started.");
+        iceLevelStarted.SetActive(true);
         enemyspanwerLevelIce.SetActive(true);
-        yield return new WaitForSeconds(120f); //it should be 180f
+        yield return new WaitForSeconds(120f); // 2 minutes
         enemyspanwerLevelIce.SetActive(false);
+        iceLevelStarted.SetActive(false);
 
+        // FIRE LEVEL
+        Debug.Log("Transition to Fire level...");
+        yield return StartCoroutine(TransitionGroundColor(redColor));
+
+        Debug.Log("Countdown before Fire level...");
+        yield return StartCoroutine(Countdown(5f)); // Countdown before Fire starts
+
+        Debug.Log("Fire level started.");
+        fireLevelStarted.SetActive(true);
+        enemyspanwerLevelFire.SetActive(true);
+        yield return new WaitForSeconds(90f); // 1.5 minutes
+        enemyspanwerLevelFire.SetActive(false);
+        fireLevelStarted.SetActive(false);
+
+        // Game Completed
         Debug.Log("Game completed!");
+        gameCompleted.SetActive(true);
     }
 
     private IEnumerator TransitionGroundColor(Color targetColor)
@@ -108,6 +121,18 @@ public class LevelManager : MonoBehaviour
         floorMat.color = targetColor;
     }
     
-    
+    private IEnumerator Countdown(float seconds)
+    {
+        countdownText.gameObject.SetActive(true);
+        while (seconds > 0)
+        {
+            countdownText.text = Mathf.Ceil(seconds).ToString();
+            yield return new WaitForSeconds(1f);
+            seconds--;
+        }
+
+        countdownText.text = "";
+        countdownText.gameObject.SetActive(false);
+    }
     
 }
