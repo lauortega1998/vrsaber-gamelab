@@ -10,6 +10,171 @@ public class RageSystem : MonoBehaviour
     public float rageIncreasePerKill = 20f;
     public float rageMax = 100f;
     public float rageDepletionRate = 10f;
+    private bool rageReady = false;
+
+
+    [Header("UI Settings")]
+    public Slider rageBar;
+
+    [Header("Rage Effects")]
+    public GameObject fireHandEffectObject;
+    public GameObject fireHandEffectPower;
+
+    public GameObject fireHandUI;
+    public GameObject iceHandEffectObject;
+    public GameObject iceHandEffectPower;
+
+    public GameObject iceHandUI;
+
+    [Header("Power Activation")]
+    public InputPowers inputPowers;
+
+    [Header("Post-Processing Volume")]
+    public Volume postProcessingVolume;
+
+    [Header("Post-Processing Settings (Rage Mode)")]
+    public float rageVignetteIntensity = 0.85f;
+    public float rageFilmGrainIntensity = 0.5f;
+
+    [Header("Rage Haptics")]
+    public float rageHapticAmplitude = 0.7f;
+    public float rageHapticDuration = 0.1f;
+    public float rageHapticInterval = 0.5f;
+
+    private Vignette vignette;
+    private FilmGrain filmGrain;
+
+    private bool isDepleting = false;
+
+    private void Start()
+    {
+        if (postProcessingVolume != null)
+        {
+            postProcessingVolume.profile.TryGet(out vignette);
+            postProcessingVolume.profile.TryGet(out filmGrain);
+        }
+
+        if (fireHandEffectObject != null) fireHandEffectObject.SetActive(false);
+        if (iceHandEffectObject != null) iceHandEffectObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (isDepleting) DepleteRage();
+        UpdateRageUI();
+    }
+
+    public void OnEnemyKilled()
+    {
+        if (isDepleting || rageReady)
+            return; // Don't increase rage if already in use or waiting to be triggered
+
+        currentRage += rageIncreasePerKill;
+        currentRage = Mathf.Clamp(currentRage, 0, rageMax);
+
+        if (currentRage >= rageMax)
+        {
+            currentRage = rageMax;
+            rageReady = true;
+
+            HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration);
+            Invoke(nameof(SecondRagePulse), rageHapticInterval);
+        }
+    }
+
+    public void TryActivateRageFromInput()
+    {
+        if (rageReady && !isDepleting)
+        {
+            StartDepletingRage();
+        }
+    }
+
+    public void StartDepletingRage()
+    {
+        isDepleting = true;
+        ActivateRageEffects();
+
+        HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration);
+        Invoke(nameof(SecondRagePulse), rageHapticInterval);
+    }
+
+    private void SecondRagePulse()
+    {
+        HapticsManager.Instance.TriggerHaptics(rageHapticAmplitude, rageHapticDuration);
+    }
+
+    private void DepleteRage()
+    {
+        currentRage -= rageDepletionRate * Time.deltaTime;
+        currentRage = Mathf.Clamp(currentRage, 0, rageMax);
+
+        if (currentRage <= 0)
+        {
+            StopDepletingRage();
+        }
+    }
+
+    private void StopDepletingRage()
+    {
+        isDepleting = false;
+        rageReady = false; // Allow Rage to refill after use
+        DeactivateRageEffects();
+    }
+
+    private void ActivateRageEffects()
+    {
+        if (fireHandEffectObject != null) fireHandEffectObject.SetActive(true);
+        if (iceHandEffectObject != null) iceHandEffectObject.SetActive(true);
+        if (fireHandUI != null) fireHandUI.SetActive(true);
+        if (iceHandUI != null) iceHandUI.SetActive(true);
+        if (inputPowers != null) inputPowers.enabled = true;
+
+        if (vignette != null) vignette.intensity.value = rageVignetteIntensity;
+        if (filmGrain != null) filmGrain.intensity.value = rageFilmGrainIntensity;
+    }
+
+    private void DeactivateRageEffects()
+    {
+        if (fireHandEffectObject != null) fireHandEffectObject.SetActive(false);
+        if (fireHandEffectPower != null) fireHandEffectPower.SetActive(false);
+        if (iceHandEffectObject != null) iceHandEffectObject.SetActive(false);
+        if (iceHandEffectPower != null) iceHandEffectPower.SetActive(false);
+        if (fireHandUI != null) fireHandUI.SetActive(false);
+        if (iceHandUI != null) iceHandUI.SetActive(false);
+        if (inputPowers != null)
+        {
+            // Only disable powers, not input system
+            inputPowers.firePowerObject.SetActive(false);
+            inputPowers.icePowerObject.SetActive(false);
+        }
+        // Only disable the rage effects — do NOT reset post processing globally.
+        if (vignette != null) vignette.intensity.value = 0f;
+        if (filmGrain != null) filmGrain.intensity.value = 0f;
+    }
+
+    private void UpdateRageUI()
+    {
+        if (rageBar != null)
+        {
+            rageBar.value = currentRage / rageMax;
+        }
+    }
+}
+
+
+/*using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+public class RageSystem : MonoBehaviour
+{
+    [Header("Rage Settings")]
+    public float currentRage = 0f;
+    public float rageIncreasePerKill = 20f;
+    public float rageMax = 100f;
+    public float rageDepletionRate = 10f;
 
     [Header("UI Settings")]
     public Slider rageBar;
@@ -223,3 +388,4 @@ public class RageSystem : MonoBehaviour
     }
 }
 
+*/

@@ -1,20 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputPowers : MonoBehaviour
 {
     [Header("Input Actions")]
-    public InputActionReference leftTriggerAction;  // Fire Power (Left Trigger)
-    public InputActionReference rightTriggerAction; // Ice Power (Right Trigger)
+    public InputActionReference leftTriggerAction;
+    public InputActionReference rightTriggerAction;
 
     [Header("Power Objects")]
-    public GameObject firePowerObject; // Object for Fire Power
-    public GameObject icePowerObject;  // Object for Ice Power
+    public GameObject firePowerObject;
+    public GameObject icePowerObject;
 
     public GameObject firePowerTutorial;
     public GameObject icePowerTutorial;
-    
-    public PlayerStats playerStats; // Reference to the PlayerStats script
+
+    public PlayerStats playerStats;
+
+    [Header("Rage System Reference")]
+    public RageSystem rageSystem; // 🔁 NEW
 
     void OnEnable()
     {
@@ -31,24 +34,33 @@ public class InputPowers : MonoBehaviour
 
     void Update()
     {
+        float leftTriggerValue = leftTriggerAction.action.ReadValue<float>();
+        float rightTriggerValue = rightTriggerAction.action.ReadValue<float>();
+
         if (playerStats != null)
         {
-            // Fire Power Activation (Left Trigger)
-            if (leftTriggerAction.action.ReadValue<float>() > 0.1f && playerStats.CurrentMana > 0)
+            // Fire Power
+            if (leftTriggerValue > 0.1f && playerStats.CurrentMana > 0)
             {
                 firePowerObject.SetActive(true);
                 firePowerTutorial.SetActive(false);
+
+                Debug.Log("Fire Trigger Pressed – Rage Attempt");
+                rageSystem?.TryActivateRageFromInput();
             }
             else
             {
                 firePowerObject.SetActive(false);
             }
 
-            // Ice Power Activation (Right Trigger)
-            if (rightTriggerAction.action.ReadValue<float>() > 0.1f && playerStats.CurrentMana > 0)
+            // Ice Power
+            if (rightTriggerValue > 0.1f && playerStats.CurrentMana > 0)
             {
                 icePowerObject.SetActive(true);
                 icePowerTutorial.SetActive(false);
+                Debug.Log("Ice Trigger Pressed – Rage Attempt");
+
+                rageSystem?.TryActivateRageFromInput(); // 🔁 Try trigger Rage
             }
             else
             {
@@ -57,3 +69,4 @@ public class InputPowers : MonoBehaviour
         }
     }
 }
+
