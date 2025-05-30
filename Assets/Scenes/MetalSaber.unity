@@ -1453,6 +1453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1 &207222172
 GameObject:
   m_ObjectHideFlags: 0
@@ -13904,7 +13910,7 @@ GameObject:
   - component: {fileID: 2139534543}
   - component: {fileID: 2139534542}
   m_Layer: 0
-  m_Name: RagePostProcessing
+  m_Name: IcePostProcessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13926,7 +13932,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: ae07d2f91318e1f4aba640c984ce2e67, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 34566108fa6277946b316b7d7f5da352, type: 2}
 --- !u!4 &2139534543
 Transform:
   m_ObjectHideFlags: 0
