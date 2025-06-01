@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
         RotateBannerLightY(newYRotation_Tutorial);
 
         enemyspawnerLevelTutorial.SetActive(true);
-        yield return StartCoroutine(ShowLevelTimer(10f)); // 45
+        yield return StartCoroutine(ShowLevelTimer(45f)); // 45
         enemyspawnerLevelTutorial.SetActive(false);
 
         yield return new WaitForSeconds(5f); // 60
@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour
         iceLevelStarted.SetActive(true);
         FindAnyObjectByType<AudioManager>().Play("Horn2");
         enemyspanwerLevelIce.SetActive(true);
-        yield return StartCoroutine(ShowLevelTimer(10f)); // 90
+        yield return StartCoroutine(ShowLevelTimer(90f)); // 90
         enemyspanwerLevelIce.SetActive(false);
         KillAllEnemies();
         iceLevelStarted.SetActive(false);
@@ -118,7 +118,7 @@ public class LevelManager : MonoBehaviour
         FindAnyObjectByType<AudioManager>().Play("Rain");
         enemyspanwerLevelFire.SetActive(true);
         FindAnyObjectByType<AudioManager>().Play("Horn2");
-        yield return StartCoroutine(ShowLevelTimer(10f)); // 120
+        yield return StartCoroutine(ShowLevelTimer(120f)); // 120
         enemyspanwerLevelFire.SetActive(false);
         fireLevelStarted.SetActive(false);
 
