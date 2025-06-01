@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
         fireLevelStarted.SetActive(true);
         firePostProcessing.SetActive(true);
         enemyspanwerLevelFire.SetActive(true);
-        yield return StartCoroutine(ShowLevelTimer(120f));
+        yield return StartCoroutine(ShowLevelTimer(120f)); // 120
         enemyspanwerLevelFire.SetActive(false);
         fireLevelStarted.SetActive(false);
 

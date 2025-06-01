@@ -7,53 +7,52 @@ using System.Collections;
 
 public class NewRuneScript : MonoBehaviour
 {
-    public string sceneToLoad = "YourSceneNameHere"; // Change this in Inspector or here
-    public float speedThreshold = 2f;
+    public string sceneToLoad = "YourSceneNameHere";
     public float delayBeforeLoad = 7f;
 
     [Header("UI & FX")]
-    public Image fadeImage; // Fullscreen black Image, alpha = 0 initially
-    public Volume postProcessVolume; // Global Volume with Vignette override
+    public Image fadeImage;
+    public Volume postProcessVolume;
+
+    [Header("Rune Visuals")]
+    public GameObject originalRune;
+    public GameObject brokenRune;
 
     private bool isSmashed = false;
     private Vignette vignette;
 
     void Start()
     {
-        // Get Vignette reference from Post Processing Volume
         if (postProcessVolume != null && postProcessVolume.profile.TryGet(out Vignette v))
         {
             vignette = v;
             vignette.intensity.Override(0f);
         }
 
-        // Make sure fadeImage starts fully transparent
         if (fadeImage != null)
         {
             var col = fadeImage.color;
             col.a = 0f;
             fadeImage.color = col;
         }
+
+        if (brokenRune != null) brokenRune.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    // This method is called externally
+    public void BreakRune()
     {
         if (isSmashed) return;
-
-        if (other.CompareTag("Weapon") && other.attachedRigidbody != null)
-        {
-            float impactSpeed = other.attachedRigidbody.linearVelocity.magnitude;
-            if (impactSpeed >= speedThreshold)
-            {
-                StartCoroutine(HandleSmash());
-            }
-        }
+        StartCoroutine(HandleSmash());
     }
 
     private IEnumerator HandleSmash()
     {
         isSmashed = true;
-        Debug.Log("Smash registered � transitioning scene...");
+        Debug.Log("Smash registered – transitioning scene...");
+
+        if (originalRune != null) originalRune.SetActive(false);
+        if (brokenRune != null) brokenRune.SetActive(true);
 
         float elapsed = 0f;
 
@@ -62,7 +61,6 @@ public class NewRuneScript : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / delayBeforeLoad;
 
-            // Fade screen to black
             if (fadeImage != null)
             {
                 Color color = fadeImage.color;
@@ -70,7 +68,6 @@ public class NewRuneScript : MonoBehaviour
                 fadeImage.color = color;
             }
 
-            // Increase vignette intensity
             if (vignette != null)
             {
                 vignette.intensity.Override(Mathf.Lerp(0f, 0.5f, t));
