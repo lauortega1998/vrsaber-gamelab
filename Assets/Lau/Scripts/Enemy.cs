@@ -13,8 +13,9 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lookTarget = GameObject.FindGameObjectWithTag("LookTransform").transform;
+        FindAnyObjectByType<AudioManager>().Play("walking loop");
 
-         anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,6 +41,8 @@ public class Enemy : MonoBehaviour
         canMove = false;
        anim.SetBool("isWalking", false);
         anim.SetBool("IsIdle",true);
+        FindAnyObjectByType<AudioManager>().Stop("walking loop");
+
     }
 
     public void ResumeMovement()
