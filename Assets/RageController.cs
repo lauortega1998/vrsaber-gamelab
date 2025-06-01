@@ -35,6 +35,9 @@ public class RageSystem : MonoBehaviour
     [Header("Post-Processing Settings (Rage Mode)")]
     public float rageVignetteIntensity = 0.85f;
     public float rageFilmGrainIntensity = 0.5f;
+    private ColorAdjustments colorAdjustments;
+    [Header("Color Adjustment Settings (Rage Mode)")]
+    public Color rageColorFilter = Color.red;
 
     [Header("Rage Haptics")]
     public float rageHapticAmplitude = 0.7f;
@@ -52,6 +55,7 @@ public class RageSystem : MonoBehaviour
         {
             postProcessingVolume.profile.TryGet(out vignette);
             postProcessingVolume.profile.TryGet(out filmGrain);
+            postProcessingVolume.profile.TryGet(out colorAdjustments); // NEW
         }
 
         if (fireHandEffectObject != null) fireHandEffectObject.SetActive(false);
@@ -135,6 +139,11 @@ public class RageSystem : MonoBehaviour
 
         if (vignette != null) vignette.intensity.value = rageVignetteIntensity;
         if (filmGrain != null) filmGrain.intensity.value = rageFilmGrainIntensity;
+        if (colorAdjustments != null)
+        {
+            colorAdjustments.colorFilter.overrideState = true;
+            colorAdjustments.colorFilter.value = rageColorFilter;
+        }
     }
 
     private void DeactivateRageEffects()
@@ -154,6 +163,10 @@ public class RageSystem : MonoBehaviour
         // Only disable the rage effects — do NOT reset post processing globally.
         if (vignette != null) vignette.intensity.value = 0f;
         if (filmGrain != null) filmGrain.intensity.value = 0f;
+        if (colorAdjustments != null)
+        {
+            colorAdjustments.colorFilter.overrideState = false;
+        }
     }
 
     private void UpdateRageUI()
