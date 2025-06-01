@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
         yield return StartCoroutine(ShowLevelTimer(45f)); // 45
         enemyspawnerLevelTutorial.SetActive(false);
 
-        yield return new WaitForSeconds(5f); // 60
+        yield return new WaitForSeconds(0f); // 60
 
 
         // ICE LEVEL

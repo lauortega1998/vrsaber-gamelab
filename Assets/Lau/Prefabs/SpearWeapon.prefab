@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76daad4aea6b10459a4f80262ce437c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwingSpeedThreshold: 15
+  throwingSpeedThreshold: 10
   spearPrefab: {fileID: 8620090362284706586, guid: 612430d5c61e1134187b2af669fcd066, type: 3}
   respawnPrefab: {fileID: 7847595601434333775}
   gazeInteractor: {fileID: 0}
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 15
+  damageVelocityThreshold: 11
   pushForce: 0
   enemyscript: {fileID: 0}
   incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
