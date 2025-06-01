@@ -91,7 +91,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Ice level started.");
 
         iceLevelStarted.SetActive(true);
-        FindAnyObjectByType<AudioManager>().Play("Horn");
+        FindAnyObjectByType<AudioManager>().Play("Horn2");
         enemyspanwerLevelIce.SetActive(true);
         yield return StartCoroutine(ShowLevelTimer(10f)); // 90
         enemyspanwerLevelIce.SetActive(false);
@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
         rainEffect.SetActive(true);
         FindAnyObjectByType<AudioManager>().Play("Rain");
         enemyspanwerLevelFire.SetActive(true);
-        FindAnyObjectByType<AudioManager>().Play("Horn");
+        FindAnyObjectByType<AudioManager>().Play("Horn2");
         yield return StartCoroutine(ShowLevelTimer(10f)); // 120
         enemyspanwerLevelFire.SetActive(false);
         fireLevelStarted.SetActive(false);

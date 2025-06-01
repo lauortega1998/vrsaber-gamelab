@@ -8,6 +8,8 @@ public class WeaponVelocityDamage : MonoBehaviour
     private Rigidbody rb;
     private bool isOnGround = false;
     public GameObject incorrectStrikeEffect;  // Particle effect to instantiate on incorrect strike
+    private int attackSoundIndex = 0;
+
 
 
     void Start()
@@ -40,8 +42,10 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
+                    PlayNextAttackSound(); // 👈 play attack sound here
                 }
-                Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
+           
+            Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
                 Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (enemyRb != null)
                 {
@@ -51,8 +55,10 @@ public class WeaponVelocityDamage : MonoBehaviour
                     float clampedForce = Mathf.Min(pushForce, 5f); // prevent over-push
                     enemyRb.linearDamping = 2f; // increase drag to reduce sliding
                     enemyRb.AddForce(pushDir * clampedForce, ForceMode.Impulse);
+                    PlayNextAttackSound();
                 }
             }
+
         }
         else if (collision.gameObject.CompareTag("DestructibleUI"))
         {   // Haptics again for the Destructible UI
@@ -80,6 +86,7 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[Weapon] Correct strike � Enemy killed.");
                     enemy.Die(transform);
+                    PlayNextAttackSound();
                 }
                 else
                 {
@@ -88,6 +95,7 @@ public class WeaponVelocityDamage : MonoBehaviour
                     {
                         Vector3 impactPoint = collision.contacts[0].point;
                         Instantiate(incorrectStrikeEffect, impactPoint, Quaternion.identity);
+                        PlayNextAttackSound();
                     }
                 }
 
@@ -113,5 +121,12 @@ public class WeaponVelocityDamage : MonoBehaviour
         {
             isOnGround = false;
         }
+    }
+    private void PlayNextAttackSound()
+    {
+        string soundName = $"attack{attackSoundIndex + 1}"; // "Attack1", "Attack2", "Attack3"
+        FindAnyObjectByType<AudioManager>()?.Play(soundName);
+
+        attackSoundIndex = (attackSoundIndex + 1) % 3; // Loop: 0 → 1 → 2 → 0 ...
     }
 }
