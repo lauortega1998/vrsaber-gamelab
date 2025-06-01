@@ -34,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
     private Color originalColor;
     private float originalFontSize;
     private Vector3 originalPosition;
+    private int damageSoundIndex = 0;
+
 
     void Start()
     {
@@ -70,6 +72,8 @@ public class PlayerHealth : MonoBehaviour
         {
             StartCoroutine(FlashHealthText());
             StartCoroutine(VibrateHealthText());
+            PlayNextDamageSound();
+
         }
 
         if (currentHealth <= 0)
@@ -144,5 +148,11 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player Died!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    private void PlayNextDamageSound()
+    {
+        string soundName = $"Damage{damageSoundIndex + 1}";
+        FindAnyObjectByType<AudioManager>()?.Play(soundName);
+        damageSoundIndex = (damageSoundIndex + 1) % 3; // Loops 0 → 1 → 2 → 0...
     }
 }
