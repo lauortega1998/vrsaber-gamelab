@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
         // Tutorial Level
         Debug.Log("Tutorial started. Duration: 1 minute.");
         enemyspawnerLevelTutorial.SetActive(true);
-        yield return new WaitForSeconds(60); //60
+        yield return StartCoroutine(ShowLevelTimer(45f)); // 45
         enemyspawnerLevelTutorial.SetActive(false);
 
         yield return new WaitForSeconds(5f); // 60
@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
         iceLevelStarted.SetActive(true);
         enemyspanwerLevelIce.SetActive(true);
-        yield return new WaitForSeconds(120f); // 120 
+        yield return StartCoroutine(ShowLevelTimer(90f)); // 120
         enemyspanwerLevelIce.SetActive(false);
         iceLevelStarted.SetActive(false);
         
@@ -92,14 +92,15 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Fire level started.");
         icePostProcessing.SetActive(false);
         fireLevelStarted.SetActive(true);
-        fireLevelStarted.SetActive(true);
+        firePostProcessing.SetActive(true);
         enemyspanwerLevelFire.SetActive(true);
-        yield return new WaitForSeconds(180f); // 180
+        yield return StartCoroutine(ShowLevelTimer(120f));
         enemyspanwerLevelFire.SetActive(false);
         fireLevelStarted.SetActive(false);
 
         // Game Completed
         Debug.Log("Game completed!");
+        firePostProcessing.SetActive(false);
         fireLevelStarted.SetActive(false);
         normalPostProcessing.SetActive(true);
         gameCompleted.SetActive(true);
@@ -147,6 +148,22 @@ public class LevelManager : MonoBehaviour
             countdownText.text = Mathf.Ceil(seconds).ToString();
             yield return new WaitForSeconds(1f);
             seconds--;
+        }
+
+        countdownText.text = "";
+        countdownText.gameObject.SetActive(false);
+    }
+    private IEnumerator ShowLevelTimer(float duration)
+    {
+        countdownText.gameObject.SetActive(true);
+
+        float timeLeft = duration;
+        while (timeLeft > 0)
+        {
+            TimeSpan t = TimeSpan.FromSeconds(timeLeft);
+            countdownText.text = Mathf.CeilToInt(timeLeft).ToString();
+            yield return new WaitForSeconds(1f);
+            timeLeft--;
         }
 
         countdownText.text = "";

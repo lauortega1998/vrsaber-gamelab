@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIrockslowpoly
       objectReference: {fileID: 0}
+    - target: {fileID: 6230164198256571587, guid: b441f06a7fd5ca64c849c3461cfc52ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903796460597561580, guid: b441f06a7fd5ca64c849c3461cfc52ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -850,6 +854,7 @@ MonoBehaviour:
   postProcessingVolume: {fileID: 0}
   rageVignetteIntensity: 0.535
   rageFilmGrainIntensity: 0.8
+  rageColorFilter: {r: 1, g: 0, b: 0, a: 1}
   rageHapticAmplitude: 0.7
   rageHapticDuration: 0.1
   rageHapticInterval: 0.5
