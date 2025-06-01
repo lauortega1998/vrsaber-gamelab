@@ -37,16 +37,13 @@ public class InputPowers : MonoBehaviour
         float leftTriggerValue = leftTriggerAction.action.ReadValue<float>();
         float rightTriggerValue = rightTriggerAction.action.ReadValue<float>();
 
-        if (playerStats != null)
+        if (playerStats != null && rageSystem != null && rageSystem.IsRageActive())
         {
             // Fire Power
             if (leftTriggerValue > 0.1f && playerStats.CurrentMana > 0)
             {
                 firePowerObject.SetActive(true);
                 firePowerTutorial.SetActive(false);
-
-                Debug.Log("Fire Trigger Pressed – Rage Attempt");
-                rageSystem?.TryActivateRageFromInput();
             }
             else
             {
@@ -58,13 +55,24 @@ public class InputPowers : MonoBehaviour
             {
                 icePowerObject.SetActive(true);
                 icePowerTutorial.SetActive(false);
-                Debug.Log("Ice Trigger Pressed – Rage Attempt");
-
-                rageSystem?.TryActivateRageFromInput(); // 🔁 Try trigger Rage
             }
             else
             {
                 icePowerObject.SetActive(false);
+            }
+        }
+        else
+        {
+            firePowerObject.SetActive(false);
+            icePowerObject.SetActive(false);
+        }
+
+        // Still allow the rage input logic to happen
+        if (rageSystem != null)
+        {
+            if (leftTriggerValue > 0.1f || rightTriggerValue > 0.1f)
+            {
+                rageSystem.TryActivateRageFromInput();
             }
         }
     }

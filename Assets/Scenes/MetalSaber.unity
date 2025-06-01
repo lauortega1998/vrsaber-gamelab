@@ -1453,6 +1453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1001 &212392136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1822,6 +1828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!4 &313008472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6484816945243591627, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
@@ -2179,6 +2191,14 @@ PrefabInstance:
     - target: {fileID: 4992088989611647587, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 65536
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680935557191007253, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
+      propertyPath: pushForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680935557191007253, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
+      propertyPath: damageVelocityThreshold
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6698253516699103325, guid: 7ceeeed86b0f8194ca30c6737067a103, type: 3}
       propertyPath: m_Layer
@@ -4257,6 +4277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1001 &764971831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5259,7 +5285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRage: 0
-  rageIncreasePerKill: 100
+  rageIncreasePerKill: 12
   rageMax: 100
   rageDepletionRate: 12
   rageBar: {fileID: 274358016}
@@ -5718,8 +5744,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: ded54cb2a07852d4aa72a652f4f16c28, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ca40db211b7629b4f922722d4c0f5584, type: 3}
-  m_Resource: {fileID: 8300000, guid: ca40db211b7629b4f922722d4c0f5584, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a185de1edae95f7429ba11188107179d, type: 3}
+  m_Resource: {fileID: 8300000, guid: a185de1edae95f7429ba11188107179d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6281,6 +6307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!114 &1075737234
 MonoBehaviour:
   m_ObjectHideFlags: 0
