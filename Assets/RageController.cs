@@ -94,6 +94,7 @@ public class RageSystem : MonoBehaviour
         if (rageReady && !isDepleting)
         {
             StartDepletingRage();
+            FindAnyObjectByType<AudioManager>().Play("rage");
         }
     }
 

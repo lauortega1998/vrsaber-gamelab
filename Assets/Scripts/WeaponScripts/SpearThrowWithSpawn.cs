@@ -51,6 +51,7 @@ public class SpearThrowWithSpawn : MonoBehaviour
         if (throwSpeed > throwingSpeedThreshold)
         {
             Debug.Log("[THROW] Speed high enough! Spawning new spear.");
+            FindAnyObjectByType<AudioManager>().Play("spear");
 
             // 1. Calculate gaze direction
             Vector3 gazeDirection = GetGazeDirection();

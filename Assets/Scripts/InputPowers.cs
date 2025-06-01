@@ -17,7 +17,10 @@ public class InputPowers : MonoBehaviour
     public PlayerStats playerStats;
 
     [Header("Rage System Reference")]
-    public RageSystem rageSystem; // 🔁 NEW
+    public RageSystem rageSystem;
+
+    private bool isFirePlaying = false;
+    private bool isIcePlaying = false;
 
     void OnEnable()
     {
@@ -39,49 +42,72 @@ public class InputPowers : MonoBehaviour
 
         if (playerStats != null && rageSystem != null && rageSystem.IsRageActive())
         {
-            // Fire Power
+            // FIRE POWER
             if (leftTriggerValue > 0.1f && playerStats.CurrentMana > 0)
             {
                 firePowerObject.SetActive(true);
                 firePowerTutorial.SetActive(false);
-                FindAnyObjectByType<AudioManager>().Play("flamethrower");
+
+                if (!isFirePlaying)
+                {
+                    FindAnyObjectByType<AudioManager>().Play("flamethrower");
+                    isFirePlaying = true;
+                }
             }
             else
             {
                 firePowerObject.SetActive(false);
-                FindAnyObjectByType<AudioManager>().Stop("flamethrower");
-
+                if (isFirePlaying)
+                {
+                    FindAnyObjectByType<AudioManager>().Stop("flamethrower");
+                    isFirePlaying = false;
+                }
             }
 
-            // Ice Power
+            // ICE POWER
             if (rightTriggerValue > 0.1f && playerStats.CurrentMana > 0)
             {
                 icePowerObject.SetActive(true);
                 icePowerTutorial.SetActive(false);
-                FindAnyObjectByType<AudioManager>().Play("icethrower");
 
+                if (!isIcePlaying)
+                {
+                    FindAnyObjectByType<AudioManager>().Play("icethrower");
+                    isIcePlaying = true;
+                }
             }
             else
             {
                 icePowerObject.SetActive(false);
-                FindAnyObjectByType<AudioManager>().Stop("icethrower");
-
+                if (isIcePlaying)
+                {
+                    FindAnyObjectByType<AudioManager>().Stop("icethrower");
+                    isIcePlaying = false;
+                }
             }
         }
         else
         {
             firePowerObject.SetActive(false);
             icePowerObject.SetActive(false);
+
+            if (isFirePlaying)
+            {
+                FindAnyObjectByType<AudioManager>().Stop("flamethrower");
+                isFirePlaying = false;
+            }
+
+            if (isIcePlaying)
+            {
+                FindAnyObjectByType<AudioManager>().Stop("icethrower");
+                isIcePlaying = false;
+            }
         }
 
-        // Still allow the rage input logic to happen
-        if (rageSystem != null)
+        // Rage input logic
+        if (rageSystem != null && (leftTriggerValue > 0.1f || rightTriggerValue > 0.1f))
         {
-            if (leftTriggerValue > 0.1f || rightTriggerValue > 0.1f)
-            {
-                rageSystem.TryActivateRageFromInput();
-            }
+            rageSystem.TryActivateRageFromInput();
         }
     }
 }
-
