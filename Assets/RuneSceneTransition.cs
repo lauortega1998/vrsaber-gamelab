@@ -49,7 +49,7 @@ public class NewRuneScript : MonoBehaviour
     private IEnumerator HandleSmash()
     {
         FindAnyObjectByType<AudioManager>().Play("stone break");
-        FindAnyObjectByType<AudioManager>().Play("Horn");
+        FindAnyObjectByType<AudioManager>().Play("Horn2");
 
         isSmashed = true;
         Debug.Log("Smash registered – transitioning scene...");

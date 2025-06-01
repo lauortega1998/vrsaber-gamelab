@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
+
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -19,8 +21,8 @@ public class EnemyHealth : MonoBehaviour
     private bool hasDied = false;
 
     public TimeManager timeManager;
-    
-  
+
+
 
 
     public void Die(Transform weaponHitPoint)
@@ -28,57 +30,57 @@ public class EnemyHealth : MonoBehaviour
         if (hasDied) return;
         hasDied = true;
 
-        GetComponent<Collider>().enabled = false;
-        EnemyManager.Instance.UnregisterAttacker();
-        GameObject enemyRoot = transform.root.gameObject;
-        Debug.Log($"{enemyRoot.name} was killed!");
-        KillCounter.Instance.AddKill();
+        GameObject enemyRoot = this.gameObject;
+        Debug.Log($"[EnemyHealth] Dying: {enemyRoot.name}");
+
+        // Disable AI, animation, and collider
+        Animator animator = GetComponent<Animator>();
+        if (animator) animator.enabled = false;
+
+        // Instantly hide the enemy visuals
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            r.enabled = false;
+
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+            col.enabled = false;
+
+        if (animator) animator.enabled = false;
+        EnemyManager.Instance?.UnregisterAttacker();
+        KillCounter.Instance?.AddKill();
         OnDeath?.Invoke();
 
-        TutorialEnemy tutorialEnemy = GetComponent<TutorialEnemy>(); // Find the TutorialEnemy script on this object
-        if (tutorialEnemy != null)
-        {
-            tutorialEnemy.ActivateEnemyFactory(); // Call the method to activate the factory
-        }
+        TutorialEnemy tutorialEnemy = GetComponent<TutorialEnemy>();
+        tutorialEnemy?.ActivateEnemyFactory();
 
-        
+        FindAnyObjectByType<PlayerStats>()?.GainMana(20);
+        FindAnyObjectByType<RageSystem>()?.OnEnemyKilled();
 
-        // give mana 
-        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
-        if (playerStats != null)
-        {
-            playerStats.GainMana(20);
-        }
-
-        // give rage
-        RageSystem rageSystem = FindObjectOfType<RageSystem>();
-        if (rageSystem != null)
-        {
-            rageSystem.OnEnemyKilled();
-        }
-
-        // Spawn hit effect
+        // 🔥 Spawn hit effect
         if (hitEffectPrefab != null && weaponHitPoint != null)
         {
             Vector3 hitPoint = GetComponent<Collider>().ClosestPoint(weaponHitPoint.position);
-            GameObject effect = Instantiate(hitEffectPrefab, hitPoint, Quaternion.identity);
-            Destroy(effect, 2f);
+            GameObject hitEffect = Instantiate(hitEffectPrefab, hitPoint, Quaternion.identity);
+            Destroy(hitEffect, 2f);
+            Debug.Log("[EnemyHealth] Hit effect spawned.");
         }
 
-        // Instantiate broken version
+        // 🦴 Spawn broken prefab
         if (brokenSkeletonPrefab != null)
         {
-            Vector3 spawnPosition = skeletonSpawnPoint != null ? skeletonSpawnPoint.position : transform.position;
-            Quaternion spawnRotation = skeletonSpawnPoint != null ? skeletonSpawnPoint.rotation : transform.rotation;
+            Vector3 spawnPosition = skeletonSpawnPoint ? skeletonSpawnPoint.position : transform.position;
+            Quaternion spawnRotation = skeletonSpawnPoint ? skeletonSpawnPoint.rotation : transform.rotation;
 
             GameObject brokenInstance = Instantiate(brokenSkeletonPrefab, spawnPosition, spawnRotation);
+            Debug.Log("[EnemyHealth] Broken skeleton spawned.");
+
             Rigidbody[] ragdollRigidbodies = brokenInstance.GetComponentsInChildren<Rigidbody>();
-            Vector3 pushDirection = (enemyRoot.transform.position - weaponHitPoint.position).normalized;
+            Vector3 pushDirection = (transform.position - weaponHitPoint.position).normalized;
             pushDirection.y = 0;
 
             foreach (Rigidbody rb in ragdollRigidbodies)
             {
-                if (rb != null)
+                if (rb)
                 {
                     rb.isKinematic = false;
                     rb.AddForce(pushDirection * knockbackForce, ForceMode.Impulse);
@@ -87,13 +89,16 @@ public class EnemyHealth : MonoBehaviour
 
             Destroy(brokenInstance, enemyDestroyDelay);
         }
-        TimeManager timeManager = FindObjectOfType<TimeManager>();
-        if (timeManager != null)
-        {
-            timeManager.SlowDown();
-        }
 
-        Destroy(enemyRoot);
+        FindAnyObjectByType<TimeManager>()?.SlowDown();
 
+        // Delay destroy so you can see the effects before the root is nuked
+        StartCoroutine(DestroyAfterDelay(enemyRoot, 0.1f));
+    }
+    private IEnumerator DestroyAfterDelay(GameObject target, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(target);
+        Debug.Log($"[EnemyHealth] Destroyed {target.name} after delay.");
     }
 }

@@ -4238,7 +4238,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -13793,7 +13793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15081,7 +15081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319427316082228824, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6468928122315453031, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: m_LocalScale.x
