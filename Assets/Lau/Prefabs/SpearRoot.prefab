@@ -112,6 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 2
   pushForce: 5
+  enemyscript: {fileID: 0}
+  incorrectStrikeEffect: {fileID: 0}
 --- !u!1001 &6472499786062101107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,6 +122,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8734048057324087348}
     m_Modifications:
+    - target: {fileID: 3223838785803961333, guid: b8b3cc8c1bc0ab649a44fb0b175f4c25, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9b1742593d8b844fb8a41eb5e383a73, type: 2}
     - target: {fileID: 4619775770836089645, guid: b8b3cc8c1bc0ab649a44fb0b175f4c25, type: 3}
       propertyPath: m_Name
       value: SpearProjectile
@@ -164,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6565194814844541688, guid: b8b3cc8c1bc0ab649a44fb0b175f4c25, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 19d55e44babf0964fa01dcad11a63440, type: 2}
     m_RemovedComponents:
     - {fileID: 1459636514416186399, guid: b8b3cc8c1bc0ab649a44fb0b175f4c25, type: 3}
     - {fileID: 6198427102882531553, guid: b8b3cc8c1bc0ab649a44fb0b175f4c25, type: 3}
