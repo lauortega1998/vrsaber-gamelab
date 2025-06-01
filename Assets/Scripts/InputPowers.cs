@@ -44,10 +44,13 @@ public class InputPowers : MonoBehaviour
             {
                 firePowerObject.SetActive(true);
                 firePowerTutorial.SetActive(false);
+                FindAnyObjectByType<AudioManager>().Play("flamethrower");
             }
             else
             {
                 firePowerObject.SetActive(false);
+                FindAnyObjectByType<AudioManager>().Stop("flamethrower");
+
             }
 
             // Ice Power
@@ -55,10 +58,14 @@ public class InputPowers : MonoBehaviour
             {
                 icePowerObject.SetActive(true);
                 icePowerTutorial.SetActive(false);
+                FindAnyObjectByType<AudioManager>().Play("icethrower");
+
             }
             else
             {
                 icePowerObject.SetActive(false);
+                FindAnyObjectByType<AudioManager>().Stop("icethrower");
+
             }
         }
         else

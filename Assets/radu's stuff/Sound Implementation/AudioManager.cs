@@ -26,7 +26,17 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
     }
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning($"[AudioManager] Sound '{name}' not found for Stop().");
+            return;
+        }
 
+        s.source.Stop();
+    }
 }
 // //FindAnyObjectByType<AudioManager>().Play("name");
 // This can be added anywhere in any script if you want to play a specific sound

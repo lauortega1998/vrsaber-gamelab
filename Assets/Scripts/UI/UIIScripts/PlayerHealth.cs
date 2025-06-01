@@ -35,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
     private float originalFontSize;
     private Vector3 originalPosition;
     private int damageSoundIndex = 0;
+    private bool lowHealthWarningPlayed = false;
+
 
 
     void Start()
@@ -74,6 +76,13 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(VibrateHealthText());
             PlayNextDamageSound();
 
+        }
+
+        float healthPercent = (float)currentHealth / maxHealth;
+        if (healthPercent <= 0.3f && !lowHealthWarningPlayed)
+        {
+            FindAnyObjectByType<AudioManager>()?.Play("low hp"); // exact name used here
+            lowHealthWarningPlayed = true;
         }
 
         if (currentHealth <= 0)
