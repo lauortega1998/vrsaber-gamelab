@@ -1173,7 +1173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &161480576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,12 +1491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  usePreset: 0
-  preset: {fileID: 0}
-  tagEffects: []
-  globalEffects: []
-  updatesPerSecond: 30
 --- !u!1001 &212392136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1866,12 +1860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  usePreset: 0
-  preset: {fileID: 0}
-  tagEffects: []
-  globalEffects: []
-  updatesPerSecond: 30
 --- !u!4 &313008472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6484816945243591627, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
@@ -4218,12 +4206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  usePreset: 0
-  preset: {fileID: 0}
-  tagEffects: []
-  globalEffects: []
-  updatesPerSecond: 30
 --- !u!1001 &764971831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6389,12 +6371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  usePreset: 0
-  preset: {fileID: 0}
-  tagEffects: []
-  globalEffects: []
-  updatesPerSecond: 30
 --- !u!114 &1075737234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12045,7 +12021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1837286991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14361,7 +14337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[13].pitch
-      value: 0.79
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[22].pitch
@@ -14377,7 +14353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[13].volume
-      value: 0.49
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[22].volume
