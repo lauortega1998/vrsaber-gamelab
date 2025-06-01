@@ -151,7 +151,7 @@ public class PlayerHealth : MonoBehaviour
     }
     private void PlayNextDamageSound()
     {
-        string soundName = $"Damage{damageSoundIndex + 1}";
+        string soundName = $"damage{damageSoundIndex + 1}";
         FindAnyObjectByType<AudioManager>()?.Play(soundName);
         damageSoundIndex = (damageSoundIndex + 1) % 3; // Loops 0 → 1 → 2 → 0...
     }
