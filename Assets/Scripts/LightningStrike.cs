@@ -99,7 +99,7 @@ public class LightFlicker : MonoBehaviour
                 // Play the thunder sound only once when the light is activated
                 if (!hasPlayedThunderSound && thunderSound != null)
                 {
-                    audioSource.PlayOneShot(thunderSound);
+                    FindAnyObjectByType<AudioManager>().Play("Thunder" + Random.Range(1, 3));
                     hasPlayedThunderSound = true;  // Set flag to prevent it from playing again
                 }
 
