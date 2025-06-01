@@ -19,6 +19,8 @@ public class LightFlicker : MonoBehaviour
 
     private bool hasRotated = false;  // To track if the rotation has been set for this activation
     private bool hasPlayedThunderSound = false;  // To track if thunder sound has been played
+    private bool playThunder1Next = true; // toggles between Thunder1 and Thunder2
+
 
     void Start()
     {
@@ -99,8 +101,11 @@ public class LightFlicker : MonoBehaviour
                 // Play the thunder sound only once when the light is activated
                 if (!hasPlayedThunderSound && thunderSound != null)
                 {
-                    FindAnyObjectByType<AudioManager>().Play("Thunder" + Random.Range(1, 3));
-                    hasPlayedThunderSound = true;  // Set flag to prevent it from playing again
+                    string thunderClip = playThunder1Next ? "Thunder1" : "Thunder2";
+                    FindAnyObjectByType<AudioManager>().Play(thunderClip);
+                    playThunder1Next = !playThunder1Next;
+
+                    hasPlayedThunderSound = true;
                 }
 
                 // Randomize the rotation once when the light is activated
