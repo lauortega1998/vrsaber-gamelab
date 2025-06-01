@@ -40,6 +40,8 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[WeaponVelocityDamage] Killing enemy.");
                     enemy.Die(transform);
+                    FindAnyObjectByType<AudioManager>().Play("death1scream");
+
                 }
                 Debug.Log("[WeaponVelocityDamage] Pushing enemy.");
                 Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
@@ -80,6 +82,7 @@ public class WeaponVelocityDamage : MonoBehaviour
                 {
                     Debug.Log("[Weapon] Correct strike � Enemy killed.");
                     enemy.Die(transform);
+                    FindAnyObjectByType<AudioManager>().Play("death2scream");
                 }
                 else
                 {
