@@ -57,7 +57,10 @@ public class RageSystem : MonoBehaviour
         if (fireHandEffectObject != null) fireHandEffectObject.SetActive(false);
         if (iceHandEffectObject != null) iceHandEffectObject.SetActive(false);
     }
-
+    public bool IsRageActive()
+    {
+        return isDepleting;
+    }
     private void Update()
     {
         if (isDepleting) DepleteRage();
