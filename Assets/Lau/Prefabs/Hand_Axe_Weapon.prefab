@@ -286,7 +286,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.016233845, y: -0.7407705, z: 0.09623276, w: -0.6646313}
   m_LocalPosition: {x: 1.24, y: 0.711, z: 0.382}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4678, y: 1, z: 1.2214}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3844247697883222056}
@@ -502,7 +502,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 2
+  m_ThrowVelocityScale: 2.6
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
