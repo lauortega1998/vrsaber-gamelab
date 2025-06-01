@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 70
   tint:
     m_OverrideState: 1
     m_Value: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9863116, y: 1, z: 0.9897338, w: -0.0000000015032551}
+    m_Value: {x: 0.97757244, y: 1, z: 0.8956577, w: -0.0000000015032551}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 0.9900987, y: 1, z: 0.8992641, w: 0.052559152}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   type:
     m_OverrideState: 1
     m_Value: 8

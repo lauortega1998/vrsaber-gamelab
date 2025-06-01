@@ -14,9 +14,10 @@ public class EnemyFactory : MonoBehaviour
     
     
     public bool isHeavy = false;
-    
+
     [Header("Spawn Settings")]
     public float groundSpawnInterval = 2f;  // New: Ground enemies spawn interval
+    public float heavySpawnInterval = 5f;  // New: Heavy enemies spawn interval
     public float flyingSpawnInterval = 3f;  // New: Flying enemies spawn interval
     public float enemySpeed = 5f;
 
@@ -55,6 +56,8 @@ public class EnemyFactory : MonoBehaviour
         StartCoroutine(SpawnGroundEnemies());
         StartCoroutine(SpawnFlyingEnemies());
         StartCoroutine(IncreaseDifficulty());
+        StartCoroutine(SpawnHeavyGroundEnemies()); // New coroutine
+
     }
 
     private IEnumerator SpawnGroundEnemies()
@@ -64,9 +67,19 @@ public class EnemyFactory : MonoBehaviour
             if (currentGroundEnemies < maxGroundEnemies)
             {
                 SpawnGroundEnemy();
-                SpawnHeavyGroundEnemy();
             }
             yield return new WaitForSeconds(groundSpawnInterval);
+        }
+    }
+    private IEnumerator SpawnHeavyGroundEnemies()
+    {
+        while (true)
+        {
+            if (currentGroundEnemies < maxGroundEnemies)
+            {
+                SpawnHeavyGroundEnemy();
+            }
+            yield return new WaitForSeconds(heavySpawnInterval);
         }
     }
 

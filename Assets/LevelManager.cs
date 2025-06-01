@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
         // Tutorial Level
         Debug.Log("Tutorial started. Duration: 1 minute.");
         enemyspawnerLevelTutorial.SetActive(true);
-        yield return new WaitForSeconds(5); //60
+        yield return new WaitForSeconds(60); //60
         enemyspawnerLevelTutorial.SetActive(false);
 
         yield return new WaitForSeconds(5f); // 60
@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
         iceLevelStarted.SetActive(true);
         enemyspanwerLevelIce.SetActive(true);
-        yield return new WaitForSeconds(5f); // 120 
+        yield return new WaitForSeconds(120f); // 120 
         enemyspanwerLevelIce.SetActive(false);
         iceLevelStarted.SetActive(false);
         
@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
         fireLevelStarted.SetActive(true);
         fireLevelStarted.SetActive(true);
         enemyspanwerLevelFire.SetActive(true);
-        yield return new WaitForSeconds(5f); // 180
+        yield return new WaitForSeconds(180f); // 180
         enemyspanwerLevelFire.SetActive(false);
         fireLevelStarted.SetActive(false);
 

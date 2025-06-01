@@ -43,7 +43,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -15
+    m_Value: -70
   tint:
     m_OverrideState: 1
     m_Value: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9863116, y: 1, z: 0.9897338, w: -0.0000000015032551}
+    m_Value: {x: 0.92912674, y: 0.9557492, z: 1, w: -0.0000000015032551}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 0.9900987, y: 1, z: 0.8992641, w: 0.052559152}
@@ -90,7 +90,7 @@ MonoBehaviour:
     m_Value: 5
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.5251572, g: 0.8394899, b: 1, a: 1}
+    m_Value: {r: 0.380503, g: 0.8374231, b: 1, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0

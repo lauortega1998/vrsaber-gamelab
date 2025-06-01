@@ -98,7 +98,7 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
         }
 
         // Step 12: Destroy this factory
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private bool NormalEnemiesDefeated()

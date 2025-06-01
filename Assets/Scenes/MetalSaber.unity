@@ -195,101 +195,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2189557}
   m_CullTransparentMesh: 1
---- !u!1 &3934316
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3934317}
-  - component: {fileID: 3934318}
-  m_Layer: 0
-  m_Name: EnemyFactoryIce
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3934317
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3934316}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 679852964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3934318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3934316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db789521ecbf59a4e828d6bcdc52e2aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - spawnEvents:
-    - spawnTime: 0
-      enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-      amount: 8
-      spawnPoints:
-      - {fileID: 691474229}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 1998605971}
-    - spawnTime: 10
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 1761279925}
-      - {fileID: 1647987146}
-    - spawnTime: 20
-      enemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 691474229}
-    - spawnTime: 30
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 1
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 691474229}
-    - spawnTime: 45
-      enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-      amount: 10
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 691474229}
-    - spawnTime: 55
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 518992014}
-      - {fileID: 1568520867}
-      - {fileID: 1761279925}
-      - {fileID: 1647987146}
-  preWaveCountdown: 3
-  levelStartUI: {fileID: 0}
-  levelEndUI: {fileID: 0}
-  countdownText: {fileID: 1203908976}
-  delayBetweenWaves: 10
 --- !u!1 &22372750
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +359,7 @@ MonoBehaviour:
   flyingSpawnPoint: {fileID: 518992014}
   strongSpawnPoint: {fileID: 1961412047}
   rageUIElement: {fileID: 0}
-  nextEnemyFactoryPrefab: {fileID: 161480575}
+  nextEnemyFactoryPrefab: {fileID: 0}
   nextFactorySpawnPoint: {fileID: 0}
   delayBeforeNextFactory: 0
   rageSystem: {fileID: 884642601}
@@ -1298,14 +1203,15 @@ MonoBehaviour:
   - {fileID: 1647987142}
   isHeavy: 0
   groundSpawnInterval: 5
+  heavySpawnInterval: 20
   flyingSpawnInterval: 30
-  enemySpeed: 3
-  difficultyIncreaseRate: 15
-  spawnIntervalDecrease: 0.5
-  enemySpeedIncrease: 0
+  enemySpeed: 5
+  difficultyIncreaseRate: 60
+  spawnIntervalDecrease: 1
+  enemySpeedIncrease: 0.5
   minSpawnInterval: 0
-  maxGroundEnemies: 10
-  maxFlyingEnemies: 3
+  maxGroundEnemies: 999
+  maxFlyingEnemies: 999
 --- !u!4 &161480577
 Transform:
   m_ObjectHideFlags: 0
@@ -3146,101 +3052,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8233887920213883407, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
   m_PrefabInstance: {fileID: 820846669}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &536968180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 536968181}
-  - component: {fileID: 536968182}
-  m_Layer: 0
-  m_Name: EnemyFactoryLevelsFire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &536968181
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536968180}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 679852964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &536968182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536968180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db789521ecbf59a4e828d6bcdc52e2aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - spawnEvents:
-    - spawnTime: 0
-      enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-      amount: 8
-      spawnPoints:
-      - {fileID: 691474229}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 1998605971}
-    - spawnTime: 10
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 1761279925}
-      - {fileID: 1647987146}
-    - spawnTime: 20
-      enemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 691474229}
-    - spawnTime: 30
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 1
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 691474229}
-    - spawnTime: 45
-      enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-      amount: 10
-      spawnPoints:
-      - {fileID: 911239434}
-      - {fileID: 911239434}
-      - {fileID: 1961412047}
-      - {fileID: 691474229}
-    - spawnTime: 55
-      enemyPrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-      amount: 2
-      spawnPoints:
-      - {fileID: 518992014}
-      - {fileID: 1568520867}
-      - {fileID: 1761279925}
-      - {fileID: 1647987146}
-  preWaveCountdown: 3
-  levelStartUI: {fileID: 0}
-  levelEndUI: {fileID: 0}
-  countdownText: {fileID: 1203908976}
-  delayBetweenWaves: 10
 --- !u!1001 &538336321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3766,8 +3577,6 @@ Transform:
   - {fileID: 161480577}
   - {fileID: 1975306635}
   - {fileID: 27839404}
-  - {fileID: 3934317}
-  - {fileID: 536968181}
   - {fileID: 911239434}
   - {fileID: 1358367239}
   - {fileID: 691474229}
@@ -5431,6 +5240,7 @@ MonoBehaviour:
   postProcessingVolume: {fileID: 290289104}
   rageVignetteIntensity: 0.7
   rageFilmGrainIntensity: 1
+  rageColorFilter: {r: 1, g: 0.48742133, b: 0.48742133, a: 1}
   rageHapticAmplitude: 0.7
   rageHapticDuration: 0.1
   rageHapticInterval: 0.5
@@ -12577,14 +12387,15 @@ MonoBehaviour:
   - {fileID: 1647987142}
   isHeavy: 0
   groundSpawnInterval: 5
+  heavySpawnInterval: 20
   flyingSpawnInterval: 30
-  enemySpeed: 4
-  difficultyIncreaseRate: 10
-  spawnIntervalDecrease: 0.5
-  enemySpeedIncrease: 2
+  enemySpeed: 5.5
+  difficultyIncreaseRate: 40
+  spawnIntervalDecrease: 1
+  enemySpeedIncrease: 0.5
   minSpawnInterval: 0
-  maxGroundEnemies: 12
-  maxFlyingEnemies: 3
+  maxGroundEnemies: 999
+  maxFlyingEnemies: 999
 --- !u!1 &1998605966
 GameObject:
   m_ObjectHideFlags: 0
