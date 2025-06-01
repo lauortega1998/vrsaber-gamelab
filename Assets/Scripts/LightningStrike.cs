@@ -5,7 +5,11 @@ public class LightFlicker : MonoBehaviour
     private Light lightComponent;  // Reference to the light component
     public Light otherLight;  // Reference to the other light that will be deactivated
     public AudioSource audioSource;  // Reference to the AudioSource
-    public AudioClip thunderSound;  // Thunder sound clip
+    //public AudioClip thunderSound;  // Thunder sound clip
+    [Header("Thunder Clips")]
+    public AudioClip thunderSound1;
+    public AudioClip thunderSound2;
+
     public float activeDuration = 5f;  // Duration the light stays active
     public float inactiveDuration = 3f;  // Duration the light stays inactive
     public float minFlickerInterval = 0.05f;  // Minimum flicker interval (in seconds)
@@ -53,7 +57,7 @@ public class LightFlicker : MonoBehaviour
         {
             // If the light is active, start the flickering process
             FlickerLight();
-            FindAnyObjectByType<AudioManager>().Play("Thunder2");
+            //FindAnyObjectByType<AudioManager>().Play("Thunder2");
             flickerTimer -= Time.deltaTime;
 
             // If the flicker timer has elapsed, reset the flicker with a random interval
@@ -99,13 +103,15 @@ public class LightFlicker : MonoBehaviour
                 }
 
                 // Play the thunder sound only once when the light is activated
-                if (!hasPlayedThunderSound && thunderSound != null)
+                if (!hasPlayedThunderSound)
                 {
-                    string thunderClip = playThunder1Next ? "Thunder1" : "Thunder2";
-                    FindAnyObjectByType<AudioManager>().Play(thunderClip);
-                    playThunder1Next = !playThunder1Next;
-
-                    hasPlayedThunderSound = true;
+                    if (audioSource != null)
+                    {
+                        audioSource.clip = playThunder1Next ? thunderSound1 : thunderSound2;
+                        audioSource.Play();
+                        playThunder1Next = !playThunder1Next;
+                        hasPlayedThunderSound = true;
+                    }
                 }
 
                 // Randomize the rotation once when the light is activated

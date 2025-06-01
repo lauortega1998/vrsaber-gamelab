@@ -12360,7 +12360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherLight: {fileID: 995077983}
   audioSource: {fileID: 0}
-  thunderSound: {fileID: 0}
+  thunderSound1: {fileID: 8300000, guid: 91bbfe8ea403eff43972fb3bfa6e892f, type: 3}
+  thunderSound2: {fileID: 8300000, guid: 618d35419c8a640448b050a92f2c1e7d, type: 3}
   activeDuration: 1
   inactiveDuration: 10
   minFlickerInterval: 0.05
