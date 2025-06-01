@@ -55,8 +55,103 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: horn
+  - name: Horn
     clip: {fileID: 8300000, guid: bde7dd8a27e3eba4da0c9ccf2c4303a0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Horn2
+    clip: {fileID: 8300000, guid: 1ea53fca6b99fde4e953d3d60c0de868, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Rain
+    clip: {fileID: 8300000, guid: 8113941214f38a441bf1c9834aecca28, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: attack1
+    clip: {fileID: 8300000, guid: dc0d7de82931bd4489aaa25ac84e6bb4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: attack2
+    clip: {fileID: 8300000, guid: bb1fa6ac29687f0458faba1bdb9830fb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: attack3
+    clip: {fileID: 8300000, guid: 6ad8d94b7eed0f444bdcef21e773e446, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: damage1
+    clip: {fileID: 8300000, guid: 784bb2749bad2ee4ebbcfff54eb38ef5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: damage2
+    clip: {fileID: 8300000, guid: 98c1cf3176f04424ab018a95088f2d6c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: damage3
+    clip: {fileID: 8300000, guid: 072f759b611926849bb97835acbc0b2a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemy fast breath
+    clip: {fileID: 8300000, guid: 415051594efcd7e43980fd7bc4c7e79e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: death1scream
+    clip: {fileID: 8300000, guid: 1bab27278922b07469ad5512e9ed6061, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: death2scream
+    clip: {fileID: 8300000, guid: 8c6b554d37d1f104cb80956a6ff1a0d2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemy close
+    clip: {fileID: 8300000, guid: bb3ada1a3f5a3ec43ab8f07d9e4855ed, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemy walking
+    clip: {fileID: 8300000, guid: 024c120d45735334f94079380dc4cad6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: flamethrower
+    clip: {fileID: 8300000, guid: dadb7d1fc34e8fb4bb5e15fb5b4e8c9c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: icethrower
+    clip: {fileID: 8300000, guid: 81f0dfbef5d42df44ba70aff043dacd0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: low hp
+    clip: {fileID: 8300000, guid: 01b98a4a6148bee45a81c14286e4e584, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: parry/enemy attack
+    clip: {fileID: 8300000, guid: 66cce31f5b74d1a449e99dad6d4c5f61, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: rage
+    clip: {fileID: 8300000, guid: 69bbf4b2e0c4cf347b16409702a2eebe, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: spear
+    clip: {fileID: 8300000, guid: 0d4ce8b8137a71a4a90fd543000b35ba, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
