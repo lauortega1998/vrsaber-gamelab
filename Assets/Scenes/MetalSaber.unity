@@ -1396,6 +1396,10 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4750117380137162627, guid: c4f300a6f7846bb45b6cb20013dcf60e, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750117380137162627, guid: c4f300a6f7846bb45b6cb20013dcf60e, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 2000
       objectReference: {fileID: 0}
@@ -9528,7 +9532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428704641742374955, guid: a0efdb1375c2cdf4bb9ba9ec40686480, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
