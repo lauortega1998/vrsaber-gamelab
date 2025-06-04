@@ -301,68 +301,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26903748}
   m_CullTransparentMesh: 1
---- !u!1 &27839403
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 27839404}
-  - component: {fileID: 27839405}
-  m_Layer: 0
-  m_Name: EnemyFactoryTutorial
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &27839404
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27839403}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 679852964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &27839405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27839403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d70dfc82e93c4d4283a1151b26676ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalEnemyPrefab: {fileID: 7413807552904317091, guid: 0368117e2c47a7b4dacae3fad2cff43b, type: 3}
-  flyingEnemyPrefab: {fileID: 1149575218117188585, guid: 7604484e5a775ae45b5e13a6c5bef2dd, type: 3}
-  strongEnemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
-  rageEnemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-  normalSpawnPoints:
-  - {fileID: 691474229}
-  - {fileID: 1961412047}
-  - {fileID: 911239434}
-  - {fileID: 1998605971}
-  - {fileID: 1358367239}
-  - {fileID: 1920446845}
-  flyingSpawnPoint: {fileID: 518992014}
-  strongSpawnPoint: {fileID: 691474229}
-  rageUIElement: {fileID: 0}
-  nextEnemyFactoryPrefab: {fileID: 0}
-  nextFactorySpawnPoint: {fileID: 0}
-  delayBeforeNextFactory: 0
-  rageSystem: {fileID: 884642601}
 --- !u!1 &87091791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,76 +1026,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32fc815d3b302544e8680a1c4864e5c2, type: 3}
---- !u!1 &161480575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 161480577}
-  - component: {fileID: 161480576}
-  m_Layer: 0
-  m_Name: EnemyFactory_Ice
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &161480576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161480575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d22094173974254ba885de68acea902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-  flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-  heavyenemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
-  spawners:
-  - {fileID: 691474225}
-  - {fileID: 911239430}
-  - {fileID: 1998605967}
-  - {fileID: 1961412043}
-  - {fileID: 1358367243}
-  - {fileID: 1920446841}
-  spectreSpawners:
-  - {fileID: 518992010}
-  - {fileID: 1568520863}
-  - {fileID: 1761279921}
-  - {fileID: 1647987142}
-  isHeavy: 0
-  groundSpawnInterval: 5
-  heavySpawnInterval: 20
-  flyingSpawnInterval: 30
-  enemySpeed: 5
-  difficultyIncreaseRate: 60
-  spawnIntervalDecrease: 1
-  enemySpeedIncrease: 0.5
-  minSpawnInterval: 0
-  maxGroundEnemies: 999
-  maxFlyingEnemies: 999
---- !u!4 &161480577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161480575}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7785978, y: -5.534252, z: 18.779493}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 679852964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165791571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7847595601434333775, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
@@ -2974,6 +2842,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 679852964}
   m_LocalEulerAnglesHint: {x: 0, y: -49.695, z: 0}
+--- !u!1 &527768510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 527768512}
+  - component: {fileID: 527768511}
+  m_Layer: 0
+  m_Name: EnemyFactory_ForEver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &527768511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527768510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22094173974254ba885de68acea902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+  flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
+  heavyenemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
+  spawners:
+  - {fileID: 691474225}
+  - {fileID: 911239430}
+  - {fileID: 1998605967}
+  - {fileID: 1961412043}
+  - {fileID: 1358367243}
+  - {fileID: 1920446841}
+  spectreSpawners:
+  - {fileID: 518992010}
+  - {fileID: 1568520863}
+  - {fileID: 1761279921}
+  - {fileID: 1647987142}
+  isHeavy: 0
+  groundSpawnInterval: 6
+  heavySpawnInterval: 20
+  flyingSpawnInterval: 25
+  enemySpeed: 4
+  difficultyIncreaseRate: 30
+  spawnIntervalDecrease: 1
+  enemySpeedIncrease: 0.5
+  minSpawnInterval: 0
+  maxGroundEnemies: 999
+  maxFlyingEnemies: 999
+--- !u!4 &527768512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527768510}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.7785978, y: -5.534252, z: 18.779493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 679852964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &532972625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8233887920213883407, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
@@ -3637,9 +3575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 161480577}
-  - {fileID: 1975306635}
-  - {fileID: 27839404}
+  - {fileID: 527768512}
   - {fileID: 911239434}
   - {fileID: 1358367239}
   - {fileID: 691474229}
@@ -11736,7 +11672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837286992}
-  - component: {fileID: 1837286991}
+  - component: {fileID: 1837286993}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -11744,39 +11680,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1837286991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837286990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f3ef2f9984d4c34c81ad1e0abdf87bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorRenderer: {fileID: 0}
-  blackColor: {r: 0, g: 0, b: 0, a: 0}
-  redColor: {r: 0, g: 0.30445027, b: 1, a: 0}
-  blueColor: {r: 1, g: 0.11202903, b: 0, a: 0}
-  transitionDuration: 10
-  enemyspawnerLevelTutorial: {fileID: 27839403}
-  enemyspanwerLevelFire: {fileID: 1975306634}
-  enemyspanwerLevelIce: {fileID: 161480575}
-  countdownText: {fileID: 749788629}
-  gameCompleted: {fileID: 640548737}
-  iceLevelStarted: {fileID: 1917668885}
-  fireLevelStarted: {fileID: 2189557}
-  normalPostProcessing: {fileID: 290289102}
-  icePostProcessing: {fileID: 2139534541}
-  firePostProcessing: {fileID: 1149875285}
-  rainEffect: {fileID: 1669592423}
-  snowEffect: {fileID: 1456336190}
-  bannerLight: {fileID: 2024911922}
-  newYRotation_Tutorial: -42
-  newYRotation_Ice: 7
-  newYRotation_Fire: 50
 --- !u!4 &1837286992
 Transform:
   m_ObjectHideFlags: 0
@@ -11792,6 +11695,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837286993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837286990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f4265605671924495a7cfec03a9a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorRenderer: {fileID: 0}
+  blackColor: {r: 0, g: 0, b: 0, a: 0}
+  redColor: {r: 0, g: 0, b: 0, a: 0}
+  blueColor: {r: 0, g: 0, b: 0, a: 0}
+  transitionDuration: 2
+  enemyFactory: {fileID: 527768510}
+  countdownText: {fileID: 749788629}
+  iceLevelStarted: {fileID: 1917668885}
+  fireLevelStarted: {fileID: 2189557}
+  normalPostProcessing: {fileID: 290289102}
+  icePostProcessing: {fileID: 2139534541}
+  firePostProcessing: {fileID: 1149875285}
+  rainEffect: {fileID: 1669592423}
+  snowEffect: {fileID: 1456336190}
+  bannerLight: {fileID: 2024911922}
+  newYRotation_Ice: 7
+  newYRotation_Fire: 50
 --- !u!1001 &1850827328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12792,76 +12724,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1975306634
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1975306635}
-  - component: {fileID: 1975306636}
-  m_Layer: 0
-  m_Name: EnemyFactory_Fire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1975306635
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975306634}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7785978, y: -5.534252, z: 18.779493}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 679852964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1975306636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975306634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d22094173974254ba885de68acea902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
-  flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-  heavyenemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
-  spawners:
-  - {fileID: 691474225}
-  - {fileID: 911239430}
-  - {fileID: 1998605967}
-  - {fileID: 1961412043}
-  - {fileID: 1358367243}
-  - {fileID: 1920446841}
-  spectreSpawners:
-  - {fileID: 518992010}
-  - {fileID: 1568520863}
-  - {fileID: 1761279921}
-  - {fileID: 1647987142}
-  isHeavy: 0
-  groundSpawnInterval: 5
-  heavySpawnInterval: 20
-  flyingSpawnInterval: 30
-  enemySpeed: 5.5
-  difficultyIncreaseRate: 40
-  spawnIntervalDecrease: 1
-  enemySpeedIncrease: 0.5
-  minSpawnInterval: 0
-  maxGroundEnemies: 999
-  maxFlyingEnemies: 999
 --- !u!1 &1998605966
 GameObject:
   m_ObjectHideFlags: 0

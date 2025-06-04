@@ -16,7 +16,7 @@ public class FlyingEnemyHealth : MonoBehaviour
 
     public void FylingEnemyDie(Transform weaponHitPoint)
     {
-        KillCounter.Instance.AddKill();
+        //KillCounter.Instance.AddKill();
         OnDeath?.Invoke();
         Destroy(gameObject);
 

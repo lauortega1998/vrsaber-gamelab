@@ -534,6 +534,10 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8127413218352734161, guid: debc47e394c974d42a9b735468a9accc, type: 3}
+      propertyPath: enemyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9168527956362147221, guid: debc47e394c974d42a9b735468a9accc, type: 3}
       propertyPath: m_Enabled
       value: 0

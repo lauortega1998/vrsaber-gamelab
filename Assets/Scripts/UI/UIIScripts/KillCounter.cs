@@ -18,15 +18,15 @@ public class KillCounter : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void AddKill()
+    public void AddKill(int points)
     {
-        killCount++;
+        killCount += points;
         UpdateUI();
     }
 
     void UpdateUI()
     {
         if (killCountText != null)
-            killCountText.text = "Score: " + killCount;
+            killCountText.text = killCount.ToString();
     }
 }

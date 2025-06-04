@@ -37,6 +37,11 @@ public class PlayerHealth : MonoBehaviour
     private int damageSoundIndex = 0;
     private bool lowHealthWarningPlayed = false;
 
+    public GameObject deathUI;              // Assign in inspector
+    public Image fadeImage;                 // Black UI Image for fade
+    public float fadeDuration = 2f;
+    public float delayBeforeLoad = 2f;
+
 
 
     void Start()
@@ -152,11 +157,37 @@ public class PlayerHealth : MonoBehaviour
 
         healthText.rectTransform.localPosition = originalPosition;
     }
+    private IEnumerator HandleDeathSequence()
+    {
+        // Show death UI
+        if (deathUI != null) deathUI.SetActive(true);
 
-    private void Die()
+        // Start fade
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            for (float t = 0; t <= fadeDuration; t += Time.deltaTime)
+            {
+                float normalizedTime = t / fadeDuration;
+                color.a = Mathf.Lerp(0f, 1f, normalizedTime);
+                fadeImage.color = color;
+                yield return null;
+            }
+
+            // Ensure it's fully opaque
+            color.a = 1f;
+            fadeImage.color = color;
+        }
+
+        yield return new WaitForSeconds(delayBeforeLoad);
+
+        // Load new scene
+        SceneManager.LoadScene("MountainMenu");
+    }
+    public void Die()
     {
         Debug.Log("Player Died!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(HandleDeathSequence());
     }
     private void PlayNextDamageSound()
     {

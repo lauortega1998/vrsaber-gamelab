@@ -814,6 +814,7 @@ MonoBehaviour:
   knockbackForce: 5
   enemyDestroyDelay: 2
   timeManager: {fileID: 0}
+  enemyType: 2
 --- !u!54 &5343617880131547882
 Rigidbody:
   m_ObjectHideFlags: 0

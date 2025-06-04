@@ -21,6 +21,10 @@ public class EnemyHealth : MonoBehaviour
     private bool hasDied = false;
 
     public TimeManager timeManager;
+    public enum EnemyType { Normal, Flying, Heavy }
+
+    [Header("Enemy Type")]
+    public EnemyType enemyType = EnemyType.Normal;
 
 
 
@@ -47,8 +51,14 @@ public class EnemyHealth : MonoBehaviour
 
         if (animator) animator.enabled = false;
         EnemyManager.Instance?.UnregisterAttacker();
-        KillCounter.Instance?.AddKill();
-        OnDeath?.Invoke();
+        int points = enemyType switch
+        {
+            EnemyType.Normal => 1,
+            EnemyType.Flying => 3,
+            EnemyType.Heavy => 5,
+            _ => 1
+        };
+        KillCounter.Instance?.AddKill(points);
 
         TutorialEnemy tutorialEnemy = GetComponent<TutorialEnemy>();
         tutorialEnemy?.ActivateEnemyFactory();
