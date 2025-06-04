@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319427316082228824, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6468928122315453031, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: m_LocalScale.x
@@ -4313,7 +4313,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -5270,6 +5270,7 @@ MonoBehaviour:
   - {fileID: 1823975463}
   - {fileID: 709046223}
   - {fileID: 1714457556}
+  - {fileID: 947117336}
   - {fileID: 947117336}
   leftGripAction: {fileID: 2033420698680977449, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightGripAction: {fileID: 3190725326577891811, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -13871,7 +13872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14546,11 +14547,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 1.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[13].pitch
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[22].pitch
@@ -14561,12 +14566,56 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[12].volume
-      value: 0.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[13].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[17].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
+      propertyPath: sounds.Array.data[20].volume
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[22].volume
@@ -14574,7 +14623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[23].volume
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4936989221609191255, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: m_Name
@@ -15265,7 +15314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319427316082228824, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6468928122315453031, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: m_LocalScale.x
