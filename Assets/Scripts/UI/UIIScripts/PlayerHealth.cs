@@ -17,6 +17,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("UI References")]
     public Slider healthSlider; // Reference to the Slider component
     public TextMeshProUGUI healthText; // Optional text display
+    public GameObject uiToDeactivate1;
+    public GameObject uiToDeactivate2;
+    public GameObject uiToDeactivate3;
+
+
 
     [Header("Text Flash Settings")]
     public Color damageColor = Color.red;
@@ -200,6 +205,10 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("Player Died!");
         StartCoroutine(HandleDeathSequence());
+        uiToDeactivate1.SetActive(false);
+        uiToDeactivate2.SetActive(false);
+        uiToDeactivate3.SetActive(false);
+
     }
     private void PlayNextDamageSound()
     {

@@ -39,20 +39,21 @@ public class NewRuneScript : MonoBehaviour
         if (brokenRune != null) brokenRune.SetActive(false);
     }
 
-    // This method is called externally
     public void BreakRune()
     {
-        if (isSmashed) return;
+        if (isSmashed || RuneSmashManager.runeAlreadySmashed) return;
+
+        RuneSmashManager.runeAlreadySmashed = true; // Lock all other runes
         StartCoroutine(HandleSmash());
     }
 
     private IEnumerator HandleSmash()
     {
-        FindAnyObjectByType<AudioManager>().Play("stone break");
-        FindAnyObjectByType<AudioManager>().Play("Horn2");
+        FindAnyObjectByType<AudioManager>()?.Play("stone break");
+        FindAnyObjectByType<AudioManager>()?.Play("Horn2");
 
         isSmashed = true;
-        Debug.Log("Smash registered – transitioning scene...");
+        Debug.Log($"Rune smashed – loading {sceneToLoad}");
 
         if (originalRune != null) originalRune.SetActive(false);
         if (brokenRune != null) brokenRune.SetActive(true);

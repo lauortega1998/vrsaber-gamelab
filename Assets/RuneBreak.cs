@@ -7,7 +7,7 @@ public class RuneTriggerRelay : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (runeManager == null) return;
+        if (runeManager == null || RuneSmashManager.runeAlreadySmashed) return;
 
         if (other.CompareTag("Weapon") && other.attachedRigidbody != null)
         {
