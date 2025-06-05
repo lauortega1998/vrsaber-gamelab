@@ -38,10 +38,12 @@ public class PlayerHealth : MonoBehaviour
     private bool lowHealthWarningPlayed = false;
 
     public GameObject deathUI;              // Assign in inspector
+    public TextMeshProUGUI finalScoreText; // Assign this in the Inspector
     public Image fadeImage;                 // Black UI Image for fade
     public float fadeDuration = 2f;
     public float delayBeforeLoad = 2f;
 
+    private bool hasDied = false;
 
 
     void Start()
@@ -161,8 +163,15 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator HandleDeathSequence()
     {
+        // Update final score
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = KillCounter.Instance.killCount.ToString();
+        }
+
         // Show death UI
-        if (deathUI != null) deathUI.SetActive(true);
+        if (deathUI != null)
+            deathUI.SetActive(true);
 
         // Start fade
         if (fadeImage != null)
@@ -182,12 +191,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         yield return new WaitForSeconds(delayBeforeLoad);
-
-        // Load new scene
-        SceneManager.LoadScene("MountainMenu");
+        SceneManager.LoadScene("MountainMenu"); // Replace with actual scene name or index
     }
     public void Die()
     {
+        if (hasDied) return; // Prevent multiple triggers
+        hasDied = true;
+
         Debug.Log("Player Died!");
         StartCoroutine(HandleDeathSequence());
     }
