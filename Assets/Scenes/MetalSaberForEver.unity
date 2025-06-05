@@ -2858,7 +2858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &527768511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2887,14 +2887,14 @@ MonoBehaviour:
   - {fileID: 1761279921}
   - {fileID: 1647987142}
   isHeavy: 0
-  groundSpawnInterval: 6
+  groundSpawnInterval: 7
   heavySpawnInterval: 20
   flyingSpawnInterval: 25
   enemySpeed: 4
   difficultyIncreaseRate: 30
-  spawnIntervalDecrease: 1
+  spawnIntervalDecrease: 0.5
   enemySpeedIncrease: 0.5
-  minSpawnInterval: 0
+  minSpawnInterval: 2
   maxGroundEnemies: 999
   maxFlyingEnemies: 999
 --- !u!4 &527768512
@@ -11885,23 +11885,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f4265605671924495a7cfec03a9a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorRenderer: {fileID: 0}
-  blackColor: {r: 0, g: 0, b: 0, a: 0}
-  redColor: {r: 0, g: 0, b: 0, a: 0}
-  blueColor: {r: 0, g: 0, b: 0, a: 0}
-  transitionDuration: 2
   enemyFactory: {fileID: 527768510}
   countdownText: {fileID: 749788629}
-  iceLevelStarted: {fileID: 1917668885}
-  fireLevelStarted: {fileID: 2189557}
   normalPostProcessing: {fileID: 290289102}
   icePostProcessing: {fileID: 2139534541}
   firePostProcessing: {fileID: 1149875285}
   rainEffect: {fileID: 1669592423}
   snowEffect: {fileID: 1456336190}
-  bannerLight: {fileID: 2024911922}
-  newYRotation_Ice: 7
-  newYRotation_Fire: 50
+  initialDelay: 10
+  cycleDuration: 5
 --- !u!1001 &1850827328
 PrefabInstance:
   m_ObjectHideFlags: 0

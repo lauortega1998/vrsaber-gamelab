@@ -1,167 +1,90 @@
-using System;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 using TMPro;
 
-public class LevelManagerForEver : MonoBehaviour
+public class EndlessLevelManager : MonoBehaviour
 {
-    [Header("Ground Material")]
-    public Renderer floorRenderer;
-    public Color blackColor;
-    public Color redColor;
-    public Color blueColor;
-    public float transitionDuration = 2f;
-
-    public GameObject enemyFactory; // Only one enemy factory used throughout
-
+    [Header("References")]
+    public GameObject enemyFactory;
     public TextMeshProUGUI countdownText;
-    public GameObject iceLevelStarted;
-    public GameObject fireLevelStarted;
 
+    [Header("Post Processing")]
     public GameObject normalPostProcessing;
     public GameObject icePostProcessing;
     public GameObject firePostProcessing;
 
-    public GameObject rainEffect;
-    public GameObject snowEffect;
+    [Header("Environmental Effects")]
+    public GameObject rainEffect; // Fire = rain
+    public GameObject snowEffect; // Ice = snow
 
-    [Header("Scene Lighting")]
-    public Transform bannerLight;
-    public float newYRotation_Ice = 7f;
-    public float newYRotation_Fire = 50f;
+    [Header("Timing")]
+    public float initialDelay = 10f;
+    public float cycleDuration = 90f;
 
-    void Awake()
+    private bool isIce = true;
+
+    void Start()
     {
-        StartCoroutine(LevelFlowLoop());
+        StartCoroutine(LevelLoop());
     }
 
-    private IEnumerator LevelFlowLoop()
+    private System.Collections.IEnumerator LevelLoop()
     {
-        // Initial setup
-        floorRenderer.material.color = blackColor;
-        normalPostProcessing.SetActive(true);
+        // INITIAL DELAY BEFORE START
+        countdownText.gameObject.SetActive(true);
+        yield return StartCoroutine(UpdateCountdown(initialDelay, "Starting in: "));
+
         enemyFactory.SetActive(true);
-        Debug.Log("Starting Endless Mode...");
-
-        yield return new WaitForSeconds(10f);
         normalPostProcessing.SetActive(false);
+        Debug.Log("Enemy factory activated. Starting environment cycle...");
 
-        bool isIce = true;
-
+        // START POST-PROCESSING CYCLE (ICE FIRST)
         while (true)
         {
             if (isIce)
             {
-                yield return StartCoroutine(SwitchToIceLevel());
+                ActivateIceEnvironment();
+                yield return StartCoroutine(UpdateCountdown(cycleDuration, "Ice Level: "));
             }
             else
             {
-                yield return StartCoroutine(SwitchToFireLevel());
+                ActivateFireEnvironment();
+                yield return StartCoroutine(UpdateCountdown(cycleDuration, "Fire Level: "));
             }
+
             isIce = !isIce;
         }
     }
 
-    private IEnumerator SwitchToIceLevel()
+    private void ActivateIceEnvironment()
     {
-        Debug.Log("Switching to Ice Level");
-
-        // Transition
-        yield return StartCoroutine(TransitionGroundColor(blueColor));
-
-        // Setup Ice
-        snowEffect.SetActive(true);
-        rainEffect.SetActive(false);
+        Debug.Log("Activating Ice Environment");
         firePostProcessing.SetActive(false);
         icePostProcessing.SetActive(true);
-        RotateBannerLightY(newYRotation_Ice);
 
-        // UI and audio
-        iceLevelStarted.SetActive(true);
-        FindAnyObjectByType<AudioManager>()?.Play("Horn2");
-
-        // Timer
-        yield return StartCoroutine(ShowLevelTimer(10f));
-
-        iceLevelStarted.SetActive(false);
+        rainEffect.SetActive(false);
+        snowEffect.SetActive(true);
     }
 
-    private IEnumerator SwitchToFireLevel()
+    private void ActivateFireEnvironment()
     {
-        Debug.Log("Switching to Fire Level");
-
-        // Transition
-        yield return StartCoroutine(TransitionGroundColor(redColor));
-
-        // Setup Fire
-        snowEffect.SetActive(false);
-        rainEffect.SetActive(true);
+        Debug.Log("Activating Fire Environment");
         icePostProcessing.SetActive(false);
         firePostProcessing.SetActive(true);
-        RotateBannerLightY(newYRotation_Fire);
 
-        // UI and audio
-        fireLevelStarted.SetActive(true);
-        FindAnyObjectByType<AudioManager>()?.Play("Rain");
-        FindAnyObjectByType<AudioManager>()?.Play("Horn2");
-
-        // Timer
-        yield return StartCoroutine(ShowLevelTimer(10f));
-
-        fireLevelStarted.SetActive(false);
+        snowEffect.SetActive(false);
+        rainEffect.SetActive(true);
     }
 
-    private IEnumerator TransitionGroundColor(Color targetColor)
+    private System.Collections.IEnumerator UpdateCountdown(float duration, string prefix)
     {
-        Material floorMat = floorRenderer.material;
-        Color startColor = floorMat.color;
-        Color black = blackColor;
-
-        float halfDuration = transitionDuration / 2f;
-        float time = 0f;
-
-        // Step 1: Fade to black
-        while (time < halfDuration)
+        float timer = duration;
+        while (timer > 0)
         {
-            time += Time.deltaTime;
-            floorMat.color = Color.Lerp(startColor, black, time / halfDuration);
-            yield return null;
-        }
-
-        floorMat.color = black;
-        yield return new WaitForSeconds(0.2f);
-
-        // Step 2: Fade to target color
-        time = 0f;
-        while (time < halfDuration)
-        {
-            time += Time.deltaTime;
-            floorMat.color = Color.Lerp(black, targetColor, time / halfDuration);
-            yield return null;
-        }
-
-        floorMat.color = targetColor;
-    }
-
-    private IEnumerator ShowLevelTimer(float duration)
-    {
-        countdownText.gameObject.SetActive(true);
-        float timeLeft = duration;
-        while (timeLeft > 0)
-        {
-            countdownText.text = Mathf.CeilToInt(timeLeft).ToString();
+            countdownText.text = prefix + Mathf.CeilToInt(timer).ToString();
             yield return new WaitForSeconds(1f);
-            timeLeft--;
+            timer -= 1f;
         }
         countdownText.text = "";
-        countdownText.gameObject.SetActive(false);
-    }
-
-    private void RotateBannerLightY(float yRotation)
-    {
-        if (bannerLight == null) return;
-
-        Vector3 currentRotation = bannerLight.eulerAngles;
-        bannerLight.rotation = Quaternion.Euler(currentRotation.x, yRotation, currentRotation.z);
     }
 }
