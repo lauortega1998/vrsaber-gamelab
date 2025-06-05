@@ -21,6 +21,7 @@ public class KillCounter : MonoBehaviour
     public void AddKill(int points)
     {
         killCount += points;
+        killCount = Mathf.Max(killCount, 0); // Clamp the score to a minimum of 0
         UpdateUI();
     }
 

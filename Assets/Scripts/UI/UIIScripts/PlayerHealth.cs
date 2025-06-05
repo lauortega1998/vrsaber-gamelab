@@ -73,6 +73,9 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"Player took {damage} damage! Current health: {currentHealth}");
 
+        // Subtract 2 points from score
+        KillCounter.Instance?.AddKill(-2);
+
         UpdateHealthUI();
 
         if (healthText != null)
@@ -80,13 +83,12 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(FlashHealthText());
             StartCoroutine(VibrateHealthText());
             PlayNextDamageSound();
-
         }
 
         float healthPercent = (float)currentHealth / maxHealth;
         if (healthPercent <= 0.3f && !lowHealthWarningPlayed)
         {
-            FindAnyObjectByType<AudioManager>()?.Play("low hp"); // exact name used here
+            FindAnyObjectByType<AudioManager>()?.Play("low hp");
             lowHealthWarningPlayed = true;
         }
 
