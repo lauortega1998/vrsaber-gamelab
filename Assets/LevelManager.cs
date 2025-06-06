@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public Color blackColor;
     public Color redColor;
     public Color blueColor;
+    public bool tutorial = false;
+    
     public float transitionDuration = 2f;
     public GameObject enemyspawnerLevelTutorial;
     public GameObject enemyspanwerLevelFire;
@@ -25,7 +27,8 @@ public class LevelManager : MonoBehaviour
     public GameObject normalPostProcessing;
     public GameObject icePostProcessing;
     public GameObject firePostProcessing;
-
+    
+    
     public GameObject rainEffect;
     public GameObject snowEffect;
 
@@ -34,7 +37,7 @@ public class LevelManager : MonoBehaviour
     public float newYRotation_Tutorial = -42f;
     public float newYRotation_Ice = 7f;
     public float newYRotation_Fire = 50f;
-
+    
 
 
     void Start()
@@ -70,8 +73,10 @@ public class LevelManager : MonoBehaviour
         RotateBannerLightY(newYRotation_Tutorial);
 
         enemyspawnerLevelTutorial.SetActive(true);
+        tutorial = true;
         yield return StartCoroutine(ShowLevelTimer(45f)); // 45
         enemyspawnerLevelTutorial.SetActive(false);
+        tutorial = false;
 
         yield return new WaitForSeconds(0f); // 60
 

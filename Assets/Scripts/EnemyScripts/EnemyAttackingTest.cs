@@ -11,7 +11,7 @@ public class EnemyAttackingTest : MonoBehaviour
     private PlayerHealth playerHealth;
     private int lastPrintedTime = -1;
     public bool isEnemyCollided = false;
-
+    public LevelManager levelManager;
     public float raycastDistance = 10f;
     public LayerMask raycastLayers;
     public Transform raycastOrigin;
@@ -151,7 +151,7 @@ public class EnemyAttackingTest : MonoBehaviour
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackEffect, 0.5f));
         }
 
-        if (enemyAttackCollider != null)
+        if (enemyAttackCollider != null && levelManager.tutorial == false)
         {
             enemyAttackCollider.SetActive(false);
             enemyAttackCollider.SetActive(true);

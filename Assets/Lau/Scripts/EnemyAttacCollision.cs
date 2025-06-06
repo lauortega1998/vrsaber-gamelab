@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyAttacCollision : MonoBehaviour
 {
-    public int normalEnemyDamage = 10;
-    public int heavyEnemyDamage = 30;
+   
 
     private PlayerHealth playerHealth;
     private bool shieldInside = false;
