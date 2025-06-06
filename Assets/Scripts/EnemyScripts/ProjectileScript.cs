@@ -7,7 +7,7 @@ public class SpectreProjectile : MonoBehaviour
     private PlayerHealth playerHealth;
     public GameObject impactEffectPrefab;
     public GameObject brokenProjectilePrefab;
-
+    public LevelManager levelManager;
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -16,7 +16,7 @@ public class SpectreProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ProjectileDamage"))
+        if (other.CompareTag("ProjectileDamage") && levelManager.tutorial == false)
         {
             playerHealth.TakeDamage(damageAmount);
             Debug.Log("Spectre projectile hit the player!");

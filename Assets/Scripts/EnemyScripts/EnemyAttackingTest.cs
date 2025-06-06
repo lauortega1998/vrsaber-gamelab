@@ -151,7 +151,7 @@ public class EnemyAttackingTest : MonoBehaviour
             StartCoroutine(DisableAttackEffectAfterDelay(enemyAttackEffect, 0.5f));
         }
 
-        if (enemyAttackCollider != null && levelManager.tutorial == false)
+        if (enemyAttackCollider != null)
         {
             enemyAttackCollider.SetActive(false);
             enemyAttackCollider.SetActive(true);

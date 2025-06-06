@@ -7,14 +7,15 @@ public class EnemyAttacCollision : MonoBehaviour
     private PlayerHealth playerHealth;
     private bool shieldInside = false;
     private bool wallInside = false;
-
     private EnemyType currentEnemy;
 
     public GameObject shieldBlockEffect;
-
+    public LevelManager levelManager;
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
+        levelManager = FindObjectOfType<LevelManager>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,21 +67,20 @@ public class EnemyAttacCollision : MonoBehaviour
     private void Update()
     {
         // Check once per frame if the attack is happening
-        if (wallInside)
+        if (wallInside && levelManager != null && !levelManager.tutorial)
         {
             if (!shieldInside)
             {
 
                 // Wall is inside but no shield to protect -> player takes damage
 
-                if (playerHealth != null)
+                if (playerHealth != null )
                 {
 
                     playerHealth.TakeDamage(10);
                     Debug.Log("Player took damage because no shield was protecting!");
                 }
 
-                // After dealing damage once, reset
                 wallInside = false;
             }
             else
