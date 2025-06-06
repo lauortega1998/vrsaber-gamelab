@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,6 +31,12 @@ public class LevelManager : MonoBehaviour
 
     public GameObject rainEffect;
     public GameObject snowEffect;
+
+    public GameObject winUI;              // Assign in inspector
+    public TextMeshProUGUI finalScoreText; // Assign this in the Inspector
+    public Image fadeImage;                 // Black UI Image for fade
+    public float fadeDuration = 2f;
+    public float delayBeforeLoad = 10f;
 
     [Header("Scene Lighting")]
     public Transform bannerLight;
@@ -130,6 +139,39 @@ public class LevelManager : MonoBehaviour
         fireLevelStarted.SetActive(false);
         normalPostProcessing.SetActive(true);
         gameCompleted.SetActive(true);
+        StartCoroutine(HandleWinSequence());
+    }
+    private IEnumerator HandleWinSequence()
+    {
+        // Update final score
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = KillCounter.Instance.killCount.ToString();
+        }
+
+        // Show death UI
+        if (winUI != null)
+            winUI.SetActive(true);
+
+        // Start fade
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            for (float t = 0; t <= fadeDuration; t += Time.deltaTime)
+            {
+                float normalizedTime = t / fadeDuration;
+                color.a = Mathf.Lerp(0f, 1f, normalizedTime);
+                fadeImage.color = color;
+                yield return null;
+            }
+
+            // Ensure it's fully opaque
+            color.a = 1f;
+            fadeImage.color = color;
+        }
+
+        yield return new WaitForSeconds(delayBeforeLoad);
+        SceneManager.LoadScene("MountainMenu"); // Replace with actual scene name or index
     }
 
     private IEnumerator TransitionGroundColor(Color targetColor)

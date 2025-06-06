@@ -32,7 +32,7 @@ public class EndlessLevelManager : MonoBehaviour
     {
         // INITIAL DELAY BEFORE START
         countdownText.gameObject.SetActive(true);
-        yield return StartCoroutine(UpdateCountdown(initialDelay, "Starting in: "));
+        yield return StartCoroutine(UpdateCountdown(initialDelay, ""));
 
         enemyFactory.SetActive(true);
         normalPostProcessing.SetActive(false);
@@ -44,12 +44,12 @@ public class EndlessLevelManager : MonoBehaviour
             if (isIce)
             {
                 ActivateIceEnvironment();
-                yield return StartCoroutine(UpdateCountdown(cycleDuration, "Ice Level: "));
+                yield return StartCoroutine(UpdateCountdown(cycleDuration, ""));
             }
             else
             {
                 ActivateFireEnvironment();
-                yield return StartCoroutine(UpdateCountdown(cycleDuration, "Fire Level: "));
+                yield return StartCoroutine(UpdateCountdown(cycleDuration, ""));
             }
 
             isIce = !isIce;

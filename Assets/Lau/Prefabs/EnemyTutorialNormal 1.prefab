@@ -632,6 +632,7 @@ MonoBehaviour:
   knockbackForce: 5
   enemyDestroyDelay: 2
   timeManager: {fileID: 0}
+  enemyType: 0
 --- !u!54 &2052718516456225553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -767,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9ec52f4ef7d8745be4f53e6895c56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damageAmount: 0
 --- !u!1001 &1956585625595853747
 PrefabInstance:
   m_ObjectHideFlags: 0
