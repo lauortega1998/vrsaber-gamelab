@@ -6,14 +6,16 @@ public class EnemyFactory : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject flyingSpectrePrefab;
+    public GameObject heavyenemyPrefab;
 
     [Header("Spawners")]
-    public List<EnemySpawner> spawners = new List<EnemySpawner>(); // Ground spawners
-    public List<EnemySpawner> spectreSpawners = new List<EnemySpawner>(); // Airborne spawners for spectres
+    public List<EnemySpawner> spawners = new List<EnemySpawner>();
+    public List<EnemySpawner> spectreSpawners = new List<EnemySpawner>();
 
     [Header("Spawn Settings")]
-    public float groundSpawnInterval = 2f;  // New: Ground enemies spawn interval
-    public float flyingSpawnInterval = 3f;  // New: Flying enemies spawn interval
+    public float groundSpawnInterval = 2f;
+    public float heavySpawnInterval = 5f;
+    public float flyingSpawnInterval = 3f;
     public float enemySpeed = 5f;
 
     [Header("Difficulty Settings")]
@@ -25,24 +27,21 @@ public class EnemyFactory : MonoBehaviour
     [Header("Spawn Limits")]
     public int maxGroundEnemies = 6;
     public int maxFlyingEnemies = 6;
+    public int maxHeavyEnemies = 3; // NEW
 
     private int currentGroundEnemies = 0;
     private int currentFlyingEnemies = 0;
-    private EnemyHealth healthscript;
+    private int currentHeavyEnemies = 0; // NEW
 
     private void Start()
     {
         if (spawners.Count == 0)
-        {
             Debug.LogError("EnemyFactory requires at least one ground EnemySpawner!");
-        }
 
         if (spectreSpawners.Count == 0)
-        {
             Debug.LogWarning("No spectre-specific spawners assigned. Flying spectres will use ground spawners instead.");
-        }
 
-        if (enemyPrefab == null || flyingSpectrePrefab == null)
+        if (enemyPrefab == null || flyingSpectrePrefab == null || heavyenemyPrefab == null)
         {
             Debug.LogError("EnemyFactory is missing prefab references!");
             return;
@@ -50,6 +49,7 @@ public class EnemyFactory : MonoBehaviour
 
         StartCoroutine(SpawnGroundEnemies());
         StartCoroutine(SpawnFlyingEnemies());
+        StartCoroutine(SpawnHeavyGroundEnemies());
         StartCoroutine(IncreaseDifficulty());
     }
 
@@ -58,10 +58,20 @@ public class EnemyFactory : MonoBehaviour
         while (true)
         {
             if (currentGroundEnemies < maxGroundEnemies)
-            {
                 SpawnGroundEnemy();
-            }
+
             yield return new WaitForSeconds(groundSpawnInterval);
+        }
+    }
+
+    private IEnumerator SpawnHeavyGroundEnemies()
+    {
+        while (true)
+        {
+            if (currentHeavyEnemies < maxHeavyEnemies)
+                SpawnHeavyGroundEnemy();
+
+            yield return new WaitForSeconds(heavySpawnInterval);
         }
     }
 
@@ -70,9 +80,8 @@ public class EnemyFactory : MonoBehaviour
         while (true)
         {
             if (currentFlyingEnemies < maxFlyingEnemies)
-            {
                 SpawnFlyingEnemy();
-            }
+
             yield return new WaitForSeconds(flyingSpawnInterval);
         }
     }
@@ -85,9 +94,10 @@ public class EnemyFactory : MonoBehaviour
 
             groundSpawnInterval = Mathf.Max(groundSpawnInterval - spawnIntervalDecrease, minSpawnInterval);
             flyingSpawnInterval = Mathf.Max(flyingSpawnInterval - spawnIntervalDecrease, minSpawnInterval);
+            heavySpawnInterval = Mathf.Max(heavySpawnInterval - spawnIntervalDecrease, minSpawnInterval);
             enemySpeed += enemySpeedIncrease;
 
-            Debug.Log($"Difficulty increased! Ground Interval: {groundSpawnInterval}, Flying Interval: {flyingSpawnInterval}, Enemy Speed: {enemySpeed}");
+            Debug.Log($"Difficulty increased! Ground: {groundSpawnInterval:F2}, Flying: {flyingSpawnInterval:F2}, Heavy: {heavySpawnInterval:F2}, Speed: {enemySpeed:F2}");
         }
     }
 
@@ -95,26 +105,44 @@ public class EnemyFactory : MonoBehaviour
     {
         if (spawners.Count == 0) return;
 
-        // Select a random spawner and get a spawn position
-        EnemySpawner selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+        var selectedSpawner = spawners[Random.Range(0, spawners.Count)];
         Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
 
-        // Instantiate the enemy
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        newEnemy.tag = "Enemy";
 
-        // Check if the enemy has the EnemyHealth component
+        if (newEnemy.TryGetComponent<EnemyDamage>(out var damage))
+            damage.damageAmount = 10;
+
         if (newEnemy.TryGetComponent<EnemyHealth>(out var enemyHealth))
         {
-            // Optionally set speed or other properties on the enemyHealth (if needed)
-            // enemyHealth.speed = enemySpeed;  // Uncomment if there's a speed property
-
-            // Increment the count of ground enemies
             currentGroundEnemies++;
+            enemyHealth.OnDeath += () => currentGroundEnemies--;
+        }
+    }
 
-            // Subscribe to the OnDeath event
+    private void SpawnHeavyGroundEnemy()
+    {
+        if (spawners.Count == 0) return;
+
+        var selectedSpawner = spawners[Random.Range(0, spawners.Count)];
+        Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
+
+        GameObject newEnemy = Instantiate(heavyenemyPrefab, spawnPosition, Quaternion.identity);
+        newEnemy.tag = "Enemy";
+
+        if (newEnemy.TryGetComponent<EnemyDamage>(out var damage))
+            damage.damageAmount = 25;
+
+        if (newEnemy.TryGetComponent<EnemyHealth>(out var enemyHealth))
+        {
+            currentGroundEnemies++;
+            currentHeavyEnemies++; // Track separately
+
             enemyHealth.OnDeath += () =>
             {
-                currentGroundEnemies--; // Decrease the count when this enemy dies
+                currentGroundEnemies--;
+                currentHeavyEnemies--;
             };
         }
     }
@@ -124,39 +152,21 @@ public class EnemyFactory : MonoBehaviour
         EnemySpawner selectedSpawner;
 
         if (spectreSpawners.Count > 0)
-        {
             selectedSpawner = spectreSpawners[Random.Range(0, spectreSpawners.Count)];
-        }
         else if (spawners.Count > 0)
         {
             Debug.LogWarning("Spectre spawner list is empty. Falling back to ground spawners.");
             selectedSpawner = spawners[Random.Range(0, spawners.Count)];
         }
-        else
-        {
-            return; // No spawners available
-        }
+        else return;
 
-        // Get the spawn position
         Vector3 spawnPosition = selectedSpawner.GetRandomSpawnPosition();
-
-        // Instantiate the flying enemy (spectre)
         GameObject newSpectre = Instantiate(flyingSpectrePrefab, spawnPosition, Quaternion.identity);
 
-        // Check if the flying spectre has the EnemyHealth component
         if (newSpectre.TryGetComponent<EnemyHealth>(out var spectreHealth))
         {
-            // Optionally set speed or other properties on the spectreHealth (if needed)
-            // spectreHealth.speed = enemySpeed;  // Uncomment if there's a speed property
-
-            // Increment the count of flying enemies
             currentFlyingEnemies++;
-
-            // Subscribe to the OnDeath event
-            spectreHealth.OnDeath += () =>
-            {
-                currentFlyingEnemies--; // Decrease the count when this flying enemy dies
-            };
+            spectreHealth.OnDeath += () => currentFlyingEnemies--;
         }
     }
 }
