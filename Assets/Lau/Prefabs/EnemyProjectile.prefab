@@ -110,8 +110,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.0501889
+  m_Center: {x: 0, y: 0, z: -0.088923566}
 --- !u!114 &8536986848542103094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   damageAmount: 10
   impactEffectPrefab: {fileID: 1835355836541019294, guid: 4790206eadc817b4196e071640e653af, type: 3}
   brokenProjectilePrefab: {fileID: 2849048882126443055, guid: e3d49a79a685bcd45a13d5222f157434, type: 3}
+  levelManager: {fileID: 0}
 --- !u!54 &333645429495380549
 Rigidbody:
   m_ObjectHideFlags: 0
