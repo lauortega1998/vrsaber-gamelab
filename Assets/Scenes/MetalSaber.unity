@@ -6753,8 +6753,8 @@ MonoBehaviour:
   lowHealthColor: {r: 0.57232696, g: 0.1925754, b: 0.1925754, a: 1}
   vibrationIntensity: 0.14
   vibrationDuration: 0.3
-  deathUI: {fileID: 0}
-  finalScoreText: {fileID: 0}
+  deathUI: {fileID: 1867681519}
+  finalScoreText: {fileID: 683524175}
   fadeImage: {fileID: 787634012}
   fadeDuration: 5
   delayBeforeLoad: 5

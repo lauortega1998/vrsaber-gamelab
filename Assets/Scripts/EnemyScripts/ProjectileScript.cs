@@ -16,7 +16,7 @@ public class SpectreProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ProjectileDamage") && levelManager.tutorial == false)
+        if (other.CompareTag("ProjectileDamage"))
         {
             playerHealth.TakeDamage(damageAmount);
             Debug.Log("Spectre projectile hit the player!");
