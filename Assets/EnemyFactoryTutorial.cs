@@ -8,7 +8,7 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
     public GameObject normalEnemyPrefab;
     public GameObject flyingEnemyPrefab;
     public GameObject strongEnemyPrefab;
-    public GameObject rageEnemyPrefab; // ✅ NEW: separate rage wave prefab
+    public GameObject rageEnemyPrefab;
 
     [Header("Spawn Points")]
     public Transform[] normalSpawnPoints;
@@ -17,7 +17,7 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
 
     [Header("Rage Settings")]
     public GameObject rageUIElement;
-    // public RageController rageController;
+    public RageSystem rageSystem;
 
     [Header("Next Factory")]
     public GameObject nextEnemyFactoryPrefab;
@@ -25,99 +25,94 @@ public class EnemyFactoryTutorialScript : MonoBehaviour
     public float delayBeforeNextFactory = 3f;
 
     private List<GameObject> spawnedEnemies = new List<GameObject>();
-    private List<GameObject> normalEnemies = new List<GameObject>();
     private List<GameObject> rageWaveEnemies = new List<GameObject>();
-    private GameObject flyingEnemy;
 
-    public RageSystem rageSystem; // drag your RageSystem object into this in the Inspector
-
-
-    void Start()
+    private void Start()
     {
-        StartCoroutine(SpawnTutorialEnemies());
+        StartCoroutine(EnemyWaveFlow());
     }
 
-    IEnumerator SpawnTutorialEnemies()
+    private IEnumerator EnemyWaveFlow()
     {
-        // Step 1: Spawn 2 normal enemies
+        // ⏱️ 0s: Spawn 2 Normal Enemies
+        SpawnNormalEnemies();
+
+        // ⏱️ Wait 15s
+        yield return new WaitForSeconds(15f);
+        SpawnFlyingEnemy();
+
+        // ⏱️ Wait 15s more (30s total)
+        yield return new WaitForSeconds(15f);
+        SpawnGiantEnemy();
+
+        // ⏱️ Wait 10s more (40s total)
+        yield return new WaitForSeconds(10f);
+        TriggerRagePhase();
+
+        // ⏱️ Wait until rage wave is defeated (optional)
+        StartCoroutine(CheckRageWaveDefeated());
+    }
+
+    private void SpawnNormalEnemies()
+    {
         for (int i = 0; i < 2 && i < normalSpawnPoints.Length; i++)
         {
             GameObject enemy = Instantiate(normalEnemyPrefab, normalSpawnPoints[i].position, Quaternion.identity);
             spawnedEnemies.Add(enemy);
-            normalEnemies.Add(enemy);
         }
+    }
 
-        // Step 2: Wait for normal enemies to be defeated
-        yield return new WaitUntil(() => NormalEnemiesDefeated());
+    private void SpawnFlyingEnemy()
+    {
+        GameObject flying = Instantiate(flyingEnemyPrefab, flyingSpawnPoint.position, Quaternion.identity);
+        spawnedEnemies.Add(flying);
+    }
 
-        // Step 3: Spawn flying enemy
-        flyingEnemy = Instantiate(flyingEnemyPrefab, flyingSpawnPoint.position, Quaternion.identity);
-        spawnedEnemies.Add(flyingEnemy);
-
-        // Step 4: Wait for flying enemy to be defeated
-        yield return new WaitUntil(() => flyingEnemy == null);
-
-        // Step 5: Spawn strong (giant) enemy
+    private void SpawnGiantEnemy()
+    {
         GameObject strong = Instantiate(strongEnemyPrefab, strongSpawnPoint.position, Quaternion.identity);
         spawnedEnemies.Add(strong);
+    }
 
-        // Step 6: Wait for giant to be defeated
-        yield return new WaitUntil(() => strong == null);
-
-        if (rageSystem != null) 
+    private void TriggerRagePhase()
+    {
+        if (rageSystem != null)
         {
-            rageSystem.currentRage = rageSystem.rageMax;   // fill to 100%
-            rageSystem.StartDepletingRage();               // trigger rage effects manually
+            rageSystem.currentRage = rageSystem.rageMax;
+            rageSystem.StartDepletingRage();
         }
 
         if (rageUIElement != null)
-        {
             rageUIElement.SetActive(true);
-        }
 
-        // ✅ Step 8: Spawn 4 Rage enemies using a separate prefab
+        SpawnRageEnemies();
+    }
+
+    private void SpawnRageEnemies()
+    {
         for (int i = 0; i < 4 && i < normalSpawnPoints.Length; i++)
         {
             GameObject rageEnemy = Instantiate(rageEnemyPrefab, normalSpawnPoints[i].position, Quaternion.identity);
             spawnedEnemies.Add(rageEnemy);
             rageWaveEnemies.Add(rageEnemy);
         }
+    }
 
-        // Step 9: Wait for rage wave enemies to be defeated
+    private IEnumerator CheckRageWaveDefeated()
+    {
         yield return new WaitUntil(() => RageEnemiesDefeated());
-
-        // Step 10: Wait before spawning next factory
         yield return new WaitForSeconds(delayBeforeNextFactory);
 
-        // Step 11: Spawn next enemy factory
         if (nextEnemyFactoryPrefab != null && nextFactorySpawnPoint != null)
         {
             nextEnemyFactoryPrefab.SetActive(true);
             rageUIElement.SetActive(false);
-
         }
-
-        // Step 12: Destroy this factory
-        //Destroy(gameObject);
-    }
-
-    private bool NormalEnemiesDefeated()
-    {
-        normalEnemies.RemoveAll(e => e == null);
-        return normalEnemies.Count == 0;
     }
 
     private bool RageEnemiesDefeated()
     {
         rageWaveEnemies.RemoveAll(e => e == null);
         return rageWaveEnemies.Count == 0;
-
-    }
-
-    private bool AllEnemiesDefeated()
-    {
-        spawnedEnemies.RemoveAll(e => e == null);
-        return spawnedEnemies.Count == 0;
     }
 }
-

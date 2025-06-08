@@ -2871,9 +2871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d22094173974254ba885de68acea902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
+  enemyPrefab: {fileID: 2954750442761517835, guid: 66342bfe0fd032543b6e3826ea922e88, type: 3}
   flyingSpectrePrefab: {fileID: 2784238943516223965, guid: a1cd3e1d69559fc4bb47bf060693227b, type: 3}
-  heavyenemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
+  heavyenemyPrefab: {fileID: 6463828631887779918, guid: d153cbbf6799b3c4f9a56288fc2e4fae, type: 3}
   spawners:
   - {fileID: 691474225}
   - {fileID: 911239430}
@@ -11864,6 +11864,7 @@ MonoBehaviour:
   snowEffect: {fileID: 1456336190}
   initialDelay: 10
   cycleDuration: 35
+  tutorial: 0
 --- !u!1001 &1850827328
 PrefabInstance:
   m_ObjectHideFlags: 0

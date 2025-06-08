@@ -65,6 +65,9 @@ public class EnemyHealth : MonoBehaviour
 
         FindAnyObjectByType<PlayerStats>()?.GainMana(20);
         FindAnyObjectByType<RageSystem>()?.OnEnemyKilled();
+        
+
+
 
         // 🔥 Spawn hit effect
         if (hitEffectPrefab != null && weaponHitPoint != null)

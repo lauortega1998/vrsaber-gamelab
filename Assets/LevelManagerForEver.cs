@@ -22,10 +22,12 @@ public class EndlessLevelManager : MonoBehaviour
     public float cycleDuration = 90f;
 
     private bool isIce = true;
+    public bool tutorial = false;
 
     void Start()
     {
         StartCoroutine(LevelLoop());
+        tutorial = false;
     }
 
     private System.Collections.IEnumerator LevelLoop()

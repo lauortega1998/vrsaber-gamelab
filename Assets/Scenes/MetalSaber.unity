@@ -530,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalEnemyPrefab: {fileID: 7413807552904317091, guid: 0368117e2c47a7b4dacae3fad2cff43b, type: 3}
   flyingEnemyPrefab: {fileID: 1149575218117188585, guid: 7604484e5a775ae45b5e13a6c5bef2dd, type: 3}
-  strongEnemyPrefab: {fileID: 5998792601486452506, guid: 6057a11be962e284e988834ce10fbb02, type: 3}
+  strongEnemyPrefab: {fileID: 4708555120552848375, guid: 2f10d000182a29e46aa90931eec2179c, type: 3}
   rageEnemyPrefab: {fileID: 6616180692884293340, guid: 177a878ef4efe1241b285c453e077364, type: 3}
   normalSpawnPoints:
   - {fileID: 691474229}
@@ -542,10 +542,10 @@ MonoBehaviour:
   flyingSpawnPoint: {fileID: 518992014}
   strongSpawnPoint: {fileID: 691474229}
   rageUIElement: {fileID: 0}
+  rageSystem: {fileID: 884642601}
   nextEnemyFactoryPrefab: {fileID: 0}
   nextFactorySpawnPoint: {fileID: 0}
   delayBeforeNextFactory: 0
-  rageSystem: {fileID: 884642601}
 --- !u!1 &30599678
 GameObject:
   m_ObjectHideFlags: 0
@@ -11061,6 +11061,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5f78f46e07096641ae8c6028c681ae1, type: 3}
   m_PrefabInstance: {fileID: 263911258}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &794422301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9129866910850174347, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+  m_PrefabInstance: {fileID: 1422371459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &794422304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+  m_PrefabInstance: {fileID: 1422371459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &795391870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6fb8e8731f1471f42abac5e963e9b938, type: 3}
@@ -11993,7 +12003,7 @@ MonoBehaviour:
   rageMax: 100
   rageDepletionRate: 12
   rageBar: {fileID: 274358016}
-  fireHandEffectObject: {fileID: 1947872203295656}
+  fireHandEffectObject: {fileID: 794422301}
   fireHandEffectPower: {fileID: 1973077545487043}
   fireHandUI: {fileID: 1577418122}
   iceHandEffectObject: {fileID: 1947872203295656}
@@ -15387,6 +15397,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6484816945243591627, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 969629982}
+    - targetCorrespondingSourceObject: {fileID: 6484816945243591627, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794422304}
     - targetCorrespondingSourceObject: {fileID: 6484816944748581674, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 230758389}
@@ -18803,6 +18816,75 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7762392303311393776, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
   m_PrefabInstance: {fileID: 90553588}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1422371459
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 313008472}
+    m_Modifications:
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06410484
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06410485
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.06410487
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0013160855
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.041392207
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.053162955
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6939548
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7186856
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.03142265
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.030502053
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454207262721631400, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129866910850174347, guid: b79393f137844774aa37737b5ed82b32, type: 3}
+      propertyPath: m_Name
+      value: FireBall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b79393f137844774aa37737b5ed82b32, type: 3}
 --- !u!1001 &1430113424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20758,6 +20840,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 313008472}
     m_Modifications:
+    - target: {fileID: 3237134451095295954, guid: ed0c0a6b30a70c04e88069b7945b7407, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f96e136aa9a239847aae9ffdf5058b30, type: 2}
+    - target: {fileID: 3237134451095295954, guid: ed0c0a6b30a70c04e88069b7945b7407, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3513293348673268242, guid: ed0c0a6b30a70c04e88069b7945b7407, type: 3}
       propertyPath: m_Name
       value: CanvasTutorialLeft
@@ -20856,6 +20946,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4096216466075726604, guid: ed0c0a6b30a70c04e88069b7945b7407, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627898788636783109, guid: ed0c0a6b30a70c04e88069b7945b7407, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -22111,6 +22205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1172442899}
     m_Modifications:
+    - target: {fileID: 2287082730857842703, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4765547964147612213, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -22202,6 +22300,30 @@ PrefabInstance:
     - target: {fileID: 4765547964147612213, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_text
+      value: Press Front Trigger for Fire Stream
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f96e136aa9a239847aae9ffdf5058b30, type: 2}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.015686274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.66870576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000168613946535224, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7997642237871101473, guid: ef4a4121909429049a3a510da73d0ca5, type: 3}
       propertyPath: m_Name

@@ -18,7 +18,10 @@ public class SpectreProjectile : MonoBehaviour
     {
         if (other.CompareTag("ProjectileDamage"))
         {
-            playerHealth.TakeDamage(damageAmount);
+            if (levelManager != null && !levelManager.tutorial)
+            {
+                playerHealth.TakeDamage(damageAmount);
+            }
             Debug.Log("Spectre projectile hit the player!");
             Destroy(gameObject);
         }

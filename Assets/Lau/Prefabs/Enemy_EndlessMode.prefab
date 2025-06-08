@@ -297,7 +297,8 @@ GameObject:
   - component: {fileID: 5197363361335333240}
   - component: {fileID: 354364793136309726}
   - component: {fileID: 1321124144972832330}
-  - component: {fileID: 6256229688943050064}
+  - component: {fileID: 395201990330430567}
+  - component: {fileID: 896895020271882683}
   m_Layer: 13
   m_Name: EnemyAttackCollider
   m_TagString: Untagged
@@ -394,7 +395,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0.00000011920928, y: 0, z: 0}
---- !u!114 &6256229688943050064
+--- !u!114 &395201990330430567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627935809728758462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8d8a672dbf76d4fa7ba87e723c4f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldBlockEffect: {fileID: 0}
+  levelManager: {fileID: 0}
+--- !u!114 &896895020271882683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4d0e1de330a1e4da67df64607c0ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldBlockEffect: {fileID: 4254853601451261160, guid: 0c2a7d0134b0bf54095119f2c6cc0254, type: 3}
+  shieldBlockEffect: {fileID: 0}
   levelManager: {fileID: 0}
 --- !u!1001 &3625321960629081986
 PrefabInstance:
