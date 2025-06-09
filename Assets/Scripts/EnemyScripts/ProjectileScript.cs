@@ -8,19 +8,28 @@ public class SpectreProjectile : MonoBehaviour
     public GameObject impactEffectPrefab;
     public GameObject brokenProjectilePrefab;
     public LevelManager levelManager;
+    public EndlessLevelManager endlessLevelManager;
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
         Destroy(gameObject, 3.5f);
         levelManager = FindObjectOfType<LevelManager>();
-
+        endlessLevelManager = FindObjectOfType<EndlessLevelManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ProjectileDamage"))
         {
-            if (levelManager != null && !levelManager.tutorial)
+            if (levelManager != null && !levelManager.tutorial )
+            {
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damageAmount);
+                }
+                
+            }
+            if (endlessLevelManager != null && !endlessLevelManager.tutorial )
             {
                 if (playerHealth != null)
                 {
