@@ -3331,6 +3331,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 478245512617150813, guid: 83c96f2ec5a299a4baca37acfc66371a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2525dfccc9712174c9e746a14318911d, type: 2}
     - target: {fileID: 3498038502549169270, guid: 83c96f2ec5a299a4baca37acfc66371a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -184
@@ -3374,6 +3378,14 @@ PrefabInstance:
     - target: {fileID: 4305537796940332748, guid: 83c96f2ec5a299a4baca37acfc66371a, type: 3}
       propertyPath: m_Name
       value: ARENAFINAAALLL
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548328929729507256, guid: 83c96f2ec5a299a4baca37acfc66371a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548328929729507256, guid: 83c96f2ec5a299a4baca37acfc66371a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
