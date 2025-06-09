@@ -39,6 +39,8 @@ public class EnemyHealth : MonoBehaviour
 
         // Disable AI, animation, and collider
         Animator animator = GetComponent<Animator>();
+        FindAnyObjectByType<AudioManager>().Stop("walking loop");
+
         if (animator) animator.enabled = false;
 
         // Instantly hide the enemy visuals
