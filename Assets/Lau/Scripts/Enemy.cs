@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,17 +10,42 @@ public class Enemy : MonoBehaviour
     private Animator anim; // animator reference
     private bool isAtWall = false; // New variable to check if enemy is at wall
 
+    private AudioSource walkingLoopSource;
+    private float currentVolume = 0f;
+    private float volumeIncreaseRate = 0.1f;
+    private bool isIncreasingVolume = false;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lookTarget = GameObject.FindGameObjectWithTag("LookTransform").transform;
-        FindAnyObjectByType<AudioManager>().Play("walking loop");
-
         anim = GetComponent<Animator>();
+
+        AudioManager audioManager = FindAnyObjectByType<AudioManager>();
+        audioManager.Play("walking loop");
+
+        // Manually grab the AudioSource from the walking loop
+        Sound walkingLoop = Array.Find(audioManager.sounds, sound => sound.name == "walking loop");
+        if (walkingLoop != null)
+        {
+            walkingLoopSource = walkingLoop.source;
+            walkingLoopSource.volume = 0f;
+            currentVolume = 0f;
+            isIncreasingVolume = true;
+        }
+        else
+        {
+            Debug.LogWarning("[Enemy] Could not find 'walking loop' in AudioManager.");
+        }
     }
 
     void Update()
     {
+        if (isIncreasingVolume && walkingLoopSource != null && walkingLoopSource.volume < 1f)
+        {
+            currentVolume += volumeIncreaseRate * Time.deltaTime;
+            walkingLoopSource.volume = Mathf.Clamp01(currentVolume);
+        }
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
