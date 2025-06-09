@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8176849572615613333}
   - component: {fileID: 6680935557191007253}
   - component: {fileID: 3664191215543006149}
+  - component: {fileID: 348676294357034251}
   m_Layer: 16
   m_Name: Shield_Weapon_Left (1)
   m_TagString: Shield
@@ -293,8 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageVelocityThreshold: 5
-  pushForce: 2
-  enemyscript: {fileID: 0}
+  cooldownTime: 0.2
+  incorrectStrikeEffect: {fileID: 0}
+  velocitySmoothing: 0.1
 --- !u!114 &3664191215543006149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +310,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 6
+  isDropped: 0
+--- !u!114 &348676294357034251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296810381988919220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a03f6fd1a28f34b98db707e7a96da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: grab
 --- !u!1 &2864055097607890434
 GameObject:
   m_ObjectHideFlags: 0

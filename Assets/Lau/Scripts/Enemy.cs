@@ -11,9 +11,10 @@ public class Enemy : MonoBehaviour
     private bool isAtWall = false; // New variable to check if enemy is at wall
 
     private AudioSource walkingLoopSource;
-    private float currentVolume = 0f;
-    private float volumeIncreaseRate = 0.1f;
+    private float volumeTimer = 0f;
+    private float volumeDuration = 8f;
     private bool isIncreasingVolume = false;
+    private float targetVolume = 1.5f;
 
     void Start()
     {
@@ -24,13 +25,12 @@ public class Enemy : MonoBehaviour
         AudioManager audioManager = FindAnyObjectByType<AudioManager>();
         audioManager.Play("walking loop");
 
-        // Manually grab the AudioSource from the walking loop
         Sound walkingLoop = Array.Find(audioManager.sounds, sound => sound.name == "walking loop");
         if (walkingLoop != null)
         {
             walkingLoopSource = walkingLoop.source;
             walkingLoopSource.volume = 0f;
-            currentVolume = 0f;
+            volumeTimer = 0f;
             isIncreasingVolume = true;
         }
         else
@@ -41,19 +41,16 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isIncreasingVolume && walkingLoopSource != null && walkingLoopSource.volume < 1f)
+        if (isIncreasingVolume && walkingLoopSource != null && volumeTimer < volumeDuration)
         {
-            currentVolume += volumeIncreaseRate * Time.deltaTime;
-            walkingLoopSource.volume = Mathf.Clamp01(currentVolume);
+            volumeTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(volumeTimer / volumeDuration);
+            walkingLoopSource.volume = Mathf.Lerp(0f, targetVolume, t);
         }
+
         if (canMove && !EnemyManager.Instance.isAnyEnemyAttacking)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-         
-        }
-        else
-        {
-            // anim.SetBool("isIdle", true);
         }
 
         if (isAtWall)
