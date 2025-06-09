@@ -25,6 +25,8 @@ public class NewRuneScript : MonoBehaviour
 
     void Start()
     {
+        anyRuneSmashed = false; // 🔓 Reset global rune lock when scene starts
+
         if (postProcessVolume != null && postProcessVolume.profile.TryGet(out Vignette v))
         {
             vignette = v;
@@ -40,6 +42,7 @@ public class NewRuneScript : MonoBehaviour
 
         if (brokenRune != null) brokenRune.SetActive(false);
     }
+
 
     // Call this from interaction
     public void BreakRune()
