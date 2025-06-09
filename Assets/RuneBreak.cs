@@ -5,19 +5,30 @@ public class RuneTriggerRelay : MonoBehaviour
     public NewRuneScript runeManager;
     public float speedThreshold = 2f;
     public GameObject sparkVFXPrefab;
-    public float sparkCooldown = 1.5f; // Delay between spark spawns
+    public float sparkCooldown = 1.5f;
 
     private float lastSparkTime = -Mathf.Infinity;
+
+    private Vector3 lastWeaponPosition;
+    private float lastVelocity = 0f;
+
+    void Update()
+    {
+        // Only track weapon velocity when something is touching the rune
+        // Optional: you can optimize this later if needed
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (runeManager == null || RuneSmashManager.runeAlreadySmashed) return;
 
-        if (other.CompareTag("Weapon") && other.attachedRigidbody != null)
+        if (other.CompareTag("Weapon"))
         {
-            float impactSpeed = other.attachedRigidbody.linearVelocity.magnitude;
+            float estimatedVelocity = EstimateWeaponVelocity(other);
 
-            if (impactSpeed >= speedThreshold)
+            Debug.Log($"[RuneTriggerRelay] Estimated impact velocity: {estimatedVelocity:F2}");
+
+            if (estimatedVelocity >= speedThreshold)
             {
                 runeManager.BreakRune();
             }
@@ -28,6 +39,21 @@ public class RuneTriggerRelay : MonoBehaviour
         }
     }
 
+    private float EstimateWeaponVelocity(Collider weaponCollider)
+    {
+        // Estimate velocity based on position delta over time
+        Vector3 currentPosition = weaponCollider.transform.position;
+        float velocity = 0f;
+
+        if (lastWeaponPosition != Vector3.zero)
+        {
+            velocity = (currentPosition - lastWeaponPosition).magnitude / Time.deltaTime;
+        }
+
+        lastWeaponPosition = currentPosition;
+        return velocity;
+    }
+
     private void TryShowSpark(Collider other)
     {
         if (Time.time - lastSparkTime < sparkCooldown) return;
@@ -36,9 +62,9 @@ public class RuneTriggerRelay : MonoBehaviour
 
         if (sparkVFXPrefab != null)
         {
-            // Find point of contact using closest point between weapon and rune
             Vector3 contactPoint = other.ClosestPoint(transform.position);
             Instantiate(sparkVFXPrefab, contactPoint, Quaternion.identity);
         }
     }
 }
+

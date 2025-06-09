@@ -2354,6 +2354,27 @@ Transform:
   - {fileID: 1270866884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 30.474, z: 0}
+--- !u!1 &284305153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+  m_PrefabInstance: {fileID: 1990635067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &284305164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284305153}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dbff9b0a2895e479ea361f4e5fa3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageVelocityThreshold: 1.5
+  pushForce: 5
+  enemyscript: {fileID: 0}
+  incorrectStrikeEffect: {fileID: 0}
 --- !u!1 &302522903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,7 +4489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   object1: {fileID: 0}
   object2: {fileID: 1025370347}
-  delay: 4
+  delay: 6
 --- !u!4 &643976381
 Transform:
   m_ObjectHideFlags: 0
@@ -6010,7 +6031,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2129688613}
   m_SourcePrefab: {fileID: 100100000, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
 --- !u!1 &927610936
 GameObject:
@@ -7694,7 +7718,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1721887561}
   m_SourcePrefab: {fileID: 100100000, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
 --- !u!1 &1071620001 stripped
 GameObject:
@@ -14535,6 +14562,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715530456}
   m_CullTransparentMesh: 1
+--- !u!1 &1721887550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+  m_PrefabInstance: {fileID: 1069418286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1721887561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721887550}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dbff9b0a2895e479ea361f4e5fa3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageVelocityThreshold: 1.5
+  pushForce: 5
+  enemyscript: {fileID: 0}
+  incorrectStrikeEffect: {fileID: 0}
 --- !u!1001 &1726317291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15167,7 +15215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeManager: {fileID: 1543448205}
-  speedThreshold: 5
+  speedThreshold: 20
   sparkVFXPrefab: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
   sparkCooldown: 0.25
 --- !u!65 &1778071946
@@ -16500,7 +16548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeManager: {fileID: 865578660}
-  speedThreshold: 5
+  speedThreshold: 20
   sparkVFXPrefab: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
   sparkCooldown: 0.25
 --- !u!1001 &1990635067
@@ -16562,7 +16610,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 284305164}
   m_SourcePrefab: {fileID: 100100000, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
 --- !u!1 &1995811402
 GameObject:
@@ -17739,6 +17790,27 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2129688602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4405664496063040454, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
+  m_PrefabInstance: {fileID: 878020827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2129688613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129688602}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dbff9b0a2895e479ea361f4e5fa3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageVelocityThreshold: 1.5
+  pushForce: 5
+  enemyscript: {fileID: 0}
+  incorrectStrikeEffect: {fileID: 0}
 --- !u!4 &2134602277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: edc40406f07f9cf4990807aa8b0fc368, type: 3}
