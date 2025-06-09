@@ -4447,7 +4447,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: throwingSpeedThreshold
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
@@ -12594,7 +12594,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: throwingSpeedThreshold
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
@@ -14116,7 +14116,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: throwingSpeedThreshold
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
@@ -28266,7 +28266,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: throwingSpeedThreshold
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
@@ -29560,7 +29560,7 @@ PrefabInstance:
       objectReference: {fileID: 1766388591}
     - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: throwingSpeedThreshold
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
@@ -33671,7 +33671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[4].volume
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[5].volume
@@ -33699,7 +33699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[12].volume
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2744469166913622960, guid: 26262ac880b537c4fb28baf7c2aee126, type: 3}
       propertyPath: sounds.Array.data[13].volume
