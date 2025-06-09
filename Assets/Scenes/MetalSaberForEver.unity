@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319427316082228824, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6468928122315453031, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: m_LocalScale.x
@@ -1308,9 +1308,13 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: throwingSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 30
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -2108,7 +2112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3007,7 +3011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 20
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7618520260964834257, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: m_Layer
@@ -4308,9 +4312,13 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: throwingSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -4482,7 +4490,7 @@ Transform:
   m_GameObject: {fileID: 772055257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 1.59, z: -0.01}
+  m_LocalPosition: {x: 0.399, y: 1.59, z: -0.044}
   m_LocalScale: {x: 1.8640443, y: 1.8640443, z: 1.8640443}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4507,7 +4515,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &772055260
 MeshRenderer:
@@ -4929,9 +4937,13 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: throwingSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 20
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -10030,7 +10042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11619,9 +11631,13 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: throwingSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 25
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -11861,9 +11877,13 @@ PrefabInstance:
       propertyPath: gazeInteractor
       value: 
       objectReference: {fileID: 1766388591}
+    - target: {fileID: 1259810931634977634, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
+      propertyPath: throwingSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438982783699170569, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 40
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5219286312479296617, guid: 5b8ff08d7a369d34d9142da904e51597, type: 3}
       propertyPath: spearPrefab
@@ -13617,7 +13637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969083111853279434, guid: 3a261925071520f43a1587e2eecfee77, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 25
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14750,7 +14770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319427316082228824, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: damageVelocityThreshold
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6468928122315453031, guid: 7c1a7c1e2d5eab344860dde147b1eaff, type: 3}
       propertyPath: m_LocalScale.x

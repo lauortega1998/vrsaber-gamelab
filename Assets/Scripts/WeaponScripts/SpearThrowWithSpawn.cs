@@ -22,6 +22,8 @@ public class SpearThrowWithSpawn : MonoBehaviour
 
     private Vector3 originalPosition;    // Remember where this spear started
     private Quaternion originalRotation; // Remember the original rotation
+    private Vector3 cachedVelocity;
+
 
     void Awake()
     {
@@ -99,6 +101,10 @@ public class SpearThrowWithSpawn : MonoBehaviour
         {
             float currentSpeed = rb.linearVelocity.magnitude;
             // Debug.Log($"[UPDATE] Current spear speed: {currentSpeed:F2} m/s");
+        }
+        if (isHeld && rb != null)
+        {
+            cachedVelocity = rb.linearVelocity;
         }
     }
 
