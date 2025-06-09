@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 7210100863831037895}
   - component: {fileID: 1815732394536536932}
   - component: {fileID: 7751001241479996249}
+  - component: {fileID: 3459330620025233381}
   m_Layer: 0
   m_Name: Hand_Axe_Weapon
   m_TagString: Weapon
@@ -522,10 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 11
-  pushForce: 0
-  enemyscript: {fileID: 0}
+  damageVelocityThreshold: 6
+  cooldownTime: 0.2
   incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
+  velocitySmoothing: 0.1
 --- !u!65 &7210100863831037895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -583,6 +584,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2862683227903276444, guid: 1f898b6c9c50d5e4bb5beb73522b1a53, type: 3}
+--- !u!114 &3459330620025233381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405664496063040454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a03f6fd1a28f34b98db707e7a96da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: grab
 --- !u!1 &5772366454833740239
 GameObject:
   m_ObjectHideFlags: 0

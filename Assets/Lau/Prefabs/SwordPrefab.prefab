@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2381703061609304359}
   - component: {fileID: 7307961967821138875}
   - component: {fileID: 709649443390742941}
+  - component: {fileID: 3655145761642419263}
   m_Layer: 0
   m_Name: SwordPrefab
   m_TagString: Weapon
@@ -256,10 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 11
-  pushForce: 0
-  enemyscript: {fileID: 0}
+  damageVelocityThreshold: 12
+  cooldownTime: 0.2
   incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
+  velocitySmoothing: 0.1
 --- !u!114 &2381703061609304359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +314,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 6
   isDropped: 0
+--- !u!114 &3655145761642419263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823073465100555205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a03f6fd1a28f34b98db707e7a96da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: grab
 --- !u!1 &1281487665732220239
 GameObject:
   m_ObjectHideFlags: 0

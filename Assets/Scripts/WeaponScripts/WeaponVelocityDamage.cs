@@ -2,6 +2,118 @@
 
 public class WeaponVelocityDamage : MonoBehaviour
 {
+    [Header("Settings")]
+    public float damageVelocityThreshold = 1.5f; // Minimum velocity to kill
+    public float cooldownTime = 0.2f; // Prevent multiple hits per second
+
+    [Header("VFX & Audio")]
+    public GameObject incorrectStrikeEffect;
+    private int attackSoundIndex = 0;
+
+    private Rigidbody rb;
+    private Vector3 lastPosition;
+    private float smoothedVelocity = 0f;
+    public float velocitySmoothing = 0.1f;
+
+    private float lastHitTime = -999f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        lastPosition = transform.position;
+    }
+
+    void Update()
+    {
+        Vector3 displacement = transform.position - lastPosition;
+        float rawVelocity = displacement.magnitude / Time.deltaTime;
+        smoothedVelocity = Mathf.Lerp(smoothedVelocity, rawVelocity, velocitySmoothing);
+        lastPosition = transform.position;
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (Time.time - lastHitTime < cooldownTime) return;
+
+        float impactVelocity = smoothedVelocity;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log($"[Weapon] Hit Enemy | Velocity: {impactVelocity:F2}");
+
+            if (impactVelocity >= damageVelocityThreshold)
+            {
+                HapticsManager.Instance?.TriggerHaptics(0.5f, 0.1f);
+                EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+                if (enemy != null)
+                {
+                    enemy.Die(transform);
+                    FindAnyObjectByType<AudioManager>()?.Play("death1scream");
+                    PlayNextAttackSound();
+                    lastHitTime = Time.time;
+                }
+            }
+        }
+
+        else if (collision.gameObject.CompareTag("HeavyEnemy"))
+        {
+            Debug.Log($"[Weapon] Hit HeavyEnemy | Velocity: {impactVelocity:F2}");
+
+            EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            StrikeZone strikeZone = collision.gameObject.GetComponentInChildren<StrikeZone>();
+
+            if (enemy != null && strikeZone != null)
+            {
+                if (impactVelocity >= damageVelocityThreshold && strikeZone.IsCorrectStrike(rb.linearVelocity))
+                {
+                    enemy.Die(transform);
+                    FindAnyObjectByType<AudioManager>()?.Play("death2scream");
+                    PlayNextAttackSound();
+                    lastHitTime = Time.time;
+                }
+                else
+                {
+                    if (incorrectStrikeEffect != null && collision.contacts.Length > 0)
+                    {
+                        Vector3 impactPoint = collision.contacts[0].point;
+                        Instantiate(incorrectStrikeEffect, impactPoint, Quaternion.identity);
+                        Debug.Log("[Weapon] Incorrect strike - FX spawned.");
+                        PlayNextAttackSound();
+                        lastHitTime = Time.time;
+                    }
+                }
+            }
+        }
+
+        else if (collision.gameObject.CompareTag("DestructibleUI"))
+        {
+            if (impactVelocity >= damageVelocityThreshold)
+            {
+                HapticsManager.Instance?.TriggerHaptics(0.5f, 0.1f);
+                Debug.Log($"[Weapon] UI Smash | Velocity: {impactVelocity:F2}");
+                var column = collision.gameObject.GetComponentInParent<MenuHitActivate>();
+                column?.Die(transform);
+                PlayNextAttackSound();
+                lastHitTime = Time.time;
+            }
+        }
+    }
+
+    private void PlayNextAttackSound()
+    {
+        string soundName = $"attack{attackSoundIndex + 1}";
+        FindAnyObjectByType<AudioManager>()?.Play(soundName);
+        attackSoundIndex = (attackSoundIndex + 1) % 3;
+    }
+}
+
+
+
+
+/*using UnityEngine; 17;46 / 09/05/25
+
+public class WeaponVelocityDamage : MonoBehaviour
+{
     public float damageVelocityThreshold = 1.5f;
     public float pushForce = 5f;
     public Enemy enemyscript;

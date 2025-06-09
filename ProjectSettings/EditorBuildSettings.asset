@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MountainMenu.unity
     guid: f2b9a2d2b9827124791d4569212cc63d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MetalSaber.unity
     guid: 667a71c0108d83348bb7d3c6eb929885
   - enabled: 1

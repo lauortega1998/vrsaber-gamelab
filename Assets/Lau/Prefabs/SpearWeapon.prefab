@@ -703,6 +703,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5948531420286332236}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7983320135680937246}
   m_SourcePrefab: {fileID: 100100000, guid: ac0266eb50ecca847ae077d628c1c631, type: 3}
 --- !u!4 &7467973357516425461 stripped
 Transform:
@@ -948,10 +951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 11
-  pushForce: 0
-  enemyscript: {fileID: 0}
+  damageVelocityThreshold: 6
+  cooldownTime: 0.2
   incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
+  velocitySmoothing: 0.1
 --- !u!114 &6444700581515649732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,3 +995,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearPrefab: {fileID: 7847595601434333775}
+--- !u!114 &7983320135680937246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847595601434333775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a03f6fd1a28f34b98db707e7a96da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: grab
