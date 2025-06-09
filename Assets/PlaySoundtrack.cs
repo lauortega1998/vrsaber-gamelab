@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class PlaySoundtrack : MonoBehaviour
 {
-    AudioManager audioManager = FindAnyObjectByType<AudioManager>();
+    private AudioManager audioManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        audioManager.Play("soundtrack");
-
+        audioManager = FindAnyObjectByType<AudioManager>();
+        if (audioManager != null)
+        {
+            audioManager.Play("soundtrack");
+        }
+        else
+        {
+            Debug.LogError("AudioManager not found!");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 }
