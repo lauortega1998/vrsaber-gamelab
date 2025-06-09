@@ -12,6 +12,8 @@ public class SpectreProjectile : MonoBehaviour
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
         Destroy(gameObject, 3.5f);
+        levelManager = FindObjectOfType<LevelManager>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,9 +22,12 @@ public class SpectreProjectile : MonoBehaviour
         {
             if (levelManager != null && !levelManager.tutorial)
             {
-                playerHealth.TakeDamage(damageAmount);
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damageAmount);
+                }
+                
             }
-            Debug.Log("Spectre projectile hit the player!");
             Destroy(gameObject);
         }
         else if (other.CompareTag("ParryArea") || other.CompareTag("Shield"))
