@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22108e47693c914fac09f70eb107442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageVelocityThreshold: 11
+  damageVelocityThreshold: 13
   pushForce: 0
   enemyscript: {fileID: 0}
   incorrectStrikeEffect: {fileID: 1000011945391522, guid: 9dbca9691dd81634fab53def1b20ae04, type: 3}
