@@ -6,7 +6,7 @@ public class SpearGrabCrosshair : MonoBehaviour
 {
     private XRGrabInteractable grabInteractable;
 
-    [SerializeField] private GameObject crosshairObject; // <-- drag and drop in Inspector
+    [SerializeField] private GameObject crosshairObject; 
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class SpearGrabCrosshair : MonoBehaviour
 
         if (crosshairObject != null)
         {
-            crosshairObject.SetActive(false); // Start disabled
+            crosshairObject.SetActive(false); 
         }
     }
 
